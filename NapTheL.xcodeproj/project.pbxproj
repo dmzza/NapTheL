@@ -24,6 +24,8 @@
 		6336F210170B5FBF00E67CA9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6336F1EF170B5FBE00E67CA9 /* CoreData.framework */; };
 		6336F218170B5FBF00E67CA9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6336F216170B5FBF00E67CA9 /* InfoPlist.strings */; };
 		6336F21B170B5FBF00E67CA9 /* NapTheLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6336F21A170B5FBF00E67CA9 /* NapTheLTests.m */; };
+		6336F226170B601A00E67CA9 /* OriginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6336F225170B601A00E67CA9 /* OriginTableViewController.m */; };
+		6336F229170B638C00E67CA9 /* DestinationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6336F228170B638C00E67CA9 /* DestinationTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,10 @@
 		6336F217170B5FBF00E67CA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6336F219170B5FBF00E67CA9 /* NapTheLTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NapTheLTests.h; sourceTree = "<group>"; };
 		6336F21A170B5FBF00E67CA9 /* NapTheLTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NapTheLTests.m; sourceTree = "<group>"; };
+		6336F224170B601A00E67CA9 /* OriginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginTableViewController.h; sourceTree = "<group>"; };
+		6336F225170B601A00E67CA9 /* OriginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginTableViewController.m; sourceTree = "<group>"; };
+		6336F227170B638C00E67CA9 /* DestinationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DestinationTableViewController.h; sourceTree = "<group>"; };
+		6336F228170B638C00E67CA9 /* DestinationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DestinationTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,10 @@
 			children = (
 				6336F1FA170B5FBE00E67CA9 /* AppDelegate.h */,
 				6336F1FB170B5FBE00E67CA9 /* AppDelegate.m */,
+				6336F224170B601A00E67CA9 /* OriginTableViewController.h */,
+				6336F225170B601A00E67CA9 /* OriginTableViewController.m */,
+				6336F227170B638C00E67CA9 /* DestinationTableViewController.h */,
+				6336F228170B638C00E67CA9 /* DestinationTableViewController.m */,
 				6336F203170B5FBE00E67CA9 /* NapTheL.xcdatamodeld */,
 				6336F1F2170B5FBE00E67CA9 /* Supporting Files */,
 			);
@@ -273,6 +283,8 @@
 				6336F1F8170B5FBE00E67CA9 /* main.m in Sources */,
 				6336F1FC170B5FBE00E67CA9 /* AppDelegate.m in Sources */,
 				6336F205170B5FBE00E67CA9 /* NapTheL.xcdatamodeld in Sources */,
+				6336F226170B601A00E67CA9 /* OriginTableViewController.m in Sources */,
+				6336F229170B638C00E67CA9 /* DestinationTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

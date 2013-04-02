@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "OriginTableViewController.h"
 
 @implementation AppDelegate
 
@@ -17,7 +18,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    
+    OriginTableViewController *originTableViewController = [[OriginTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    
+    UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:originTableViewController];
+    alarmNavController.title = @"Alarm";
+    
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    [tabBarController setViewControllers:@[alarmNavController]];
+    
+    self.window.rootViewController = tabBarController;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
