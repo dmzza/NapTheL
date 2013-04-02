@@ -11,7 +11,7 @@
 @interface DestinationTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray *stops;
-@property (strong, nonatomic) NSString *origin;
--(id)initWithStyle:(UITableViewStyle)style origin:(NSString *)anOrigin;
+@property NSInteger *origin;
+-(id)initWithStyle:(UITableViewStyle)style origin:(NSInteger *)anOrigin;
 
 @end

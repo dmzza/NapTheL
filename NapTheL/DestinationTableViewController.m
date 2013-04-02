@@ -7,6 +7,7 @@
 //
 
 #import "DestinationTableViewController.h"
+#import "TripViewController.h"
 
 @interface DestinationTableViewController ()
 
@@ -16,12 +17,12 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [[DestinationTableViewController alloc] initWithStyle:style origin:@"8"];
+    self = [[DestinationTableViewController alloc] initWithStyle:style origin:0];
     return self;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
-             origin:(NSString *)anOrigin {
+             origin:(NSInteger *)anOrigin {
     self = [super initWithStyle:style];
     if (self) {
         self.stops = @[@"8", @"6", @"Union", @"3", @"1", @"Bedford", @"Lorimer", @"Graham", @"Grand", @"Montrose", @"Morgan", @"Jefferson"];
@@ -71,10 +72,12 @@
     }
     
     cell.textLabel.text = thisStop;
-    if(thisStop == self.origin) {
-        cell.backgroundView = [[UIView alloc] init];
+    cell.backgroundView = [[UIView alloc] init];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    if(indexPath.row == self.origin) {
         cell.backgroundView.backgroundColor = [UIColor yellowColor];
-        cell.textLabel.backgroundColor = [UIColor clearColor];
+    } else {
+        cell.backgroundView.backgroundColor = [UIColor whiteColor];
     }
     
     return cell;
@@ -130,6 +133,10 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    
+    TripViewController *tripViewController = [[TripViewController alloc] initWithOrigin:self.origin destination:indexPath.row];
+    
+    [self.navigationController pushViewController:tripViewController animated:YES];
 }
 
 @end
