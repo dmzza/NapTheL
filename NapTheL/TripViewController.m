@@ -127,16 +127,26 @@
     [super viewDidLoad];
 	
     UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 280, 40)];
-    int timeRemaining = 0;
-    
+    UILabel *secondsLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 50, 280, 40)];
+    int timeRemaining = 0, dest = self.destination, orig = self.origin;
     int i;
     
-    
-    for (i = self.origin; i <= self.destination; i++) {
-        NSNumber *arrival = self.durations[i][@"eastBoundArrival"];
-        NSNumber *doors = self.durations[i][@"eastBoundDoors"];
-        timeRemaining += arrival.intValue + doors.intValue;
-        
+    if (self.origin < self.destination) { // eastbound
+        for (i = orig + 1; i <= dest - 1; i++) {
+            NSNumber *arrival = self.durations[i][@"eastBoundArrival"];
+            NSNumber *doors = self.durations[i][@"eastBoundDoors"];
+            timeRemaining += arrival.intValue + doors.intValue;
+        }
+        NSNumber *arrival = self.durations[dest][@"eastBoundArrival"];
+        timeRemaining += arrival.intValue;
+    } else { // westbound
+        for (i = orig - 1; i >= dest + 1; i--) {
+            NSNumber *arrival = self.durations[i][@"westBoundArrival"];
+            NSNumber *doors = self.durations[i][@"westBoundDoors"];
+            timeRemaining += arrival.intValue + doors.intValue;
+        }
+        NSNumber *arrival = self.durations[dest][@"westBoundArrival"];
+        timeRemaining += arrival.intValue;
     }
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -148,8 +158,10 @@
     NSString *formattedDateString = [dateFormatter stringFromDate:date];
     
     timeLabel.text = formattedDateString;
+    secondsLabel.text = [NSString stringWithFormat:@"Seconds: %d", timeRemaining];
     
     [self.view addSubview:timeLabel];
+    [self.view addSubview:secondsLabel];
 }
 
 - (void)didReceiveMemoryWarning
