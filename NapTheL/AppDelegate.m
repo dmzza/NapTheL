@@ -24,10 +24,11 @@
     UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:originTableViewController];
     alarmNavController.title = @"Alarm";
     
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    /*UITabBarController *tabBarController = [[UITabBarController alloc] init];
     [tabBarController setViewControllers:@[alarmNavController]];
     
-    self.window.rootViewController = tabBarController;
+    self.window.rootViewController = tabBarController;*/
+    self.window.rootViewController = alarmNavController;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
