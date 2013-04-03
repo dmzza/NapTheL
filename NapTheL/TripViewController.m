@@ -153,15 +153,23 @@
     [dateFormatter setDateStyle:NSDateFormatterNoStyle];
     [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:timeRemaining];
+    NSDate *arrivalTime = [NSDate dateWithTimeIntervalSinceNow:timeRemaining];
     
-    NSString *formattedDateString = [dateFormatter stringFromDate:date];
+    NSString *formattedDateString = [dateFormatter stringFromDate:arrivalTime];
     
     timeLabel.text = formattedDateString;
     secondsLabel.text = [NSString stringWithFormat:@"Seconds: %d", timeRemaining];
     
     [self.view addSubview:timeLabel];
     [self.view addSubview:secondsLabel];
+    
+    UILocalNotification *arrivalAlarm = [[UILocalNotification alloc] init];
+    arrivalAlarm.fireDate = arrivalTime;
+    arrivalAlarm.alertBody = [NSString stringWithFormat:@"Approaching %@", self.durations[dest][@"name"]];
+    arrivalAlarm.alertAction = @"Alarm";
+    arrivalAlarm.soundName = @"subwayAlarm.m4a";
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:arrivalAlarm];
 }
 
 - (void)didReceiveMemoryWarning

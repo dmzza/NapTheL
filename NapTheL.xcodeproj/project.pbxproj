@@ -27,6 +27,7 @@
 		6336F226170B601A00E67CA9 /* OriginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6336F225170B601A00E67CA9 /* OriginTableViewController.m */; };
 		6336F229170B638C00E67CA9 /* DestinationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6336F228170B638C00E67CA9 /* DestinationTableViewController.m */; };
 		6336F22C170B6F5200E67CA9 /* TripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6336F22B170B6F5200E67CA9 /* TripViewController.m */; };
+		6336F22F170BB05700E67CA9 /* subwayAlarm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6336F22E170BB05700E67CA9 /* subwayAlarm.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		6336F228170B638C00E67CA9 /* DestinationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DestinationTableViewController.m; sourceTree = "<group>"; };
 		6336F22A170B6F5200E67CA9 /* TripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripViewController.h; sourceTree = "<group>"; };
 		6336F22B170B6F5200E67CA9 /* TripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripViewController.m; sourceTree = "<group>"; };
+		6336F22E170BB05700E67CA9 /* subwayAlarm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = subwayAlarm.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 		6336F1F1170B5FBE00E67CA9 /* NapTheL */ = {
 			isa = PBXGroup;
 			children = (
+				6336F22D170BB03300E67CA9 /* Sounds */,
 				6336F1FA170B5FBE00E67CA9 /* AppDelegate.h */,
 				6336F1FB170B5FBE00E67CA9 /* AppDelegate.m */,
 				6336F224170B601A00E67CA9 /* OriginTableViewController.h */,
@@ -174,6 +177,14 @@
 				6336F216170B5FBF00E67CA9 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6336F22D170BB03300E67CA9 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				6336F22E170BB05700E67CA9 /* subwayAlarm.m4a */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +262,7 @@
 				6336F1FE170B5FBE00E67CA9 /* Default.png in Resources */,
 				6336F200170B5FBE00E67CA9 /* Default@2x.png in Resources */,
 				6336F202170B5FBE00E67CA9 /* Default-568h@2x.png in Resources */,
+				6336F22F170BB05700E67CA9 /* subwayAlarm.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
