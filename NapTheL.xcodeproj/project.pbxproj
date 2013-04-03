@@ -28,6 +28,10 @@
 		6336F229170B638C00E67CA9 /* DestinationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6336F228170B638C00E67CA9 /* DestinationTableViewController.m */; };
 		6336F22C170B6F5200E67CA9 /* TripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6336F22B170B6F5200E67CA9 /* TripViewController.m */; };
 		6336F22F170BB05700E67CA9 /* subwayAlarm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6336F22E170BB05700E67CA9 /* subwayAlarm.m4a */; };
+		6336F233170BB49F00E67CA9 /* napTheL.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F231170BB49F00E67CA9 /* napTheL.png */; };
+		6336F234170BB49F00E67CA9 /* napTheL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F232170BB49F00E67CA9 /* napTheL@2x.png */; };
+		6336F236170BB4E900E67CA9 /* napTheL.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F235170BB4E900E67CA9 /* napTheL.png */; };
+		6336F238170BB4F000E67CA9 /* napTheL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F237170BB4F000E67CA9 /* napTheL@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6336F1E6170B5FBE00E67CA9 /* NapTheL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NapTheL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6336F1E6170B5FBE00E67CA9 /* Nap The L.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nap The L.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6336F1E9170B5FBE00E67CA9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6336F1EB170B5FBE00E67CA9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6336F1ED170B5FBE00E67CA9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -69,6 +73,10 @@
 		6336F22A170B6F5200E67CA9 /* TripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripViewController.h; sourceTree = "<group>"; };
 		6336F22B170B6F5200E67CA9 /* TripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripViewController.m; sourceTree = "<group>"; };
 		6336F22E170BB05700E67CA9 /* subwayAlarm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = subwayAlarm.m4a; sourceTree = "<group>"; };
+		6336F231170BB49F00E67CA9 /* napTheL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = napTheL.png; sourceTree = "<group>"; };
+		6336F232170BB49F00E67CA9 /* napTheL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "napTheL@2x.png"; sourceTree = "<group>"; };
+		6336F235170BB4E900E67CA9 /* napTheL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = napTheL.png; sourceTree = "<group>"; };
+		6336F237170BB4F000E67CA9 /* napTheL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "napTheL@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,8 @@
 		6336F1DD170B5FBE00E67CA9 = {
 			isa = PBXGroup;
 			children = (
+				6336F237170BB4F000E67CA9 /* napTheL@2x.png */,
+				6336F235170BB4E900E67CA9 /* napTheL.png */,
 				6336F1F1170B5FBE00E67CA9 /* NapTheL */,
 				6336F213170B5FBF00E67CA9 /* NapTheLTests */,
 				6336F1E8170B5FBE00E67CA9 /* Frameworks */,
@@ -110,7 +120,7 @@
 		6336F1E7170B5FBE00E67CA9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6336F1E6170B5FBE00E67CA9 /* NapTheL.app */,
+				6336F1E6170B5FBE00E67CA9 /* Nap The L.app */,
 				6336F20B170B5FBF00E67CA9 /* NapTheLTests.octest */,
 			);
 			name = Products;
@@ -131,6 +141,7 @@
 		6336F1F1170B5FBE00E67CA9 /* NapTheL */ = {
 			isa = PBXGroup;
 			children = (
+				6336F230170BB49200E67CA9 /* Images */,
 				6336F22D170BB03300E67CA9 /* Sounds */,
 				6336F1FA170B5FBE00E67CA9 /* AppDelegate.h */,
 				6336F1FB170B5FBE00E67CA9 /* AppDelegate.m */,
@@ -187,6 +198,15 @@
 			name = Sounds;
 			sourceTree = "<group>";
 		};
+		6336F230170BB49200E67CA9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				6336F231170BB49F00E67CA9 /* napTheL.png */,
+				6336F232170BB49F00E67CA9 /* napTheL@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -204,7 +224,7 @@
 			);
 			name = NapTheL;
 			productName = NapTheL;
-			productReference = 6336F1E6170B5FBE00E67CA9 /* NapTheL.app */;
+			productReference = 6336F1E6170B5FBE00E67CA9 /* Nap The L.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6336F20A170B5FBF00E67CA9 /* NapTheLTests */ = {
@@ -263,6 +283,10 @@
 				6336F200170B5FBE00E67CA9 /* Default@2x.png in Resources */,
 				6336F202170B5FBE00E67CA9 /* Default-568h@2x.png in Resources */,
 				6336F22F170BB05700E67CA9 /* subwayAlarm.m4a in Resources */,
+				6336F233170BB49F00E67CA9 /* napTheL.png in Resources */,
+				6336F234170BB49F00E67CA9 /* napTheL@2x.png in Resources */,
+				6336F236170BB4E900E67CA9 /* napTheL.png in Resources */,
+				6336F238170BB4F000E67CA9 /* napTheL@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,7 +430,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Nap The L";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -417,7 +441,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Nap The L";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
