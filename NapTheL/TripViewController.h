@@ -14,6 +14,6 @@
 @property NSInteger *destination;
 @property (strong, nonatomic) NSArray *durations;
 
--(id)initWithOrigin:(NSInteger *)anOrigin destination:(NSInteger *)aDestination;
+-(id)initWithOrigin:(NSString *)anOrigin destination:(NSString *)aDestination;
 
 @end

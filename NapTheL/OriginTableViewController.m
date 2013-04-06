@@ -19,7 +19,28 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        self.stops = @[@"8", @"6", @"Union", @"3", @"1", @"Bedford", @"Lorimer", @"Graham", @"Grand", @"Montrose", @"Morgan", @"Jefferson"];
+        self.neighborhoods = [NSArray arrayWithObjects:
+                              [[NSDictionary alloc] initWithObjectsAndKeys:
+                               @"Manhattan", @"name",
+                               [UIImage imageNamed:@"manhattan.jpg"], @"image",
+                               @[@"8 Av", @"6 Av", @"Union St - 14 St", @"3 Av", @"1 Av"], @"stops",
+                               nil],
+                              [[NSDictionary alloc] initWithObjectsAndKeys:
+                               @"Williamsburg", @"name",
+                               [UIImage imageNamed:@"williamsburg"], @"image",
+                               @[@"Bedford Av", @"Lorimer St"], @"stops",
+                               nil],
+                              [[NSDictionary alloc] initWithObjectsAndKeys:
+                               @"East Williamsburg", @"name",
+                               [UIImage imageNamed:@"williamsburg"], @"image",
+                               @[@"Graham Av", @"Grand St", @"Montrose Av", @"Morgan Av"], @"stops",
+                               nil],
+                              [[NSDictionary alloc] initWithObjectsAndKeys:
+                               @"Bushwick", @"name",
+                               [UIImage imageNamed:@"williamsburg"], @"image",
+                               @[@"Jefferson St", @"DeKalb Av", @"Myrtle-Wyckoff Avs"], @"stops",
+                               nil],
+                              nil];
         self.title = @"From";
     }
     return self;
@@ -34,6 +55,8 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+//    [self.navigationController.view setNeedsDisplay];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,24 +69,64 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return self.neighborhoods.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.stops.count;
+    NSArray *stops = self.neighborhoods[section][@"stops"];
+    return stops.count;
+}
+
+/*- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return @[@"14", @"WB" ,@"EW", @"BU", @"EN", @"CA"];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return self.neighborhoods[section][@"name"];
+}*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50.0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 80.0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    //UILabel *neighborhood = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320.0, 80.0)];
+    UITableViewCell *neighborhood = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, 320.0, 80.0)];
+    
+    neighborhood.textLabel.text = self.neighborhoods[section][@"name"];
+    neighborhood.textLabel.textColor = [UIColor whiteColor];
+    neighborhood.textLabel.textAlignment = NSTextAlignmentLeft;
+    neighborhood.textLabel.shadowColor = [UIColor blackColor];
+    neighborhood.textLabel.shadowOffset = CGSizeMake(1.0, 1.5);
+    neighborhood.textLabel.font = [UIFont boldSystemFontOfSize:24.0];
+    neighborhood.backgroundColor = [UIColor colorWithPatternImage:self.neighborhoods[section][@"image"]];
+    return neighborhood;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSArray *stops = self.neighborhoods[indexPath.section][@"stops"];
     
     if(cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = self.stops[indexPath.row];
+    cell.textLabel.text = stops[indexPath.row];
+    cell.textLabel.font = [UIFont fontWithName:@"Avenir-Book" size:14.0];
+    cell.backgroundColor = [UIColor blackColor];
+    
     
     return cell;
 }
@@ -111,14 +174,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-    DestinationTableViewController *destinationTableViewController = [[DestinationTableViewController alloc] initWithStyle:UITableViewStylePlain origin:indexPath.row];
+    DestinationTableViewController *destinationTableViewController = [[DestinationTableViewController alloc] initWithStyle:UITableViewStylePlain originSection:indexPath.section originRow:indexPath.row];
     
     [self.navigationController pushViewController:destinationTableViewController animated:YES];
 }

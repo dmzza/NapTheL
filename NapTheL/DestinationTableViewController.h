@@ -10,8 +10,9 @@
 
 @interface DestinationTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *stops;
-@property NSInteger *origin;
--(id)initWithStyle:(UITableViewStyle)style origin:(NSInteger *)anOrigin;
+@property (strong, nonatomic) NSArray *neighborhoods;
+@property NSInteger *originSection;
+@property NSInteger *originRow;
+-(id)initWithStyle:(UITableViewStyle)style originSection:(NSInteger *)anOriginSection originRow:(NSInteger *)anOriginRow;
 
 @end

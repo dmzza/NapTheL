@@ -10,6 +10,6 @@
 
 @interface OriginTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *stops;
+@property (strong, nonatomic) NSArray *neighborhoods;
 
 @end

@@ -23,101 +23,123 @@
     return self;
 }
 
-- (id)initWithOrigin:(NSInteger *)anOrigin
-         destination:(NSInteger *)aDestination
+- (id)initWithOrigin:(NSString *)anOrigin
+         destination:(NSString *)aDestination
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
-        self.origin = anOrigin;
-        self.destination = aDestination;
         self.durations = [NSArray arrayWithObjects:
                           [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"8", @"name",
+                           @"8 Av", @"name",
                            [NSNumber numberWithInt:60], @"westBoundArrival", //huge delays here usually
                            [NSNumber numberWithInt:0], @"westBoundDoors",
                            [NSNumber numberWithInt:0], @"eastBoundArrival",
                            [NSNumber numberWithInt:0], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"6", @"name",
+                           @"6 Av", @"name",
                            [NSNumber numberWithInt:60], @"westBoundArrival",
                            [NSNumber numberWithInt:15], @"westBoundDoors",
                            [NSNumber numberWithInt:58], @"eastBoundArrival",
                            [NSNumber numberWithInt:15], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"Union", @"name",
+                           @"Union St - 14 St", @"name",
                            [NSNumber numberWithInt:53], @"westBoundArrival",
                            [NSNumber numberWithInt:16], @"westBoundDoors",
                            [NSNumber numberWithInt:60], @"eastBoundArrival",
                            [NSNumber numberWithInt:16], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"3", @"name",
+                           @"3 Av", @"name",
                            [NSNumber numberWithInt:51], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:56], @"eastBoundArrival",
                            [NSNumber numberWithInt:13], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"1", @"name",
+                           @"1 Av", @"name",
                            [NSNumber numberWithInt:150], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:53], @"eastBoundArrival",
                            [NSNumber numberWithInt:13], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"Bedford", @"name",
+                           @"Bedford Av", @"name",
                            [NSNumber numberWithInt:71], @"westBoundArrival",
                            [NSNumber numberWithInt:15], @"westBoundDoors",
                            [NSNumber numberWithInt:150], @"eastBoundArrival",
                            [NSNumber numberWithInt:15], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"Lorimer", @"name",
+                           @"Lorimer St", @"name",
                            [NSNumber numberWithInt:55], @"westBoundArrival",
                            [NSNumber numberWithInt:15], @"westBoundDoors",
                            [NSNumber numberWithInt:71], @"eastBoundArrival",
                            [NSNumber numberWithInt:15], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"Graham", @"name",
+                           @"Graham Av", @"name",
                            [NSNumber numberWithInt:69], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:55], @"eastBoundArrival",
                            [NSNumber numberWithInt:13], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"Grand", @"name",
+                           @"Grand St", @"name",
                            [NSNumber numberWithInt:53], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:63], @"eastBoundArrival",
                            [NSNumber numberWithInt:13], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"Montrose", @"name",
+                           @"Montrose St", @"name",
                            [NSNumber numberWithInt:79], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:53], @"eastBoundArrival",
                            [NSNumber numberWithInt:13], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"Morgan", @"name",
+                           @"Morgan Av", @"name",
                            [NSNumber numberWithInt:80], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:80], @"eastBoundArrival",
                            [NSNumber numberWithInt:13], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"Jefferson", @"name",
-                           [NSNumber numberWithInt:0], @"westBoundArrival",
-                           [NSNumber numberWithInt:0], @"westBoundDoors",
+                           @"Jefferson St", @"name",
+                           [NSNumber numberWithInt:55], @"westBoundArrival",
+                           [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:80], @"eastBoundArrival",
                            [NSNumber numberWithInt:13], @"eastBoundDoors", nil
+                           ],
+                          [[NSDictionary alloc] initWithObjectsAndKeys:
+                           @"DeKalb Av", @"name",
+                           [NSNumber numberWithInt:71], @"westBoundArrival",
+                           [NSNumber numberWithInt:13], @"westBoundDoors",
+                           [NSNumber numberWithInt:55], @"eastBoundArrival",
+                           [NSNumber numberWithInt:13], @"eastBoundDoors", nil
+                           ],
+                          [[NSDictionary alloc] initWithObjectsAndKeys:
+                           @"Myrtle-Wyckoff Avs", @"name",
+                           [NSNumber numberWithInt:71], @"westBoundArrival",
+                           [NSNumber numberWithInt:15], @"westBoundDoors",
+                           [NSNumber numberWithInt:71], @"eastBoundArrival",
+                           [NSNumber numberWithInt:15], @"eastBoundDoors", nil
                            ],
                           
                           nil];
         self.title = @"Trip";
+        
+        int i;
+        for (i = 0; i < self.durations.count; i++) {
+            NSString *name = self.durations[i][@"name"];
+            
+            if(name == anOrigin)
+                self.origin = i;
+            if(name == aDestination)
+                self.destination = i;
+        }
     }
     return self;
 }

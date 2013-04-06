@@ -23,12 +23,21 @@
     
     UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:originTableViewController];
     alarmNavController.title = @"Alarm";
+    //[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"manhattan.jpg"] forBarMetrics:UIBarMetricsDefault];
+    alarmNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    alarmNavController.navigationBar.tintColor = [UIColor colorWithWhite:0.95 alpha:0.8];
+    alarmNavController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                            [UIColor blackColor], UITextAttributeTextColor,
+                                                            [UIColor whiteColor], UITextAttributeTextShadowColor,
+                                                            nil];
+    
     
     /*UITabBarController *tabBarController = [[UITabBarController alloc] init];
     [tabBarController setViewControllers:@[alarmNavController]];
     
     self.window.rootViewController = tabBarController;*/
     self.window.rootViewController = alarmNavController;
+    
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -159,3 +168,5 @@
 }
 
 @end
+
+

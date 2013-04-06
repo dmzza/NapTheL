@@ -16,17 +16,35 @@
 @implementation DestinationTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
+      originSection:(NSInteger *)anOriginSection
+          originRow:(NSInteger *)anOriginRow
 {
-    self = [[DestinationTableViewController alloc] initWithStyle:style origin:0];
-    return self;
-}
-
-- (id)initWithStyle:(UITableViewStyle)style
-             origin:(NSInteger *)anOrigin {
     self = [super initWithStyle:style];
     if (self) {
-        self.stops = @[@"8", @"6", @"Union", @"3", @"1", @"Bedford", @"Lorimer", @"Graham", @"Grand", @"Montrose", @"Morgan", @"Jefferson"];
-        self.origin = anOrigin;
+        self.neighborhoods = [NSArray arrayWithObjects:
+                              [[NSDictionary alloc] initWithObjectsAndKeys:
+                               @"Manhattan", @"name",
+                               [UIImage imageNamed:@"manhattan.jpg"], @"image",
+                               @[@"8 Av", @"6 Av", @"Union St - 14 St", @"3 Av", @"1 Av"], @"stops",
+                               nil],
+                              [[NSDictionary alloc] initWithObjectsAndKeys:
+                               @"Williamsburg", @"name",
+                               [UIImage imageNamed:@"williamsburg"], @"image",
+                               @[@"Bedford Av", @"Lorimer St"], @"stops",
+                               nil],
+                              [[NSDictionary alloc] initWithObjectsAndKeys:
+                               @"East Williamsburg", @"name",
+                               [UIImage imageNamed:@"williamsburg"], @"image",
+                               @[@"Graham Av", @"Grand St", @"Montrose Av", @"Morgan Av"], @"stops",
+                               nil],
+                              [[NSDictionary alloc] initWithObjectsAndKeys:
+                               @"Bushwick", @"name",
+                               [UIImage imageNamed:@"williamsburg"], @"image",
+                               @[@"Jefferson St", @"DeKalb Av", @"Myrtle-Wyckoff Avs"], @"stops",
+                               nil],
+                              nil];
+        self.originSection = anOriginSection;
+        self.originRow = anOriginRow;
         self.title = @"To";
     }
     return self;
@@ -53,32 +71,59 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return self.neighborhoods.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.stops.count;
+    NSArray *stops = self.neighborhoods[section][@"stops"];
+    return stops.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50.0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 80.0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    //UILabel *neighborhood = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320.0, 80.0)];
+    UITableViewCell *neighborhood = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, 320.0, 80.0)];
+    
+    neighborhood.textLabel.text = self.neighborhoods[section][@"name"];
+    neighborhood.textLabel.textColor = [UIColor whiteColor];
+    neighborhood.textLabel.textAlignment = NSTextAlignmentLeft;
+    neighborhood.textLabel.shadowColor = [UIColor blackColor];
+    neighborhood.textLabel.shadowOffset = CGSizeMake(1.0, 1.5);
+    neighborhood.textLabel.font = [UIFont boldSystemFontOfSize:24.0];
+    neighborhood.backgroundColor = [UIColor colorWithPatternImage:self.neighborhoods[section][@"image"]];
+    return neighborhood;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    NSString *thisStop = self.stops[indexPath.row];
+    NSArray *stops = self.neighborhoods[indexPath.section][@"stops"];
     
     if(cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = thisStop;
-    cell.backgroundView = [[UIView alloc] init];
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    if(indexPath.row == self.origin) {
+    cell.textLabel.text = stops[indexPath.row];
+    cell.textLabel.font = [UIFont fontWithName:@"Avenir-Book" size:14.0];
+    if(indexPath.section == self.originSection && indexPath.row == self.originRow) {
         cell.backgroundView.backgroundColor = [UIColor yellowColor];
     } else {
         cell.backgroundView.backgroundColor = [UIColor whiteColor];
     }
+    
+    
     
     return cell;
 }
@@ -133,8 +178,12 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    int originRow = self.originRow;
+    int originSection = self.originSection;
+    NSString *origin = self.neighborhoods[originSection][@"stops"][originRow];
     
-    TripViewController *tripViewController = [[TripViewController alloc] initWithOrigin:self.origin destination:indexPath.row];
+    //TripViewController *tripViewController = [[TripViewController alloc] initWithOrigin:self.neighborhoods[self.originSection][@"stops"][self.originRow] destination:neighborhoods[indexPath.section][@"stops"][indexPath.row]];
+    TripViewController *tripViewController = [[TripViewController alloc] initWithOrigin:origin destination:self.neighborhoods[indexPath.section][@"stops"][indexPath.row]];
     
     [self.navigationController pushViewController:tripViewController animated:YES];
 }
