@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StopTableViewController.h"
 
-@interface OriginTableViewController : UITableViewController
-
-@property (strong, nonatomic) NSArray *neighborhoods;
+@interface OriginTableViewController : StopTableViewController
 
 @end

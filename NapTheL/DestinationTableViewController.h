@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StopTableViewController.h"
 
-@interface DestinationTableViewController : UITableViewController
+@interface DestinationTableViewController : StopTableViewController
 
-@property (strong, nonatomic) NSArray *neighborhoods;
 @property NSInteger *originSection;
 @property NSInteger *originRow;
 -(id)initWithStyle:(UITableViewStyle)style originSection:(NSInteger *)anOriginSection originRow:(NSInteger *)anOriginRow;

@@ -47,6 +47,7 @@
 		63F524DB1711200C00215CBE /* bushwick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524D91711200C00215CBE /* bushwick@2x.png */; };
 		63F524DE1711218700215CBE /* williamsburg.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524DC1711218700215CBE /* williamsburg.png */; };
 		63F524DF1711218700215CBE /* williamsburg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524DD1711218700215CBE /* williamsburg@2x.png */; };
+		63F524E21711F79E00215CBE /* StopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F524E11711F79E00215CBE /* StopTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,8 @@
 		63F524D91711200C00215CBE /* bushwick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bushwick@2x.png"; sourceTree = "<group>"; };
 		63F524DC1711218700215CBE /* williamsburg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = williamsburg.png; sourceTree = "<group>"; };
 		63F524DD1711218700215CBE /* williamsburg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "williamsburg@2x.png"; sourceTree = "<group>"; };
+		63F524E01711F79D00215CBE /* StopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTableViewController.h; sourceTree = "<group>"; };
+		63F524E11711F79E00215CBE /* StopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +181,8 @@
 				6336F1FA170B5FBE00E67CA9 /* AppDelegate.h */,
 				6336F1FB170B5FBE00E67CA9 /* AppDelegate.m */,
 				6336F224170B601A00E67CA9 /* OriginTableViewController.h */,
+				63F524E01711F79D00215CBE /* StopTableViewController.h */,
+				63F524E11711F79E00215CBE /* StopTableViewController.m */,
 				6336F225170B601A00E67CA9 /* OriginTableViewController.m */,
 				6336F227170B638C00E67CA9 /* DestinationTableViewController.h */,
 				6336F228170B638C00E67CA9 /* DestinationTableViewController.m */,
@@ -387,6 +392,7 @@
 				6336F226170B601A00E67CA9 /* OriginTableViewController.m in Sources */,
 				6336F229170B638C00E67CA9 /* DestinationTableViewController.m in Sources */,
 				6336F22C170B6F5200E67CA9 /* TripViewController.m in Sources */,
+				63F524E21711F79E00215CBE /* StopTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
