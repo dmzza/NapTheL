@@ -15,7 +15,7 @@
 			<key>CFBundleIconFiles</key>
 			<array>
 				<string>napTheL.png</string>
-				<string>drifter.png</string>
+				<string>drift.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>

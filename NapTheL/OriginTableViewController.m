@@ -22,7 +22,7 @@
         self.neighborhoods = [NSArray arrayWithObjects:
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"Manhattan", @"name",
-                               [UIImage imageNamed:@"manhattan.jpg"], @"image",
+                               [UIImage imageNamed:@"manhattan"], @"image",
                                @[@"8 Av", @"6 Av", @"Union St - 14 St", @"3 Av", @"1 Av"], @"stops",
                                nil],
                               [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -32,12 +32,12 @@
                                nil],
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"East Williamsburg", @"name",
-                               [UIImage imageNamed:@"williamsburg"], @"image",
+                               [UIImage imageNamed:@"eastwilliamsburg"], @"image",
                                @[@"Graham Av", @"Grand St", @"Montrose Av", @"Morgan Av"], @"stops",
                                nil],
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"Bushwick", @"name",
-                               [UIImage imageNamed:@"williamsburg"], @"image",
+                               [UIImage imageNamed:@"bushwick"], @"image",
                                @[@"Jefferson St", @"DeKalb Av", @"Myrtle-Wyckoff Avs"], @"stops",
                                nil],
                               nil];
@@ -105,11 +105,13 @@
     
     neighborhood.textLabel.text = self.neighborhoods[section][@"name"];
     neighborhood.textLabel.textColor = [UIColor whiteColor];
+    neighborhood.textLabel.backgroundColor = [UIColor clearColor];
     neighborhood.textLabel.textAlignment = NSTextAlignmentLeft;
     neighborhood.textLabel.shadowColor = [UIColor blackColor];
     neighborhood.textLabel.shadowOffset = CGSizeMake(1.0, 1.5);
     neighborhood.textLabel.font = [UIFont boldSystemFontOfSize:24.0];
-    neighborhood.backgroundColor = [UIColor colorWithPatternImage:self.neighborhoods[section][@"image"]];
+    neighborhood.backgroundView = [[UIImageView alloc] initWithImage:self.neighborhoods[section][@"image"]];
+    //neighborhood.backgroundColor = [UIColor colorWithPatternImage:self.neighborhoods[section][@"image"]];
     return neighborhood;
 }
 

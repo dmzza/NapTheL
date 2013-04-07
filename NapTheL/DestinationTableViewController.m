@@ -24,7 +24,7 @@
         self.neighborhoods = [NSArray arrayWithObjects:
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"Manhattan", @"name",
-                               [UIImage imageNamed:@"manhattan.jpg"], @"image",
+                               [UIImage imageNamed:@"manhattan"], @"image",
                                @[@"8 Av", @"6 Av", @"Union St - 14 St", @"3 Av", @"1 Av"], @"stops",
                                nil],
                               [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -34,12 +34,12 @@
                                nil],
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"East Williamsburg", @"name",
-                               [UIImage imageNamed:@"williamsburg"], @"image",
+                               [UIImage imageNamed:@"eastwilliamsburg"], @"image",
                                @[@"Graham Av", @"Grand St", @"Montrose Av", @"Morgan Av"], @"stops",
                                nil],
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"Bushwick", @"name",
-                               [UIImage imageNamed:@"williamsburg"], @"image",
+                               [UIImage imageNamed:@"bushwick"], @"image",
                                @[@"Jefferson St", @"DeKalb Av", @"Myrtle-Wyckoff Avs"], @"stops",
                                nil],
                               nil];
