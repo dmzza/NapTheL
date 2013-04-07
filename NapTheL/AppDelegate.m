@@ -23,12 +23,12 @@
     
     UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:originTableViewController];
     alarmNavController.title = @"Alarm";
-    //[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"manhattan.jpg"] forBarMetrics:UIBarMetricsDefault];
     alarmNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    alarmNavController.navigationBar.tintColor = [UIColor colorWithWhite:0.95 alpha:0.8];
+    alarmNavController.navigationBar.tintColor = [UIColor colorWithRed:0.55 green:0.57 blue:0.6 alpha:1.0];
     alarmNavController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                                             [UIColor blackColor], UITextAttributeTextColor,
                                                             [UIColor whiteColor], UITextAttributeTextShadowColor,
+                                                            [NSValue valueWithCGSize:CGSizeMake(0.0, 0.0)], UITextAttributeTextShadowOffset,
                                                             nil];
     
     

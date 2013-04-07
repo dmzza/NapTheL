@@ -49,6 +49,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.tableView setSeparatorColor:[UIColor colorWithHue:0.6472 saturation:0.35 brightness:0.30 alpha:1.0]];
+    self.tableView.backgroundColor = [UIColor colorWithHue:0.6472 saturation:0.36 brightness:0.18 alpha:1.0];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -127,7 +130,10 @@
     
     cell.textLabel.text = stops[indexPath.row];
     cell.textLabel.font = [UIFont fontWithName:@"Avenir-Book" size:14.0];
-    cell.backgroundColor = [UIColor blackColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.contentView.backgroundColor = [UIColor colorWithHue:0.6472 saturation:0.36 brightness:0.18 alpha:1.0];
+    
     
     
     return cell;
