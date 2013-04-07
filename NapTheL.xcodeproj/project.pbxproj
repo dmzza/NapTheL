@@ -36,6 +36,9 @@
 		6336F234170BB49F00E67CA9 /* napTheL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F232170BB49F00E67CA9 /* napTheL@2x.png */; };
 		6336F236170BB4E900E67CA9 /* napTheL.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F235170BB4E900E67CA9 /* napTheL.png */; };
 		6336F238170BB4F000E67CA9 /* napTheL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F237170BB4F000E67CA9 /* napTheL@2x.png */; };
+		63F524C41710DA2E00215CBE /* drifter.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524C21710DA2E00215CBE /* drifter.png */; };
+		63F524C51710DA2E00215CBE /* drifter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524C31710DA2E00215CBE /* drifter@2x.png */; };
+		63F524C71710DA5D00215CBE /* drifter.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524C61710DA5D00215CBE /* drifter.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +56,7 @@
 		6313C75F170F5BD80069F480 /* manhattan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = manhattan.jpg; path = ../../../Downloads/manhattan.jpg; sourceTree = "<group>"; };
 		6313C762170F7E870069F480 /* williamsburg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = williamsburg.png; path = ../../../Downloads/williamsburg.png; sourceTree = "<group>"; };
 		6313C763170F7E870069F480 /* williamsburg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "williamsburg@2x.png"; path = "../../../Downloads/williamsburg@2x.png"; sourceTree = "<group>"; };
-		6336F1E6170B5FBE00E67CA9 /* Nap The L.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nap The L.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6336F1E6170B5FBE00E67CA9 /* Drifter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drifter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6336F1E9170B5FBE00E67CA9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6336F1EB170B5FBE00E67CA9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6336F1ED170B5FBE00E67CA9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -85,6 +88,9 @@
 		6336F232170BB49F00E67CA9 /* napTheL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "napTheL@2x.png"; sourceTree = "<group>"; };
 		6336F235170BB4E900E67CA9 /* napTheL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = napTheL.png; sourceTree = "<group>"; };
 		6336F237170BB4F000E67CA9 /* napTheL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "napTheL@2x.png"; sourceTree = "<group>"; };
+		63F524C21710DA2E00215CBE /* drifter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = drifter.png; path = ../../../Documents/drifter.png; sourceTree = "<group>"; };
+		63F524C31710DA2E00215CBE /* drifter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "drifter@2x.png"; path = "../../../Documents/drifter@2x.png"; sourceTree = "<group>"; };
+		63F524C61710DA5D00215CBE /* drifter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drifter.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,7 @@
 		6336F1DD170B5FBE00E67CA9 = {
 			isa = PBXGroup;
 			children = (
+				63F524C61710DA5D00215CBE /* drifter.png */,
 				6336F237170BB4F000E67CA9 /* napTheL@2x.png */,
 				6336F235170BB4E900E67CA9 /* napTheL.png */,
 				6336F1F1170B5FBE00E67CA9 /* NapTheL */,
@@ -128,7 +135,7 @@
 		6336F1E7170B5FBE00E67CA9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6336F1E6170B5FBE00E67CA9 /* Nap The L.app */,
+				6336F1E6170B5FBE00E67CA9 /* Drifter.app */,
 				6336F20B170B5FBF00E67CA9 /* NapTheLTests.octest */,
 			);
 			name = Products;
@@ -209,6 +216,8 @@
 		6336F230170BB49200E67CA9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				63F524C21710DA2E00215CBE /* drifter.png */,
+				63F524C31710DA2E00215CBE /* drifter@2x.png */,
 				6313C762170F7E870069F480 /* williamsburg.png */,
 				6313C763170F7E870069F480 /* williamsburg@2x.png */,
 				6313C75E170F5BD80069F480 /* williamsburg.jpg */,
@@ -236,7 +245,7 @@
 			);
 			name = NapTheL;
 			productName = NapTheL;
-			productReference = 6336F1E6170B5FBE00E67CA9 /* Nap The L.app */;
+			productReference = 6336F1E6170B5FBE00E67CA9 /* Drifter.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6336F20A170B5FBF00E67CA9 /* NapTheLTests */ = {
@@ -303,6 +312,9 @@
 				6313C761170F5BD80069F480 /* manhattan.jpg in Resources */,
 				6313C764170F7E870069F480 /* williamsburg.png in Resources */,
 				6313C765170F7E870069F480 /* williamsburg@2x.png in Resources */,
+				63F524C41710DA2E00215CBE /* drifter.png in Resources */,
+				63F524C51710DA2E00215CBE /* drifter@2x.png in Resources */,
+				63F524C71710DA5D00215CBE /* drifter.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +458,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
-				PRODUCT_NAME = "Nap The L";
+				PRODUCT_NAME = Drifter;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -457,7 +469,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
-				PRODUCT_NAME = "Nap The L";
+				PRODUCT_NAME = Drifter;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
