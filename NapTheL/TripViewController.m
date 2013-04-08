@@ -148,10 +148,15 @@
 {
     [super viewDidLoad];
 	
-    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 280, 40)];
-    UILabel *secondsLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 50, 280, 40)];
+    UILabel *originLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 280, 40)];
+    UILabel *destinationLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 80, 280, 40)];
+    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 200, 280, 40)];
+    UILabel *secondsLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 300, 280, 40)];
+//    UIButton *startButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 380, 280, 40)];
+    
     int timeRemaining = 0, dest = self.destination, orig = self.origin;
     int i;
+    NSString *originName = self.durations[orig][@"name"], *destinationName = self.durations[dest][@"name"];
     
     if (self.origin < self.destination) { // eastbound
         for (i = orig + 1; i <= dest - 1; i++) {
@@ -179,9 +184,13 @@
     
     NSString *formattedDateString = [dateFormatter stringFromDate:arrivalTime];
     
+    originLabel.text = originName;
+    destinationLabel.text = destinationName;
     timeLabel.text = formattedDateString;
     secondsLabel.text = [NSString stringWithFormat:@"Seconds: %d", timeRemaining];
     
+    [self.view addSubview:originLabel];
+    [self.view addSubview:destinationLabel];
     [self.view addSubview:timeLabel];
     [self.view addSubview:secondsLabel];
     

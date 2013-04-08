@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "NapTheL/TripViewController.m"
-         timestampString = "386908613.126376"
+         timestampString = "387130792.554868"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "157"
-         endingLineNumber = "157"
+         startingLineNumber = "162"
+         endingLineNumber = "162"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "NapTheL/TripViewController.m"
-         timestampString = "386908613.126376"
+         timestampString = "387130792.554868"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "158"
-         endingLineNumber = "158"
+         startingLineNumber = "163"
+         endingLineNumber = "163"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
