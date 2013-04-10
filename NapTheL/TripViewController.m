@@ -193,7 +193,7 @@
     self.timeLabel.text = [NSString stringWithFormat:@"%d", (int)(self.timeRemaining / 60)];
     originLabel.backgroundColor = destinationLabel.backgroundColor = [UIColor clearColor];
     summaryBar.backgroundColor = [UIColor colorWithRed:0.055 green:0.788 blue:0.573 alpha:1.0];
-    originLabel.font = destinationLabel.font = self.startButton.font = [UIFont fontWithName:@"Avenir" size:12];
+    originLabel.font = destinationLabel.font = self.startButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:12];
     self.timeLabel.font = [UIFont fontWithName:@"Avenir-Black" size:320];
     self.timeLabel.textColor = [UIColor colorWithWhite:0.9 alpha:1.0]; //[UIColor colorWithRed:0.553 green:0.945 blue:0.831 alpha:1.0];
     self.timeLabel.textAlignment = NSTextAlignmentCenter;

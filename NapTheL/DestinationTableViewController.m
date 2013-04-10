@@ -16,8 +16,8 @@
 @implementation DestinationTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
-      originSection:(NSInteger *)anOriginSection
-          originRow:(NSInteger *)anOriginRow
+      originSection:(int)anOriginSection
+          originRow:(int)anOriginRow
 {
     self = [super initWithStyle:style];
     if (self) {

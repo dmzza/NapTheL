@@ -10,8 +10,8 @@
 
 @interface TripViewController : UIViewController
 
-@property NSInteger *origin;
-@property NSInteger *destination;
+@property int origin;
+@property int destination;
 @property (strong, nonatomic) NSArray *durations;
 @property (strong, nonatomic) NSDate *arrivalTime;
 @property (strong, nonatomic) UILabel *timeLabel;
