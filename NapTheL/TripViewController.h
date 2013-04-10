@@ -13,6 +13,12 @@
 @property NSInteger *origin;
 @property NSInteger *destination;
 @property (strong, nonatomic) NSArray *durations;
+@property (strong, nonatomic) NSDate *arrivalTime;
+@property (strong, nonatomic) UILabel *timeLabel;
+@property (strong, nonatomic) UIButton *startButton;
+@property (strong, nonatomic) NSTimer *timer;
+
+@property int timeRemaining;
 
 -(id)initWithOrigin:(NSString *)anOrigin destination:(NSString *)aDestination;
 
