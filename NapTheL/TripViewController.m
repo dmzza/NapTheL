@@ -244,17 +244,12 @@
     arrivalAlarm.soundName = @"subwayAlarm.m4a";
     
     // START
-    //self.startButton.userInteractionEnabled = NO;
     [self.startButton removeTarget:self action:@selector(startClock) forControlEvents:UIControlEventTouchDown];
     [self.startButton addTarget:self action:@selector(spin) forControlEvents:UIControlEventTouchDown];
-    self.startButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Black" size:130.0];
     self.startButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     // SUBTEXT
-    self.subtextLabel.text = @"minutes";
-    
-    [self updateClock];
-    [self.subtextLabel setFrame:CGRectMake(0, 170, 218, 40)];
+    [self spinWithTitle:[NSString stringWithFormat:@"%d", (int)(self.arrivalTime.timeIntervalSinceNow / 60.0)] subtext:@"minutes"];
     
     [[UIApplication sharedApplication] scheduleLocalNotification:arrivalAlarm];
 }
@@ -264,21 +259,34 @@
     if(minutes >= 2) {
         [self.startButton setTitle: [NSString stringWithFormat:@"%d", minutes] forState:UIControlStateNormal];
     } else if (minutes >= 0) {
-        [self.startButton setTitle:@"!" forState:UIControlStateNormal];
-        self.subtextLabel.text = @"arriving soon";
+        [self spinWithTitle:@"!" subtext:@"arriving soon"];
         [self.timer invalidate];
     }
+    
 }
 
 - (void) spin {
-    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
-    rotationAnimation.duration = 2.0;
-    rotationAnimation.cumulative = YES;
-    rotationAnimation.repeatCount = 1.0;
-    rotationAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    
-    [self.startButton.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    [UIView animateWithDuration:0.25 animations:^{
+        self.clockView.layer.transform = CATransform3DMakeRotation(M_PI_2, 0, 1, 0);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.clockView.layer.transform = CATransform3DMakeRotation(0, 0, 1, 0);
+        }];
+    }];
+}
+
+- (void) spinWithTitle:(NSString *)aTitle subtext:(NSString *)aSubtext {
+    [UIView animateWithDuration:0.25 animations:^{
+        self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(M_PI_2, 0, 1, 0), 1.25, 1.25, 1.25);
+    } completion:^(BOOL finished) {
+        [self.startButton setTitle:aTitle forState:UIControlStateNormal];
+        self.subtextLabel.text = aSubtext;
+        self.startButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Black" size:130.0];
+        [self.subtextLabel setFrame:CGRectMake(0, 170, 218, 40)];
+        [UIView animateWithDuration:0.25 animations:^{
+            self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(0, 0, 1, 0), 1.0, 1.0, 1.0);
+        }];
+    }];
 }
 
 - (void) cancel {
