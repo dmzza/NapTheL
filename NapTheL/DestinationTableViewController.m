@@ -48,6 +48,8 @@
     if(indexPath.section == self.originSection && indexPath.row == self.originRow) {
         cell.contentView.backgroundColor = self.tableView.separatorColor;
         cell.userInteractionEnabled = NO;
+    } else {
+        cell.userInteractionEnabled = YES;
     }
     
     return cell;
