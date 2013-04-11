@@ -11,6 +11,7 @@
 		6303E2411715375600028F17 /* drifter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6303E2401715375600028F17 /* drifter@2x.png */; };
 		6303E2441716066800028F17 /* startClock.png in Resources */ = {isa = PBXBuildFile; fileRef = 6303E2421716066800028F17 /* startClock.png */; };
 		6303E2451716066800028F17 /* startClock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6303E2431716066800028F17 /* startClock@2x.png */; };
+		6303E24717167E9500028F17 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6303E24617167E9500028F17 /* QuartzCore.framework */; };
 		6313C760170F5BD80069F480 /* williamsburg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6313C75E170F5BD80069F480 /* williamsburg.jpg */; };
 		6313C761170F5BD80069F480 /* manhattan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6313C75F170F5BD80069F480 /* manhattan.jpg */; };
 		6336F1EA170B5FBE00E67CA9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6336F1E9170B5FBE00E67CA9 /* UIKit.framework */; };
@@ -68,6 +69,7 @@
 		6303E2401715375600028F17 /* drifter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drifter@2x.png"; sourceTree = "<group>"; };
 		6303E2421716066800028F17 /* startClock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startClock.png; sourceTree = "<group>"; };
 		6303E2431716066800028F17 /* startClock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startClock@2x.png"; sourceTree = "<group>"; };
+		6303E24617167E9500028F17 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6313C75E170F5BD80069F480 /* williamsburg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = williamsburg.jpg; path = ../../../Downloads/williamsburg.jpg; sourceTree = "<group>"; };
 		6313C75F170F5BD80069F480 /* manhattan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = manhattan.jpg; path = ../../../Downloads/manhattan.jpg; sourceTree = "<group>"; };
 		6336F1E6170B5FBE00E67CA9 /* Drifter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drifter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6303E24717167E9500028F17 /* QuartzCore.framework in Frameworks */,
 				6336F1EA170B5FBE00E67CA9 /* UIKit.framework in Frameworks */,
 				6336F1EC170B5FBE00E67CA9 /* Foundation.framework in Frameworks */,
 				6336F1EE170B5FBE00E67CA9 /* CoreGraphics.framework in Frameworks */,
@@ -147,6 +150,7 @@
 		6336F1DD170B5FBE00E67CA9 = {
 			isa = PBXGroup;
 			children = (
+				6303E24617167E9500028F17 /* QuartzCore.framework */,
 				6303E2401715375600028F17 /* drifter@2x.png */,
 				63F524CA171100F600215CBE /* drift.png */,
 				63F524C61710DA5D00215CBE /* drifter.png */,

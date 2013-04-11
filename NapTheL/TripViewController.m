@@ -241,7 +241,9 @@
     arrivalAlarm.soundName = @"subwayAlarm.m4a";
     
     // START
-    self.startButton.userInteractionEnabled = NO;
+    //self.startButton.userInteractionEnabled = NO;
+    [self.startButton removeTarget:self action:@selector(startClock) forControlEvents:UIControlEventTouchDown];
+    [self.startButton addTarget:self action:@selector(spin) forControlEvents:UIControlEventTouchDown];
     self.startButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Black" size:130.0];
     self.startButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
@@ -260,9 +262,20 @@
         [self.startButton setTitle: [NSString stringWithFormat:@"%d", minutes] forState:UIControlStateNormal];
     } else if (minutes >= 0) {
         [self.startButton setTitle:@"!" forState:UIControlStateNormal];
-        [self.subtextLabel removeFromSuperview];
+        self.subtextLabel.text = @"arriving soon";
         [self.timer invalidate];
     }
+}
+
+- (void) spin {
+    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
+    rotationAnimation.duration = 2.0;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = 1.0;
+    rotationAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    
+    [self.startButton.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
 }
 
 - (void) cancel {
