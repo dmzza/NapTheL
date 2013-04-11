@@ -22,7 +22,7 @@
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"Manhattan", @"name",
                                [UIImage imageNamed:@"manhattan"], @"image",
-                               @[@"8 Av", @"6 Av", @"Union St - 14 St", @"3 Av", @"1 Av"], @"stops",
+                               @[@"8 Av", @"6 Av", @"Union Sq - 14 St", @"3 Av", @"1 Av"], @"stops",
                                nil],
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"Williamsburg", @"name",

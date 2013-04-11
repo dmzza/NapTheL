@@ -44,7 +44,7 @@
                            [NSNumber numberWithInt:15], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"Union St - 14 St", @"name",
+                           @"Union Sq - 14 St", @"name",
                            [NSNumber numberWithInt:53], @"westBoundArrival",
                            [NSNumber numberWithInt:16], @"westBoundDoors",
                            [NSNumber numberWithInt:60], @"eastBoundArrival",
@@ -152,7 +152,13 @@
     UILabel *originLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 140, 40)];
     UILabel *destinationLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 20, 140, 40)];
     self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 80, 320, 300)];
-    self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 380, 300, 30)];
+    //self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 380, 300, 30)];
+    self.startButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 380, 320, 40)];
+    
+    
+    
+    
     
     self.timeRemaining = 0;
     int dest = self.destination, orig = self.origin;
@@ -189,24 +195,34 @@
     
     originLabel.text = originName;
     destinationLabel.text = destinationName;
+    originLabel.textColor = destinationLabel.textColor = [UIColor whiteColor];
     destinationLabel.textAlignment = NSTextAlignmentRight;
     self.timeLabel.text = [NSString stringWithFormat:@"%d", (int)(self.timeRemaining / 60)];
     originLabel.backgroundColor = destinationLabel.backgroundColor = [UIColor clearColor];
     summaryBar.backgroundColor = [UIColor colorWithRed:0.055 green:0.788 blue:0.573 alpha:1.0];
-    originLabel.font = destinationLabel.font = self.startButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:12];
+    originLabel.font = destinationLabel.font = [UIFont fontWithName:@"Avenir" size:12];
+    self.startButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:18];
     self.timeLabel.font = [UIFont fontWithName:@"Avenir-Black" size:320];
     self.timeLabel.textColor = [UIColor colorWithWhite:0.9 alpha:1.0]; //[UIColor colorWithRed:0.553 green:0.945 blue:0.831 alpha:1.0];
     self.timeLabel.textAlignment = NSTextAlignmentCenter;
     self.timeLabel.adjustsFontSizeToFitWidth = YES;
-    self.startButton.backgroundColor = [UIColor blackColor];
     
-    [self.startButton setTitle:@"Start the clock on 'Stand Clear...'" forState:UIControlStateNormal];
+    [self.startButton setFrame:CGRectMake(51, 115, 218, 218)];
+    self.startButton.backgroundColor = [UIColor clearColor];
+    [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateNormal];
+    [self.startButton setTitle:@"Start the clock" forState:UIControlStateNormal];
     [self.startButton addTarget:self action:@selector(startClock) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    
+    self.subtextLabel.text = @"when the doors close";
+    self.subtextLabel.textAlignment = NSTextAlignmentCenter;
+    self.subtextLabel.backgroundColor = [UIColor blackColor];
+    self.subtextLabel.textColor = [UIColor whiteColor];
+    self.subtextLabel.font = [UIFont fontWithName:@"Avenir" size:12];
     
     [summaryBar addSubview:originLabel];
     [summaryBar addSubview:destinationLabel];
     [self.view addSubview:summaryBar];
-    [self.view addSubview:self.timeLabel];
+    [self.view addSubview:self.subtextLabel];
     
     [self.view addSubview:self.startButton];
     
@@ -214,13 +230,7 @@
 }
 
 - (void) startClock {
-    UILabel *minutesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 380, 320, 40)];
-    
-    minutesLabel.text = @"minutes";
-    minutesLabel.textAlignment = NSTextAlignmentCenter;
-    minutesLabel.backgroundColor = [UIColor blackColor];
-    minutesLabel.textColor = [UIColor whiteColor];
-    minutesLabel.font = [UIFont fontWithName:@"Avenir" size:12];
+    self.subtextLabel.text = @"minutes";
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1
                                                       target:self
@@ -241,7 +251,7 @@
     self.timeLabel.textColor = [UIColor blackColor];
     
     [self.startButton removeFromSuperview];
-    [self.view addSubview:minutesLabel];
+    [self.view addSubview:self.timeLabel];
 }
 
 - (void) updateClock {
