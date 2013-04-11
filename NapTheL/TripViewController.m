@@ -151,15 +151,12 @@
     UIView *summaryBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
     UILabel *originLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 140, 40)];
     UILabel *destinationLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 20, 140, 40)];
-    self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 80, 320, 300)];
-    //self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 380, 300, 30)];
     self.startButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 380, 320, 40)];
+    self.cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 380, 320, 40)];
+    self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 220, 320, 40)];
     
     
-    
-    
-    
+    // CALCULATE TIME REMAINING
     self.timeRemaining = 0;
     int dest = self.destination, orig = self.origin;
     int i;
@@ -187,81 +184,96 @@
     [dateFormatter setDateStyle:NSDateFormatterNoStyle];
     [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     
-    
-    
-    //NSString *formattedDateString = [dateFormatter stringFromDate:self.arrivalTime];
-    
-    
-    
+    // SUMMARY/ORIGIN/DEST
     originLabel.text = originName;
     destinationLabel.text = destinationName;
-    originLabel.textColor = destinationLabel.textColor = [UIColor whiteColor];
     destinationLabel.textAlignment = NSTextAlignmentRight;
-    self.timeLabel.text = [NSString stringWithFormat:@"%d", (int)(self.timeRemaining / 60)];
-    originLabel.backgroundColor = destinationLabel.backgroundColor = [UIColor clearColor];
-    summaryBar.backgroundColor = [UIColor colorWithRed:0.055 green:0.788 blue:0.573 alpha:1.0];
+    originLabel.textColor = destinationLabel.textColor = [UIColor whiteColor];
     originLabel.font = destinationLabel.font = [UIFont fontWithName:@"Avenir" size:12];
-    self.startButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:18];
-    self.timeLabel.font = [UIFont fontWithName:@"Avenir-Black" size:320];
-    self.timeLabel.textColor = [UIColor colorWithWhite:0.9 alpha:1.0]; //[UIColor colorWithRed:0.553 green:0.945 blue:0.831 alpha:1.0];
-    self.timeLabel.textAlignment = NSTextAlignmentCenter;
-    self.timeLabel.adjustsFontSizeToFitWidth = YES;
+    originLabel.backgroundColor = destinationLabel.backgroundColor = [UIColor clearColor];
+    summaryBar.backgroundColor = [UIColor colorWithHue:0.6472 saturation:0.36 brightness:0.18 alpha:1.0];
     
+    // START
+    self.startButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:18];
     [self.startButton setFrame:CGRectMake(51, 115, 218, 218)];
     self.startButton.backgroundColor = [UIColor clearColor];
     [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateNormal];
-    [self.startButton setTitle:@"Start the clock" forState:UIControlStateNormal];
+    [self.startButton setTitle:@"START THE CLOCK" forState:UIControlStateNormal];
     [self.startButton addTarget:self action:@selector(startClock) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     
+    // SUBTEXT
     self.subtextLabel.text = @"when the doors close";
     self.subtextLabel.textAlignment = NSTextAlignmentCenter;
-    self.subtextLabel.backgroundColor = [UIColor blackColor];
+    self.subtextLabel.backgroundColor = [UIColor clearColor];
     self.subtextLabel.textColor = [UIColor whiteColor];
     self.subtextLabel.font = [UIFont fontWithName:@"Avenir" size:12];
     
+    // CANCEL
+    [self.cancelButton setTitle:@"cancel" forState:UIControlStateNormal];
+    self.cancelButton.backgroundColor = [UIColor colorWithRed:1.0 green:0.435 blue:0.404 alpha:1.0];
+    self.cancelButton.titleLabel.textColor = [UIColor whiteColor];
+    self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:12];
+    [self.cancelButton addTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    
+    // SELF
+    self.view.backgroundColor = [UIColor colorWithHue:0.6472 saturation:0.35 brightness:0.30 alpha:1.0];
+    
+    // SUBVIEWS
     [summaryBar addSubview:originLabel];
     [summaryBar addSubview:destinationLabel];
     [self.view addSubview:summaryBar];
-    [self.view addSubview:self.subtextLabel];
-    
     [self.view addSubview:self.startButton];
+    [self.view addSubview:self.cancelButton];
+    [self.view addSubview:self.subtextLabel];
     
     
 }
 
 - (void) startClock {
-    self.subtextLabel.text = @"minutes";
-    
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1
-                                                      target:self
-                                                    selector:@selector(updateClock)
-                                                    userInfo:nil
-                                                     repeats:YES];
-    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
     self.arrivalTime = [NSDate dateWithTimeIntervalSinceNow:self.timeRemaining];
-    
     UILocalNotification *arrivalAlarm = [[UILocalNotification alloc] init];
+    
+    // ARRIVAL ALARM
     arrivalAlarm.fireDate = self.arrivalTime;
-    arrivalAlarm.alertBody = [NSString stringWithFormat:@"Arriving in under 2 mins at %@", self.durations[(int)self.destination][@"name"]];
+    arrivalAlarm.alertBody = [NSString stringWithFormat:@"%@ is coming soon.", self.durations[(int)self.destination][@"name"]];
     arrivalAlarm.alertAction = @"Silence";
     arrivalAlarm.soundName = @"subwayAlarm.m4a";
     
+    // START
+    self.startButton.userInteractionEnabled = NO;
+    self.startButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Black" size:130.0];
+    self.startButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    
+    // SUBTEXT
+    self.subtextLabel.text = @"minutes";
+    [self.subtextLabel setFrame:CGRectMake(0, 280, 320, 40)];
+    
+    [self updateClock];
+    
     [[UIApplication sharedApplication] scheduleLocalNotification:arrivalAlarm];
-    
-    self.timeLabel.textColor = [UIColor blackColor];
-    
-    [self.startButton removeFromSuperview];
-    [self.view addSubview:self.timeLabel];
 }
 
 - (void) updateClock {
     int minutes = (int)(self.arrivalTime.timeIntervalSinceNow / 60.0);
     if(minutes >= 2) {
-        self.timeLabel.text = [NSString stringWithFormat:@"%d", minutes];
-    }  else if (minutes > 0) {
-        self.timeLabel.text = @"<2";
+        [self.startButton setTitle: [NSString stringWithFormat:@"%d", minutes] forState:UIControlStateNormal];
+    } else if (minutes >= 0) {
+        [self.startButton setTitle:@"!" forState:UIControlStateNormal];
+        [self.subtextLabel removeFromSuperview];
         [self.timer invalidate];
     }
+}
+
+- (void) cancel {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.timer invalidate];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
 }
 
 - (void)didReceiveMemoryWarning

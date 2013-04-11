@@ -14,9 +14,9 @@
 @property int destination;
 @property (strong, nonatomic) NSArray *durations;
 @property (strong, nonatomic) NSDate *arrivalTime;
-@property (strong, nonatomic) UILabel *timeLabel;
 @property (strong, nonatomic) UILabel *subtextLabel;
 @property (strong, nonatomic) UIButton *startButton;
+@property (strong, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) NSTimer *timer;
 
 @property int timeRemaining;
