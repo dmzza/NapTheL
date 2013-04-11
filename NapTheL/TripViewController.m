@@ -151,9 +151,10 @@
     UIView *summaryBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
     UILabel *originLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 140, 40)];
     UILabel *destinationLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 20, 140, 40)];
+    self.clockView = [[UIView alloc] initWithFrame:CGRectMake(51, 115, 218, 218)];
     self.startButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 380, 320, 40)];
-    self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 220, 320, 40)];
+    self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 110, 218, 40)];
     
     
     // CALCULATE TIME REMAINING
@@ -195,7 +196,7 @@
     
     // START
     self.startButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:18];
-    [self.startButton setFrame:CGRectMake(51, 115, 218, 218)];
+    [self.startButton setFrame:self.clockView.bounds];
     self.startButton.backgroundColor = [UIColor clearColor];
     [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateNormal];
     [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateHighlighted];
@@ -222,10 +223,11 @@
     // SUBVIEWS
     [summaryBar addSubview:originLabel];
     [summaryBar addSubview:destinationLabel];
+    [self.clockView addSubview:self.startButton];
+    [self.clockView addSubview:self.subtextLabel];
     [self.view addSubview:summaryBar];
-    [self.view addSubview:self.startButton];
+    [self.view addSubview:self.clockView];
     [self.view addSubview:self.cancelButton];
-    [self.view addSubview:self.subtextLabel];
     
     
 }
@@ -250,9 +252,9 @@
     
     // SUBTEXT
     self.subtextLabel.text = @"minutes";
-    [self.subtextLabel setFrame:CGRectMake(0, 280, 320, 40)];
     
     [self updateClock];
+    [self.subtextLabel setFrame:CGRectMake(0, 170, 218, 40)];
     
     [[UIApplication sharedApplication] scheduleLocalNotification:arrivalAlarm];
 }
