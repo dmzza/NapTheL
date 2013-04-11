@@ -198,6 +198,7 @@
     [self.startButton setFrame:CGRectMake(51, 115, 218, 218)];
     self.startButton.backgroundColor = [UIColor clearColor];
     [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateNormal];
+    [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateHighlighted];
     [self.startButton setTitle:@"START THE CLOCK" forState:UIControlStateNormal];
     [self.startButton addTarget:self action:@selector(startClock) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     
