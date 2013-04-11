@@ -266,13 +266,14 @@
 }
 
 - (void) spin {
-    [UIView animateWithDuration:0.25 animations:^{
-        self.clockView.layer.transform = CATransform3DMakeRotation(M_PI_2, 0, 1, 0);
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.25 animations:^{
-            self.clockView.layer.transform = CATransform3DMakeRotation(0, 0, 1, 0);
-        }];
-    }];
+    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
+    rotationAnimation.duration = 0.5;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = 1.0;
+    rotationAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    
+    [self.clockView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
 }
 
 - (void) spinWithTitle:(NSString *)aTitle subtext:(NSString *)aSubtext {
