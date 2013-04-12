@@ -240,7 +240,7 @@
     // ARRIVAL ALARM
     arrivalAlarm.fireDate = self.arrivalTime;
     arrivalAlarm.alertBody = [NSString stringWithFormat:@"%@ is coming soon.", self.durations[(int)self.destination][@"name"]];
-    arrivalAlarm.alertAction = @"Silence";
+    arrivalAlarm.alertAction = @"Tune In";
     arrivalAlarm.soundName = @"subwayAlarm.m4a";
     
     // START

@@ -72,7 +72,7 @@
 		6303E24617167E9500028F17 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6313C75E170F5BD80069F480 /* williamsburg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = williamsburg.jpg; path = ../../../Downloads/williamsburg.jpg; sourceTree = "<group>"; };
 		6313C75F170F5BD80069F480 /* manhattan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = manhattan.jpg; path = ../../../Downloads/manhattan.jpg; sourceTree = "<group>"; };
-		6336F1E6170B5FBE00E67CA9 /* Drifter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drifter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6336F1E6170B5FBE00E67CA9 /* Tune Out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tune Out.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6336F1E9170B5FBE00E67CA9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6336F1EB170B5FBE00E67CA9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6336F1ED170B5FBE00E67CA9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -166,7 +166,7 @@
 		6336F1E7170B5FBE00E67CA9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6336F1E6170B5FBE00E67CA9 /* Drifter.app */,
+				6336F1E6170B5FBE00E67CA9 /* Tune Out.app */,
 				6336F20B170B5FBF00E67CA9 /* NapTheLTests.octest */,
 			);
 			name = Products;
@@ -287,7 +287,7 @@
 			);
 			name = NapTheL;
 			productName = NapTheL;
-			productReference = 6336F1E6170B5FBE00E67CA9 /* Drifter.app */;
+			productReference = 6336F1E6170B5FBE00E67CA9 /* Tune Out.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6336F20A170B5FBF00E67CA9 /* NapTheLTests */ = {
@@ -512,7 +512,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
-				PRODUCT_NAME = Drifter;
+				PRODUCT_NAME = "Tune Out";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -523,7 +523,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
-				PRODUCT_NAME = Drifter;
+				PRODUCT_NAME = "Tune Out";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
