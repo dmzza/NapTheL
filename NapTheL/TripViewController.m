@@ -149,8 +149,9 @@
     [super viewDidLoad];
 	
     UIView *summaryBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-    UILabel *originLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 140, 40)];
+    UILabel *originLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 240, 40)];
     UILabel *destinationLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 20, 140, 40)];
+    UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.clockView = [[UIView alloc] initWithFrame:CGRectMake(51, 115, 218, 218)];
     self.startButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 380, 320, 40)];
@@ -186,12 +187,16 @@
     [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     
     // SUMMARY/ORIGIN/DEST
-    originLabel.text = originName;
-    destinationLabel.text = destinationName;
-    destinationLabel.textAlignment = NSTextAlignmentRight;
+    originLabel.text = [NSString stringWithFormat:@"Tune out from %@ to %@", originName, destinationName];
+    //destinationLabel.text = [NSString stringWithFormat:@"to %@", destinationName];
+    //destinationLabel.textAlignment = NSTextAlignmentRight;
     originLabel.textColor = destinationLabel.textColor = [UIColor whiteColor];
     originLabel.font = destinationLabel.font = [UIFont fontWithName:@"Avenir" size:12];
     originLabel.backgroundColor = destinationLabel.backgroundColor = [UIColor clearColor];
+    resetButton.frame = CGRectMake(260, 0, 60, 60);
+    [resetButton setTitle:@"x" forState:UIControlStateNormal];
+    resetButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:36];
+    resetButton.backgroundColor = [UIColor blackColor];
     summaryBar.backgroundColor = [UIColor colorWithHue:0.6472 saturation:0.36 brightness:0.18 alpha:1.0];
     
     // START
@@ -200,7 +205,8 @@
     self.startButton.backgroundColor = [UIColor clearColor];
     [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateNormal];
     [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateHighlighted];
-    [self.startButton setTitle:@"START THE CLOCK" forState:UIControlStateNormal];
+    //[self.startButton setTitle:@"START THE CLOCK" forState:UIControlStateNormal];
+    [self.startButton setImage:[UIImage imageNamed:@"glyphicons_053_alarm"] forState:UIControlStateNormal];
     [self.startButton addTarget:self action:@selector(startClock) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     
     // SUBTEXT
@@ -223,6 +229,7 @@
     // SUBVIEWS
     [summaryBar addSubview:originLabel];
     [summaryBar addSubview:destinationLabel];
+    [summaryBar addSubview:resetButton];
     [self.clockView addSubview:self.startButton];
     [self.clockView addSubview:self.subtextLabel];
     [self.view addSubview:summaryBar];
