@@ -7,6 +7,10 @@
 //
 
 #import "TripViewController.h"
+#import "StopTableViewController.h"
+#import "OriginTableViewController.h"
+#import "DestinationTableViewController.h"
+
 
 @interface TripViewController ()
 
@@ -23,8 +27,7 @@
     return self;
 }
 
-- (id)initWithOrigin:(NSString *)anOrigin
-         destination:(NSString *)aDestination
+- (id)init
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
@@ -131,15 +134,7 @@
                           nil];
         self.title = @"Trip";
         
-        int i;
-        for (i = 0; i < self.durations.count; i++) {
-            NSString *name = self.durations[i][@"name"];
-            
-            if(name == anOrigin)
-                self.origin = i;
-            if(name == aDestination)
-                self.destination = i;
-        }
+        
     }
     return self;
 }
@@ -148,56 +143,34 @@
 {
     [super viewDidLoad];
 	
-    UIView *summaryBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-    UILabel *originLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 240, 40)];
-    UILabel *destinationLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 20, 140, 40)];
+    UIButton *summaryBar = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
+    self.originButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, 240, 40)];
+    self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(160, 20, 140, 40)];
     UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.clockView = [[UIView alloc] initWithFrame:CGRectMake(51, 115, 218, 218)];
     self.startButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 380, 320, 40)];
-    self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 110, 218, 40)];
-    
-    
-    // CALCULATE TIME REMAINING
-    self.timeRemaining = 0;
-    int dest = self.destination, orig = self.origin;
-    int i;
-    NSString *originName = self.durations[orig][@"name"], *destinationName = self.durations[dest][@"name"];
-    
-    if (self.origin < self.destination) { // eastbound
-        for (i = orig + 1; i <= dest - 1; i++) {
-            NSNumber *arrival = self.durations[i][@"eastBoundArrival"];
-            NSNumber *doors = self.durations[i][@"eastBoundDoors"];
-            self.timeRemaining += arrival.intValue + doors.intValue;
-        }
-        NSNumber *arrival = self.durations[dest][@"eastBoundArrival"];
-        self.timeRemaining += arrival.intValue;
-    } else { // westbound
-        for (i = orig - 1; i >= dest + 1; i--) {
-            NSNumber *arrival = self.durations[i][@"westBoundArrival"];
-            NSNumber *doors = self.durations[i][@"westBoundDoors"];
-            self.timeRemaining += arrival.intValue + doors.intValue;
-        }
-        NSNumber *arrival = self.durations[dest][@"westBoundArrival"];
-        self.timeRemaining += arrival.intValue;
-    }
+    self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 220, 218, 40)];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterNoStyle];
     [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     
     // SUMMARY/ORIGIN/DEST
-    originLabel.text = [NSString stringWithFormat:@"Tune out from %@ to %@", originName, destinationName];
-    //destinationLabel.text = [NSString stringWithFormat:@"to %@", destinationName];
+    [self.originButton setTitle:[NSString stringWithFormat:@"FROM"] forState:UIControlStateNormal];
+    [self.destinationButton setTitle:[NSString stringWithFormat:@"TO"] forState:UIControlStateNormal];
     //destinationLabel.textAlignment = NSTextAlignmentRight;
-    originLabel.textColor = destinationLabel.textColor = [UIColor whiteColor];
-    originLabel.font = destinationLabel.font = [UIFont fontWithName:@"Avenir" size:12];
-    originLabel.backgroundColor = destinationLabel.backgroundColor = [UIColor clearColor];
+    self.originButton.titleLabel.textColor = self.destinationButton.titleLabel.textColor = [UIColor whiteColor];
+    self.originButton.titleLabel.font = self.destinationButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:12];
+    self.originButton.backgroundColor = self.destinationButton.backgroundColor = [UIColor clearColor];
+    [self.originButton addTarget:self action:@selector(pickOrigin) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    [self.destinationButton addTarget:self action:@selector(pickDestination) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     resetButton.frame = CGRectMake(260, 0, 60, 60);
     [resetButton setTitle:@"x" forState:UIControlStateNormal];
     resetButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:36];
     resetButton.backgroundColor = [UIColor blackColor];
     summaryBar.backgroundColor = [UIColor colorWithHue:0.6472 saturation:0.36 brightness:0.18 alpha:1.0];
+    
     
     // START
     self.startButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:18];
@@ -227,16 +200,61 @@
     self.view.backgroundColor = [UIColor colorWithHue:0.6472 saturation:0.35 brightness:0.30 alpha:1.0];
     
     // SUBVIEWS
-    [summaryBar addSubview:originLabel];
-    [summaryBar addSubview:destinationLabel];
+    [self.view addSubview:self.originButton];
+    [self.view addSubview:self.destinationButton];
     [summaryBar addSubview:resetButton];
     [self.clockView addSubview:self.startButton];
     [self.clockView addSubview:self.subtextLabel];
-    [self.view addSubview:summaryBar];
+    //[self.view addSubview:summaryBar];
     [self.view addSubview:self.clockView];
     [self.view addSubview:self.cancelButton];
     
     
+}
+
+- (void) setStopViewController:(id)controller didFinishSelectingStop:(NSString *)stop which:(BOOL)isOrigin {
+    if(isOrigin) {
+        self.trip.origin = stop;
+        [self.originButton setTitle:[NSString stringWithFormat:@"FROM %@", stop] forState:UIControlStateNormal];
+    } else {
+        self.trip.destination = stop;
+        [self.destinationButton setTitle:[NSString stringWithFormat:@"TO %@", stop] forState:UIControlStateNormal];
+    }
+    
+}
+
+- (void) calculateTime {
+    int i;
+    for (i = 0; i < self.durations.count; i++) {
+        NSString *name = self.durations[i][@"name"];
+        
+        if(name == self.trip.origin)
+            self.origin = i;
+        if(name == self.trip.destination)
+            self.destination = i;
+    }
+    
+    // CALCULATE TIME REMAINING
+    self.timeRemaining = 0;
+    int dest = self.destination, orig = self.origin;
+    
+    if (self.origin < self.destination) { // eastbound
+        for (i = orig + 1; i <= dest - 1; i++) {
+            NSNumber *arrival = self.durations[i][@"eastBoundArrival"];
+            NSNumber *doors = self.durations[i][@"eastBoundDoors"];
+            self.timeRemaining += arrival.intValue + doors.intValue;
+        }
+        NSNumber *arrival = self.durations[dest][@"eastBoundArrival"];
+        self.timeRemaining += arrival.intValue;
+    } else { // westbound
+        for (i = orig - 1; i >= dest + 1; i--) {
+            NSNumber *arrival = self.durations[i][@"westBoundArrival"];
+            NSNumber *doors = self.durations[i][@"westBoundDoors"];
+            self.timeRemaining += arrival.intValue + doors.intValue;
+        }
+        NSNumber *arrival = self.durations[dest][@"westBoundArrival"];
+        self.timeRemaining += arrival.intValue;
+    }
 }
 
 - (void) startClock {
@@ -288,6 +306,7 @@
         self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(M_PI_2, 0, 1, 0), 1.25, 1.25, 1.25);
     } completion:^(BOOL finished) {
         [self.startButton setTitle:aTitle forState:UIControlStateNormal];
+        [self.startButton setImage:nil forState:UIControlStateNormal];
         self.subtextLabel.text = aSubtext;
         self.startButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Black" size:130.0];
         [self.subtextLabel setFrame:CGRectMake(0, 170, 218, 40)];
@@ -297,11 +316,31 @@
     }];
 }
 
+- (void) pickOrigin {
+    OriginTableViewController *originTableViewController = [[OriginTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    originTableViewController.delegate = self;
+    [self.navigationController pushViewController:originTableViewController animated:YES];
+}
+
+- (void) pickDestination {
+    DestinationTableViewController *destinationTableViewController = [[DestinationTableViewController alloc] initWithStyle:UITableViewStylePlain origin:self.trip.origin];
+    destinationTableViewController.delegate = self;
+    [self.navigationController pushViewController:destinationTableViewController animated:YES];
+}
+
 - (void) cancel {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+}
+
 - (void) viewWillDisappear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    
     [super viewWillDisappear:animated];
     
     [self.timer invalidate];

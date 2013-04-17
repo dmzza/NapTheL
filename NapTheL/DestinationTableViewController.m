@@ -16,13 +16,11 @@
 @implementation DestinationTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
-      originSection:(int)anOriginSection
-          originRow:(int)anOriginRow
+             origin:(NSString *)anOrigin
 {
     self = [super initWithStyle:style];
     if (self) {
-        self.originSection = anOriginSection;
-        self.originRow = anOriginRow;
+        self.origin = anOrigin;
         self.title = @"To";
     }
     return self;
@@ -45,7 +43,7 @@
 {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     
-    if(indexPath.section == self.originSection && indexPath.row == self.originRow) {
+    if([cell.textLabel.text isEqualToString:self.origin]) {
         cell.contentView.backgroundColor = self.tableView.separatorColor;
         cell.userInteractionEnabled = NO;
     } else {
@@ -59,13 +57,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int originRow = self.originRow;
-    int originSection = self.originSection;
-    NSString *origin = self.neighborhoods[originSection][@"stops"][originRow];
+    NSString *stop = self.neighborhoods[indexPath.section][@"stops"][indexPath.row];
     
-    TripViewController *tripViewController = [[TripViewController alloc] initWithOrigin:origin destination:self.neighborhoods[indexPath.section][@"stops"][indexPath.row]];
+    [self.delegate setStopViewController:self didFinishSelectingStop:stop which:NO];
     
-    [self.navigationController pushViewController:tripViewController animated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+
 }
 
 @end

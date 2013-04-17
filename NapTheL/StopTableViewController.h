@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class StopTableViewController;
+
+@protocol StopTableViewControllerDelegate <NSObject>
+- (void)setStopViewController:(StopTableViewController *)controller didFinishSelectingStop:(NSString *)stop which:(BOOL)isOrigin;
+
+@end
+
 @interface StopTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray *neighborhoods;
+@property (nonatomic, weak) id <StopTableViewControllerDelegate> delegate;
 
 @end
+

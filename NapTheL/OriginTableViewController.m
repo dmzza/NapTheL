@@ -49,9 +49,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DestinationTableViewController *destinationTableViewController = [[DestinationTableViewController alloc] initWithStyle:UITableViewStylePlain originSection:indexPath.section originRow:indexPath.row];
+    NSString *stop = self.neighborhoods[indexPath.section][@"stops"][indexPath.row];
     
-    [self.navigationController pushViewController:destinationTableViewController animated:YES];
+    [self.delegate setStopViewController:self didFinishSelectingStop:stop which:YES];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+
 }
 
 @end

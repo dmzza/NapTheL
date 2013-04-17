@@ -11,8 +11,7 @@
 
 @interface DestinationTableViewController : StopTableViewController
 
-@property int originSection;
-@property int originRow;
--(id)initWithStyle:(UITableViewStyle)style originSection:(int)anOriginSection originRow:(int)anOriginRow;
+@property (strong, nonatomic) NSString *origin;
+-(id)initWithStyle:(UITableViewStyle)style origin:(NSString *)anOrigin;
 
 @end

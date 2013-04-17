@@ -119,7 +119,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *stop = self.neighborhoods[indexPath.section][@"stops"][indexPath.row];
     
+    [self.delegate setStopViewController:self didFinishSelectingStop:stop which:YES];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

@@ -16,6 +16,7 @@
 		6313C761170F5BD80069F480 /* manhattan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6313C75F170F5BD80069F480 /* manhattan.jpg */; };
 		632CD7D6171F1FCD0030E8B9 /* glyphicons_053_alarm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 632CD7D4171F1FCD0030E8B9 /* glyphicons_053_alarm@2x.png */; };
 		632CD7D7171F1FCD0030E8B9 /* glyphicons_053_alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = 632CD7D5171F1FCD0030E8B9 /* glyphicons_053_alarm.png */; };
+		632CD7DA171F2ED80030E8B9 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 632CD7D9171F2ED80030E8B9 /* Trip.m */; };
 		6336F1EA170B5FBE00E67CA9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6336F1E9170B5FBE00E67CA9 /* UIKit.framework */; };
 		6336F1EC170B5FBE00E67CA9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6336F1EB170B5FBE00E67CA9 /* Foundation.framework */; };
 		6336F1EE170B5FBE00E67CA9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6336F1ED170B5FBE00E67CA9 /* CoreGraphics.framework */; };
@@ -76,6 +77,8 @@
 		6313C75F170F5BD80069F480 /* manhattan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = manhattan.jpg; path = ../../../Downloads/manhattan.jpg; sourceTree = "<group>"; };
 		632CD7D4171F1FCD0030E8B9 /* glyphicons_053_alarm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_053_alarm@2x.png"; sourceTree = "<group>"; };
 		632CD7D5171F1FCD0030E8B9 /* glyphicons_053_alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_053_alarm.png; sourceTree = "<group>"; };
+		632CD7D8171F2ED80030E8B9 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trip.h; sourceTree = "<group>"; };
+		632CD7D9171F2ED80030E8B9 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trip.m; sourceTree = "<group>"; };
 		6336F1E6170B5FBE00E67CA9 /* Tune Out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tune Out.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6336F1E9170B5FBE00E67CA9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6336F1EB170B5FBE00E67CA9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -205,6 +208,8 @@
 				6336F22B170B6F5200E67CA9 /* TripViewController.m */,
 				6336F203170B5FBE00E67CA9 /* NapTheL.xcdatamodeld */,
 				6336F1F2170B5FBE00E67CA9 /* Supporting Files */,
+				632CD7D8171F2ED80030E8B9 /* Trip.h */,
+				632CD7D9171F2ED80030E8B9 /* Trip.m */,
 			);
 			path = NapTheL;
 			sourceTree = "<group>";
@@ -417,6 +422,7 @@
 				6336F229170B638C00E67CA9 /* DestinationTableViewController.m in Sources */,
 				6336F22C170B6F5200E67CA9 /* TripViewController.m in Sources */,
 				63F524E21711F79E00215CBE /* StopTableViewController.m in Sources */,
+				632CD7DA171F2ED80030E8B9 /* Trip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

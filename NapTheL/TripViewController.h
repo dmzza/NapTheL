@@ -8,21 +8,25 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/CoreAnimation.h>
+#import "StopTableViewController.h"
+#import "Trip.h"
 
-@interface TripViewController : UIViewController
+@interface TripViewController : UIViewController <StopTableViewControllerDelegate>
 
 @property int origin;
 @property int destination;
 @property (strong, nonatomic) NSArray *durations;
 @property (strong, nonatomic) NSDate *arrivalTime;
+@property (strong, nonatomic) UIButton *originButton;
+@property (strong, nonatomic) UIButton *destinationButton;
 @property (strong, nonatomic) UILabel *subtextLabel;
 @property (strong, nonatomic) UIView *clockView;
 @property (strong, nonatomic) UIButton *startButton;
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) NSTimer *timer;
+@property (strong, nonatomic) Trip *trip;
 
 @property int timeRemaining;
 
--(id)initWithOrigin:(NSString *)anOrigin destination:(NSString *)aDestination;
 
 @end

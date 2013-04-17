@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "OriginTableViewController.h"
+#import "TripViewController.h"
+#import "Trip.h"
 
 @implementation AppDelegate
 
@@ -19,10 +20,12 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    OriginTableViewController *originTableViewController = [[OriginTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    Trip *trip = [[Trip alloc] init];
     
-    UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:originTableViewController];
-    alarmNavController.title = @"Alarm";
+    TripViewController *tripViewController = [[TripViewController alloc] init];
+    tripViewController.trip = trip;
+    
+    UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:tripViewController];
     alarmNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     alarmNavController.navigationBar.tintColor = [UIColor colorWithRed:0.55 green:0.57 blue:0.6 alpha:1.0];
     alarmNavController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -32,10 +35,7 @@
                                                             nil];
     
     
-    /*UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    [tabBarController setViewControllers:@[alarmNavController]];
     
-    self.window.rootViewController = tabBarController;*/
     self.window.rootViewController = alarmNavController;
     
     
