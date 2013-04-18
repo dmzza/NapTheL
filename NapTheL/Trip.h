@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSString *origin;
 @property (strong, nonatomic) NSString *destination;
+@property (strong, nonatomic) NSDate *departureTime;
 
 @end

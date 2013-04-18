@@ -219,9 +219,22 @@
     if(isOrigin) {
         self.trip.origin = stop;
         [self.originButton setTitle:[NSString stringWithFormat:@"FROM %@", stop] forState:UIControlStateNormal];
-    } else {
+        if(self.trip.destination == nil) { // no destination chosen yet
+            [self pickDestination];
+        } else { // destination chosen
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            if(self.trip.departureTime != nil) { // and trip is already in progress
+                [self endTrip];
+            }
+        }
+    } else { // is destination
         self.trip.destination = stop;
         [self.destinationButton setTitle:[NSString stringWithFormat:@"TO %@", stop] forState:UIControlStateNormal];
+        if(self.trip.departureTime != nil) { // trip is in progress
+            [[UIApplication sharedApplication] cancelAllLocalNotifications];
+            self.timer = nil;
+            [self calculateTime];
+        }
     }
     if(self.trip.origin != nil && self.trip.destination != nil) {
         [self calculateTime];
@@ -241,6 +254,9 @@
     
     // CALCULATE TIME REMAINING
     self.timeRemaining = 0;
+    if(self.trip.departureTime != nil) {
+        self.timeRemaining = self.trip.departureTime.timeIntervalSinceNow;
+    }
     int dest = self.destination, orig = self.origin;
     
     if (self.origin < self.destination) { // eastbound
@@ -260,10 +276,35 @@
         NSNumber *arrival = self.durations[dest][@"westBoundArrival"];
         self.timeRemaining += arrival.intValue;
     }
+    
+    if(self.trip.departureTime != nil) {
+        [self setAlarm];
+    }
 }
 
 - (void) startClock {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
+    self.trip.departureTime = [NSDate dateWithTimeIntervalSinceNow:0];
+    
+    // START
+    [self.startButton removeTarget:self action:@selector(startClock) forControlEvents:UIControlEventTouchDown];
+    [self.startButton addTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchDown];
+    self.startButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    
+    // SUBTEXT
+    //[self spinWithTitle:[NSString stringWithFormat:@"%d", (int)(self.arrivalTime.timeIntervalSinceNow / 60.0)] subtext:@"minutes"];
+    [self spinWithTitle:@"O" subtext:@"" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor tripInProgressColor]];
+    
+    if(self.timeRemaining <= 0) {
+        [self pickOrigin];
+    } else {
+        [self setAlarm];
+    }
+}
+
+- (void) setAlarm {
+    if(self.timer == nil) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
+    }
     self.arrivalTime = [NSDate dateWithTimeIntervalSinceNow:self.timeRemaining];
     UILocalNotification *arrivalAlarm = [[UILocalNotification alloc] init];
     
@@ -273,15 +314,6 @@
     arrivalAlarm.alertAction = @"Tune In";
     arrivalAlarm.soundName = @"subwayAlarm.m4a";
     
-    // START
-    [self.startButton removeTarget:self action:@selector(startClock) forControlEvents:UIControlEventTouchDown];
-    [self.startButton addTarget:self action:@selector(spin) forControlEvents:UIControlEventTouchDown];
-    self.startButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    
-    // SUBTEXT
-    //[self spinWithTitle:[NSString stringWithFormat:@"%d", (int)(self.arrivalTime.timeIntervalSinceNow / 60.0)] subtext:@"minutes"];
-    [self spinWithTitle:@"O" subtext:@"" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor colorWithRed:0.29 green:0.18 blue:0.58 alpha:1.0]];
-    
     [[UIApplication sharedApplication] scheduleLocalNotification:arrivalAlarm];
 }
 
@@ -289,11 +321,14 @@
     int minutes = (int)(self.arrivalTime.timeIntervalSinceNow / 60.0);
     if(minutes >= 2) {
         //[self.startButton setTitle: [NSString stringWithFormat:@"%d", minutes] forState:UIControlStateNormal];
+        self.subtextLabel.text = [NSString stringWithFormat:@"%f", self.arrivalTime.timeIntervalSinceNow];
     } else if (minutes > 0) {
-        self.view.backgroundColor = [UIColor colorWithRed:0.99 green:0.80 blue:0.25 alpha:1.0];
+        self.view.backgroundColor = [UIColor arrivingSoonColor];
         self.subtextLabel.text = @"arriving soon";
     } else {
-        [self spinWithTitle:@"" subtext:@"end trip" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor colorWithRed:0.11 green:0.41 blue:0.46 alpha:1.0]];
+        [self spinWithTitle:@"" subtext:@"end trip" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor darkAquaColor]];
+        [self.startButton removeTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchDown];
+        [self.startButton addTarget:self action:@selector(endTrip) forControlEvents:UIControlEventTouchDown];
         [self.timer invalidate];
     }
     
@@ -336,6 +371,35 @@
     DestinationTableViewController *destinationTableViewController = [[DestinationTableViewController alloc] initWithStyle:UITableViewStylePlain origin:self.trip.origin];
     destinationTableViewController.delegate = self;
     [self.navigationController pushViewController:destinationTableViewController animated:YES];
+}
+
+- (void) pause {
+    [self spinWithTitle:@"N" subtext:@"resume" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor tripInProgressColor]];
+    [self.startButton removeTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchDown];
+    [self.startButton addTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchDown];
+    
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    self.timeRemaining = self.arrivalTime.timeIntervalSinceNow;
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
+- (void) resume {
+    [self spinWithTitle:@"O" subtext:@"" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor tripInProgressColor]];
+    [self.startButton removeTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchDown];
+    [self.startButton addTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchDown];
+    
+    [self setAlarm];
+}
+
+- (void) endTrip {
+    [self spinWithTitle:@"" subtext:@"" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor darkBlueGrayColor]];
+    [self.startButton removeTarget:self action:@selector(endTrip) forControlEvents:UIControlEventTouchDown];
+    [self.startButton addTarget:self action:@selector(startClock) forControlEvents:UIControlEventTouchDown];
+    
+    self.trip.departureTime = nil;
+    self.timer = nil;
+    [self calculateTime];
 }
 
 - (void) cancel {
