@@ -37,6 +37,13 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>glyphicons-regular.ttf</string>
+		<string>linecons.ttf</string>
+		<string>sosa-regular-webfont.ttf</string>
+		<string>Quicksand-Regular.ttf</string>
+	</array>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -58,9 +65,9 @@
 				<key>Blue</key>
 				<real>1</real>
 				<key>Green</key>
-				<real>0.18617870678822868</real>
+				<real>0.1861787067882287</real>
 				<key>Red</key>
-				<real>0.53607216606276009</real>
+				<real>0.5360721660627601</real>
 			</dict>
 			<key>Translucent</key>
 			<false/>

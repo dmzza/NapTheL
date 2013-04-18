@@ -144,10 +144,10 @@
     [super viewDidLoad];
 	
     UIButton *summaryBar = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-    self.originButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, 240, 40)];
-    self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(160, 20, 140, 40)];
+    self.originButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
+    self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 60, 320, 60)];
     UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.clockView = [[UIView alloc] initWithFrame:CGRectMake(51, 115, 218, 218)];
+    self.clockView = [[UIView alloc] initWithFrame:CGRectMake(51, 175, 218, 218)];
     self.startButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 380, 320, 40)];
     self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 220, 218, 40)];
@@ -159,10 +159,12 @@
     // SUMMARY/ORIGIN/DEST
     [self.originButton setTitle:[NSString stringWithFormat:@"FROM"] forState:UIControlStateNormal];
     [self.destinationButton setTitle:[NSString stringWithFormat:@"TO"] forState:UIControlStateNormal];
-    //destinationLabel.textAlignment = NSTextAlignmentRight;
+    self.originButton.titleEdgeInsets = self.destinationButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
+    self.originButton.contentHorizontalAlignment = self.destinationButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.originButton.titleLabel.textColor = self.destinationButton.titleLabel.textColor = [UIColor whiteColor];
-    self.originButton.titleLabel.font = self.destinationButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:12];
-    self.originButton.backgroundColor = self.destinationButton.backgroundColor = [UIColor clearColor];
+    //NSLog(@"font names: %@", [UIFont fontNamesForFamilyName:@"Quicksand"]);
+    self.originButton.titleLabel.font = self.destinationButton.titleLabel.font = [UIFont fontWithName:@"Quicksand-Regular" size:17.0];
+    self.originButton.backgroundColor = self.destinationButton.backgroundColor = [UIColor colorWithRed:0.11 green:0.41 blue:0.46 alpha:1.0];
     [self.originButton addTarget:self action:@selector(pickOrigin) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self.destinationButton addTarget:self action:@selector(pickDestination) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     resetButton.frame = CGRectMake(260, 0, 60, 60);
@@ -173,13 +175,13 @@
     
     
     // START
-    self.startButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:18];
+    self.startButton.titleLabel.font = [UIFont fontWithName:@"Linecons" size:90.0]; //[UIFont fontWithName:@"Avenir" size:18];
     [self.startButton setFrame:self.clockView.bounds];
     self.startButton.backgroundColor = [UIColor clearColor];
     [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateNormal];
     [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateHighlighted];
-    //[self.startButton setTitle:@"START THE CLOCK" forState:UIControlStateNormal];
-    [self.startButton setImage:[UIImage imageNamed:@"glyphicons_053_alarm"] forState:UIControlStateNormal];
+    [self.startButton setTitle:@"" forState:UIControlStateNormal];
+    //[self.startButton setImage:[UIImage imageNamed:@"glyphicons_053_alarm"] forState:UIControlStateNormal];
     [self.startButton addTarget:self action:@selector(startClock) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     
     // SUBTEXT
@@ -207,7 +209,7 @@
     [self.clockView addSubview:self.subtextLabel];
     //[self.view addSubview:summaryBar];
     [self.view addSubview:self.clockView];
-    [self.view addSubview:self.cancelButton];
+    //[self.view addSubview:self.cancelButton];
     
     
 }
@@ -220,7 +222,9 @@
         self.trip.destination = stop;
         [self.destinationButton setTitle:[NSString stringWithFormat:@"TO %@", stop] forState:UIControlStateNormal];
     }
-    
+    if(self.trip.origin != nil && self.trip.destination != nil) {
+        [self calculateTime];
+    }
 }
 
 - (void) calculateTime {
@@ -274,7 +278,8 @@
     self.startButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     // SUBTEXT
-    [self spinWithTitle:[NSString stringWithFormat:@"%d", (int)(self.arrivalTime.timeIntervalSinceNow / 60.0)] subtext:@"minutes"];
+    //[self spinWithTitle:[NSString stringWithFormat:@"%d", (int)(self.arrivalTime.timeIntervalSinceNow / 60.0)] subtext:@"minutes"];
+    [self spinWithTitle:@"O" subtext:@"" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor colorWithRed:0.29 green:0.18 blue:0.58 alpha:1.0]];
     
     [[UIApplication sharedApplication] scheduleLocalNotification:arrivalAlarm];
 }
@@ -282,9 +287,12 @@
 - (void) updateClock {
     int minutes = (int)(self.arrivalTime.timeIntervalSinceNow / 60.0);
     if(minutes >= 2) {
-        [self.startButton setTitle: [NSString stringWithFormat:@"%d", minutes] forState:UIControlStateNormal];
-    } else if (minutes >= 0) {
-        [self spinWithTitle:@"!" subtext:@"arriving soon"];
+        //[self.startButton setTitle: [NSString stringWithFormat:@"%d", minutes] forState:UIControlStateNormal];
+    } else if (minutes > 0) {
+        self.view.backgroundColor = [UIColor colorWithRed:0.99 green:0.80 blue:0.25 alpha:1.0];
+        self.subtextLabel.text = @"arriving soon";
+    } else {
+        [self spinWithTitle:@"" subtext:@"end trip" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor colorWithRed:0.11 green:0.41 blue:0.46 alpha:1.0]];
         [self.timer invalidate];
     }
     
@@ -301,15 +309,16 @@
     [self.clockView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
 }
 
-- (void) spinWithTitle:(NSString *)aTitle subtext:(NSString *)aSubtext {
+- (void) spinWithTitle:(NSString *)aTitle subtext:(NSString *)aSubtext titleFont:(UIFont *)aTitleFont backgroundColor:(UIColor *)aBackgroundColor {
     [UIView animateWithDuration:0.25 animations:^{
         self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(M_PI_2, 0, 1, 0), 1.25, 1.25, 1.25);
     } completion:^(BOOL finished) {
         [self.startButton setTitle:aTitle forState:UIControlStateNormal];
         [self.startButton setImage:nil forState:UIControlStateNormal];
         self.subtextLabel.text = aSubtext;
-        self.startButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Black" size:130.0];
+        self.startButton.titleLabel.font = aTitleFont;
         [self.subtextLabel setFrame:CGRectMake(0, 170, 218, 40)];
+        self.view.backgroundColor = aBackgroundColor;
         [UIView animateWithDuration:0.25 animations:^{
             self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(0, 0, 1, 0), 1.0, 1.0, 1.0);
         }];
