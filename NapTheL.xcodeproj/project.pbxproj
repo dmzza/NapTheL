@@ -46,6 +46,7 @@
 		636D22E3171FA4D4006F280B /* sosa-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E2171FA4D4006F280B /* sosa-regular-webfont.ttf */; };
 		636D22E5171FAFB1006F280B /* linecons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E4171FAFB1006F280B /* linecons.ttf */; };
 		636D22E7171FCADD006F280B /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E6171FCADD006F280B /* Quicksand-Regular.ttf */; };
+		636D22EA17207422006F280B /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 636D22E917207422006F280B /* UIColor+CustomColors.m */; };
 		63F524C41710DA2E00215CBE /* drifter.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524C21710DA2E00215CBE /* drifter.png */; };
 		63F524C71710DA5D00215CBE /* drifter.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524C61710DA5D00215CBE /* drifter.png */; };
 		63F524C9171100EC00215CBE /* drift.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524C8171100EC00215CBE /* drift.png */; };
@@ -119,6 +120,8 @@
 		636D22E2171FA4D4006F280B /* sosa-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sosa-regular-webfont.ttf"; sourceTree = "<group>"; };
 		636D22E4171FAFB1006F280B /* linecons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = linecons.ttf; sourceTree = "<group>"; };
 		636D22E6171FCADD006F280B /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
+		636D22E817207422006F280B /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
+		636D22E917207422006F280B /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
 		63F524C21710DA2E00215CBE /* drifter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = drifter.png; path = ../../../Documents/drifter.png; sourceTree = "<group>"; };
 		63F524C61710DA5D00215CBE /* drifter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drifter.png; sourceTree = "<group>"; };
 		63F524C8171100EC00215CBE /* drift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = drift.png; path = ../../../Documents/drift.png; sourceTree = "<group>"; };
@@ -226,6 +229,8 @@
 				6336F1F2170B5FBE00E67CA9 /* Supporting Files */,
 				632CD7D8171F2ED80030E8B9 /* Trip.h */,
 				632CD7D9171F2ED80030E8B9 /* Trip.m */,
+				636D22E817207422006F280B /* UIColor+CustomColors.h */,
+				636D22E917207422006F280B /* UIColor+CustomColors.m */,
 			);
 			path = NapTheL;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 				6336F22C170B6F5200E67CA9 /* TripViewController.m in Sources */,
 				63F524E21711F79E00215CBE /* StopTableViewController.m in Sources */,
 				632CD7DA171F2ED80030E8B9 /* Trip.m in Sources */,
+				636D22EA17207422006F280B /* UIColor+CustomColors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "StopTableViewController.h"
+#import "UIColor+CustomColors.h"
 
 @interface StopTableViewController ()
 
@@ -48,8 +49,8 @@
 {
     [super viewDidLoad];
     
-    [self.tableView setSeparatorColor:[UIColor colorWithHue:0.6472 saturation:0.35 brightness:0.30 alpha:1.0]];
-    self.tableView.backgroundColor = [UIColor colorWithHue:0.6472 saturation:0.36 brightness:0.18 alpha:1.0];
+    [self.tableView setSeparatorColor:[UIColor darkBlueGrayColor]];
+    self.tableView.backgroundColor = [UIColor darkerBlueGrayColor];
 }
 
 - (void)didReceiveMemoryWarning

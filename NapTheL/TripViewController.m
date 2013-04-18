@@ -10,6 +10,7 @@
 #import "StopTableViewController.h"
 #import "OriginTableViewController.h"
 #import "DestinationTableViewController.h"
+#import "UIColor+CustomColors.h"
 
 
 @interface TripViewController ()
@@ -164,7 +165,7 @@
     self.originButton.titleLabel.textColor = self.destinationButton.titleLabel.textColor = [UIColor whiteColor];
     //NSLog(@"font names: %@", [UIFont fontNamesForFamilyName:@"Quicksand"]);
     self.originButton.titleLabel.font = self.destinationButton.titleLabel.font = [UIFont fontWithName:@"Quicksand-Regular" size:17.0];
-    self.originButton.backgroundColor = self.destinationButton.backgroundColor = [UIColor colorWithRed:0.11 green:0.41 blue:0.46 alpha:1.0];
+    self.originButton.backgroundColor = self.destinationButton.backgroundColor = [UIColor darkAquaColor];
     [self.originButton addTarget:self action:@selector(pickOrigin) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self.destinationButton addTarget:self action:@selector(pickDestination) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     resetButton.frame = CGRectMake(260, 0, 60, 60);
@@ -193,13 +194,13 @@
     
     // CANCEL
     [self.cancelButton setTitle:@"cancel" forState:UIControlStateNormal];
-    self.cancelButton.backgroundColor = [UIColor colorWithRed:1.0 green:0.435 blue:0.404 alpha:1.0];
+    self.cancelButton.backgroundColor = [UIColor flatRedColor];
     self.cancelButton.titleLabel.textColor = [UIColor whiteColor];
     self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:12];
     [self.cancelButton addTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     
     // SELF
-    self.view.backgroundColor = [UIColor colorWithHue:0.6472 saturation:0.35 brightness:0.30 alpha:1.0];
+    self.view.backgroundColor = [UIColor darkBlueGrayColor];
     
     // SUBVIEWS
     [self.view addSubview:self.originButton];
