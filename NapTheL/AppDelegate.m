@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "HomeViewController.h"
 #import "TripViewController.h"
 #import "Trip.h"
 
@@ -22,10 +23,12 @@
     
     Trip *trip = [[Trip alloc] init];
     
+    HomeViewController *homeViewController = [[HomeViewController alloc] init];
+    
     TripViewController *tripViewController = [[TripViewController alloc] init];
     tripViewController.trip = trip;
     
-    UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:tripViewController];
+    UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
     alarmNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     alarmNavController.navigationBar.tintColor = [UIColor colorWithRed:0.55 green:0.57 blue:0.6 alpha:1.0];
     alarmNavController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
