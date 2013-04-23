@@ -10,6 +10,7 @@
 #import "HomeViewController.h"
 #import "TripViewController.h"
 #import "Trip.h"
+#import "UIColor+CustomColors.h"
 
 @implementation AppDelegate
 
@@ -28,12 +29,13 @@
     TripViewController *tripViewController = [[TripViewController alloc] init];
     tripViewController.trip = trip;
     
-    UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
-    alarmNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    alarmNavController.navigationBar.tintColor = [UIColor colorWithRed:0.55 green:0.57 blue:0.6 alpha:1.0];
+    UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:tripViewController];
+    //alarmNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    alarmNavController.navigationBar.tintColor = [UIColor tripInProgressColor];
     alarmNavController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                            [UIColor blackColor], UITextAttributeTextColor,
-                                                            [UIColor whiteColor], UITextAttributeTextShadowColor,
+                                                            [UIColor whiteColor], UITextAttributeTextColor,
+                                                            [UIColor clearColor], UITextAttributeTextShadowColor,
+                                                            [UIFont fontWithName:@"Quicksand-Regular" size:20.0], UITextAttributeFont,
                                                             [NSValue valueWithCGSize:CGSizeMake(0.0, 0.0)], UITextAttributeTextShadowOffset,
                                                             nil];
     

@@ -11,6 +11,7 @@
 #import "OriginTableViewController.h"
 #import "DestinationTableViewController.h"
 #import "UIColor+CustomColors.h"
+#import "UIImage+withColor.h"
 
 
 @interface TripViewController ()
@@ -133,7 +134,7 @@
                            ],
                           
                           nil];
-        self.title = @"Tune Out";
+        self.title = @"TUNE OUT";
         
         
     }
@@ -143,21 +144,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor tripInProgressColor]] forBarMetrics:UIBarMetricsDefault];
 	
     UIButton *summaryBar = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-    self.originButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-    self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 60, 320, 60)];
+    self.originButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 270, 50)];
+    self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 50, 270, 50)];
+    self.swapButton = [[UIButton alloc] initWithFrame:CGRectMake(245, 25, 100, 50)];
     UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.clockView = [[UIView alloc] initWithFrame:CGRectMake(51, 175, 218, 218)];
+    self.clockView = [[UIView alloc] initWithFrame:CGRectMake(51, 135, 218, 218)];
     self.startButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 380, 320, 40)];
-    self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 220, 218, 40)];
+    self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 240, 218, 40)];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterNoStyle];
     [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     
-    // SUMMARY/ORIGIN/DEST
+    // SUMMARY/ORIGIN/DEST/SWAP
     [self.originButton setTitle:[NSString stringWithFormat:@"FROM"] forState:UIControlStateNormal];
     [self.destinationButton setTitle:[NSString stringWithFormat:@"TO"] forState:UIControlStateNormal];
     self.originButton.titleEdgeInsets = self.destinationButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
@@ -168,6 +173,10 @@
     self.originButton.backgroundColor = self.destinationButton.backgroundColor = [UIColor darkAquaColor];
     [self.originButton addTarget:self action:@selector(pickOrigin) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self.destinationButton addTarget:self action:@selector(pickDestination) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    self.swapButton.titleLabel.font = [UIFont fontWithName:@"Sosa-Regular" size:30.0];
+    self.swapButton.transform = CGAffineTransformMakeRotation(M_PI_2);
+    [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
+    self.swapButton.backgroundColor = [UIColor darkerBlueGrayColor];
     resetButton.frame = CGRectMake(260, 0, 60, 60);
     [resetButton setTitle:@"x" forState:UIControlStateNormal];
     resetButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:36];
@@ -205,6 +214,7 @@
     // SUBVIEWS
     [self.view addSubview:self.originButton];
     [self.view addSubview:self.destinationButton];
+    [self.view addSubview:self.swapButton];
     [summaryBar addSubview:resetButton];
     [self.clockView addSubview:self.startButton];
     [self.clockView addSubview:self.subtextLabel];

@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSDate *arrivalTime;
 @property (strong, nonatomic) UIButton *originButton;
 @property (strong, nonatomic) UIButton *destinationButton;
+@property (strong, nonatomic) UIButton *swapButton;
 @property (strong, nonatomic) UILabel *subtextLabel;
 @property (strong, nonatomic) UIView *clockView;
 @property (strong, nonatomic) UIButton *startButton;
