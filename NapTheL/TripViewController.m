@@ -205,7 +205,9 @@
     [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateHighlighted];
     [self.startButton setTitle:@"" forState:UIControlStateNormal];
     //[self.startButton setImage:[UIImage imageNamed:@"glyphicons_053_alarm"] forState:UIControlStateNormal];
-    [self.startButton addTarget:self action:@selector(startClock) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    [self.startButton addTarget:self action:@selector(startClock) forControlEvents:(UIControlEvents)UIControlEventTouchUpInside];
+    UIPanGestureRecognizer* panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleFlipFrom:)];
+    [self.startButton addGestureRecognizer:panGestureRecognizer];
     
     // SUBTEXT
     self.subtextLabel.text = @"when the doors close";
@@ -309,8 +311,8 @@
     self.trip.departureTime = [NSDate dateWithTimeIntervalSinceNow:0];
     
     // START
-    [self.startButton removeTarget:self action:@selector(startClock) forControlEvents:UIControlEventTouchDown];
-    [self.startButton addTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchDown];
+    [self.startButton removeTarget:self action:@selector(startClock) forControlEvents:UIControlEventTouchUpInside];
+    [self.startButton addTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
     self.startButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     // SUBTEXT
@@ -370,8 +372,9 @@
 }
 
 - (void) spinWithTitle:(NSString *)aTitle subtext:(NSString *)aSubtext titleFont:(UIFont *)aTitleFont backgroundColor:(UIColor *)aBackgroundColor {
-    [UIView animateWithDuration:0.25 animations:^{
-        self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(M_PI_2, 0, 1, 0), 1.25, 1.25, 1.25);
+    self.clockView.layer.transform = CATransform3DMakeRotation(M_PI_2 * 0.5, 0, 1, 0);
+    [UIView animateWithDuration:0.18 animations:^{
+        self.clockView.layer.transform = CATransform3DMakeRotation(M_PI_2, 0, 1, 0); //CATransform3DScale(CATransform3DMakeRotation(M_PI_2, 0, 1, 0), 1.25, 1.25, 1.25);
     } completion:^(BOOL finished) {
         [self.startButton setTitle:aTitle forState:UIControlStateNormal];
         [self.startButton setImage:nil forState:UIControlStateNormal];
@@ -383,6 +386,31 @@
             self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(0, 0, 1, 0), 1.0, 1.0, 1.0);
         }];
     }];
+}
+
+- (void) handleFlipFrom:(UIPanGestureRecognizer *)recognizer {
+    CGPoint translation = [recognizer translationInView:recognizer.view];
+    CGPoint velocity = [recognizer velocityInView:recognizer.view];
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        //NSLog([NSString stringWithFormat:@"velocity-x: %f", velocity.x]);
+        if (translation.x < 160.0 && translation.x > -160.0) {
+            self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(M_PI_2 * (translation.x / 320), 0, 1, 0), 1.0, 1.0, 1.0);
+        } else {
+            self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(M_PI_2 * 0.5, 0, 1, 0), 1.0, 1.0, 1.0);
+        }
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        if (translation.x > 50.0 || translation.x < -50.0) {
+            self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(M_PI_2 * 0.5, 0, 1, 0), 1.0, 1.0, 1.0);
+            NSArray *actions = [self.startButton actionsForTarget:self forControlEvent:UIControlEventTouchUpInside];
+            SEL action = NSSelectorFromString(actions[0]);
+            [self performSelector:action];
+        } else {
+            self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(0, 0, 1, 0), 1.0, 1.0, 1.0);
+        }
+        
+    }
 }
 
 - (void) pickOrigin {
@@ -413,8 +441,8 @@
 
 - (void) pause {
     [self spinWithTitle:@"N" subtext:@"resume" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor darkBlueGrayColor]];
-    [self.startButton removeTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchDown];
-    [self.startButton addTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchDown];
+    [self.startButton removeTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
+    [self.startButton addTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchUpInside];
     
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     self.timeRemaining = self.arrivalTime.timeIntervalSinceNow;
@@ -424,16 +452,16 @@
 
 - (void) resume {
     [self spinWithTitle:@"O" subtext:@"" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor darkBlueGrayColor]];
-    [self.startButton removeTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchDown];
-    [self.startButton addTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchDown];
+    [self.startButton removeTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchUpInside];
+    [self.startButton addTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
     
     [self setAlarm];
 }
 
 - (void) endTrip {
     [self spinWithTitle:@"" subtext:@"" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor darkBlueGrayColor]];
-    [self.startButton removeTarget:self action:@selector(endTrip) forControlEvents:UIControlEventTouchDown];
-    [self.startButton addTarget:self action:@selector(startClock) forControlEvents:UIControlEventTouchDown];
+    [self.startButton removeTarget:self action:@selector(endTrip) forControlEvents:UIControlEventTouchUpInside];
+    [self.startButton addTarget:self action:@selector(startClock) forControlEvents:UIControlEventTouchUpInside];
     
     self.trip.departureTime = nil;
     [self.timer invalidate];
