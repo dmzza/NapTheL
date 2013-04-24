@@ -43,6 +43,7 @@
 		<string>linecons.ttf</string>
 		<string>sosa-regular-webfont.ttf</string>
 		<string>Quicksand-Regular.ttf</string>
+		<string>Quicksand-Bold.ttf</string>
 	</array>
 	<key>UIPrerenderedIcon</key>
 	<true/>

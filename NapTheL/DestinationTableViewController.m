@@ -8,6 +8,8 @@
 
 #import "DestinationTableViewController.h"
 #import "TripViewController.h"
+#import "UIColor+CustomColors.h"
+#import "UIImage+withColor.h"
 
 @interface DestinationTableViewController ()
 
@@ -21,7 +23,7 @@
     self = [super initWithStyle:style];
     if (self) {
         self.origin = anOrigin;
-        self.title = @"To";
+        self.title = @"TO";
     }
     return self;
 }
@@ -29,6 +31,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor darkBlueGrayColor]] forBarMetrics:UIBarMetricsDefault];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor flatRedColor]] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning

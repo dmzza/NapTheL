@@ -146,11 +146,21 @@
     [super viewDidLoad];
     
     
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor tripInProgressColor]] forBarMetrics:UIBarMetricsDefault];
-	
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0.95 green:0.37 blue:0.3 alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
+    //[[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor flatRedColor]] forBarMetrics:UIBarMetricsDefault];
+	//[[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0.58 green:0.83 blue:0.41 alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
+    //[[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0 green:0.85 blue:0.72 alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
+    
+    UIImage *backButtonBackground = [UIImage imageWithColor:[UIColor darkerBlueGrayColor]];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStyleDone target:nil action:nil];
+    [backButton setBackButtonBackgroundImage:backButtonBackground forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Quicksand-Bold" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [[self navigationItem] setBackBarButtonItem:backButton];
+    
+    
     UIButton *summaryBar = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-    self.originButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 270, 50)];
-    self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 50, 270, 50)];
+    self.originButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 50, 320, 50)];
     self.swapButton = [[UIButton alloc] initWithFrame:CGRectMake(245, 25, 100, 50)];
     UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.clockView = [[UIView alloc] initWithFrame:CGRectMake(51, 135, 218, 218)];
@@ -170,13 +180,15 @@
     self.originButton.titleLabel.textColor = self.destinationButton.titleLabel.textColor = [UIColor whiteColor];
     //NSLog(@"font names: %@", [UIFont fontNamesForFamilyName:@"Quicksand"]);
     self.originButton.titleLabel.font = self.destinationButton.titleLabel.font = [UIFont fontWithName:@"Quicksand-Regular" size:17.0];
-    self.originButton.backgroundColor = self.destinationButton.backgroundColor = [UIColor darkAquaColor];
+    self.originButton.backgroundColor = [UIColor lightAlgaeColor];
+    self.destinationButton.backgroundColor = [UIColor algaeColor];
     [self.originButton addTarget:self action:@selector(pickOrigin) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self.destinationButton addTarget:self action:@selector(pickDestination) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     self.swapButton.titleLabel.font = [UIFont fontWithName:@"Sosa-Regular" size:30.0];
     self.swapButton.transform = CGAffineTransformMakeRotation(M_PI_2);
     [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
-    self.swapButton.backgroundColor = [UIColor darkerBlueGrayColor];
+    self.swapButton.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+    //self.swapButton.alpha = 0.1;
     resetButton.frame = CGRectMake(260, 0, 60, 60);
     [resetButton setTitle:@"x" forState:UIControlStateNormal];
     resetButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:36];
@@ -302,7 +314,7 @@
     
     // SUBTEXT
     //[self spinWithTitle:[NSString stringWithFormat:@"%d", (int)(self.arrivalTime.timeIntervalSinceNow / 60.0)] subtext:@"minutes"];
-    [self spinWithTitle:@"O" subtext:@"" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor tripInProgressColor]];
+    [self spinWithTitle:@"O" subtext:@"" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor darkBlueGrayColor]];
     
     if(self.timeRemaining <= 0) {
         [self pickOrigin];
@@ -374,6 +386,7 @@
 - (void) pickOrigin {
     OriginTableViewController *originTableViewController = [[OriginTableViewController alloc] initWithStyle:UITableViewStylePlain];
     originTableViewController.delegate = self;
+    
     [self.navigationController pushViewController:originTableViewController animated:YES];
 }
 
@@ -384,7 +397,7 @@
 }
 
 - (void) pause {
-    [self spinWithTitle:@"N" subtext:@"resume" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor tripInProgressColor]];
+    [self spinWithTitle:@"N" subtext:@"resume" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor darkBlueGrayColor]];
     [self.startButton removeTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchDown];
     [self.startButton addTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchDown];
     
@@ -395,7 +408,7 @@
 }
 
 - (void) resume {
-    [self spinWithTitle:@"O" subtext:@"" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor tripInProgressColor]];
+    [self spinWithTitle:@"O" subtext:@"" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor darkBlueGrayColor]];
     [self.startButton removeTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchDown];
     [self.startButton addTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchDown];
     

@@ -47,6 +47,7 @@
 		63649E261724F7310034BA35 /* vintage_L_train.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63649E251724F7310034BA35 /* vintage_L_train.jpg */; };
 		63649E29172507F90034BA35 /* IPInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E28172507F90034BA35 /* IPInsetLabel.m */; };
 		63649E2C172658590034BA35 /* UIImage+withColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E2B172658590034BA35 /* UIImage+withColor.m */; };
+		63649E2E17276F100034BA35 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63649E2D17276F100034BA35 /* Quicksand-Bold.ttf */; };
 		636D22E3171FA4D4006F280B /* sosa-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E2171FA4D4006F280B /* sosa-regular-webfont.ttf */; };
 		636D22E5171FAFB1006F280B /* linecons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E4171FAFB1006F280B /* linecons.ttf */; };
 		636D22E7171FCADD006F280B /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E6171FCADD006F280B /* Quicksand-Regular.ttf */; };
@@ -128,6 +129,7 @@
 		63649E28172507F90034BA35 /* IPInsetLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPInsetLabel.m; sourceTree = "<group>"; };
 		63649E2A172658590034BA35 /* UIImage+withColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+withColor.h"; sourceTree = "<group>"; };
 		63649E2B172658590034BA35 /* UIImage+withColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+withColor.m"; sourceTree = "<group>"; };
+		63649E2D17276F100034BA35 /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
 		636D22E2171FA4D4006F280B /* sosa-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sosa-regular-webfont.ttf"; sourceTree = "<group>"; };
 		636D22E4171FAFB1006F280B /* linecons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = linecons.ttf; sourceTree = "<group>"; };
 		636D22E6171FCADD006F280B /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 		6336F1F2170B5FBE00E67CA9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				63649E2D17276F100034BA35 /* Quicksand-Bold.ttf */,
 				636D22E6171FCADD006F280B /* Quicksand-Regular.ttf */,
 				636D22E4171FAFB1006F280B /* linecons.ttf */,
 				636D22E2171FA4D4006F280B /* sosa-regular-webfont.ttf */,
@@ -429,6 +432,7 @@
 				636D22E5171FAFB1006F280B /* linecons.ttf in Resources */,
 				636D22E7171FCADD006F280B /* Quicksand-Regular.ttf in Resources */,
 				63649E261724F7310034BA35 /* vintage_L_train.jpg in Resources */,
+				63649E2E17276F100034BA35 /* Quicksand-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

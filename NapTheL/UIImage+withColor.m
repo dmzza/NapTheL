@@ -11,7 +11,7 @@
 @implementation UIImage (withColor)
 
 + (UIImage *)imageWithColor:(UIColor *)color {
-    CGRect rect = CGRectMake(0, 0, 1, 1);
+    CGRect rect = CGRectMake(0, 0, 1, 43);
     // Create a 1 by 1 pixel context
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
     [color setFill];

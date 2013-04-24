@@ -31,11 +31,11 @@
     
     UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:tripViewController];
     //alarmNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    alarmNavController.navigationBar.tintColor = [UIColor tripInProgressColor];
+    //alarmNavController.navigationBar.tintColor = [UIColor darkBlueGrayColor];
     alarmNavController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                                             [UIColor whiteColor], UITextAttributeTextColor,
                                                             [UIColor clearColor], UITextAttributeTextShadowColor,
-                                                            [UIFont fontWithName:@"Quicksand-Regular" size:20.0], UITextAttributeFont,
+                                                            [UIFont fontWithName:@"Quicksand-Bold" size:20.0], UITextAttributeFont,
                                                             [NSValue valueWithCGSize:CGSizeMake(0.0, 0.0)], UITextAttributeTextShadowOffset,
                                                             nil];
     

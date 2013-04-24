@@ -8,6 +8,8 @@
 
 #import "OriginTableViewController.h"
 #import "DestinationTableViewController.h"
+#import "UIColor+CustomColors.h"
+#import "UIImage+withColor.h"
 
 @interface OriginTableViewController ()
 
@@ -19,7 +21,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        self.title = @"From";
+        self.title = @"FROM";
     }
     return self;
 }
@@ -27,6 +29,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIImage *backButtonBackground = [UIImage imageWithColor:[UIColor darkerBlueGrayColor]];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStyleDone target:nil action:nil];
+    [backButton setBackButtonBackgroundImage:backButtonBackground forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Quicksand-Bold" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [[self navigationItem] setBackBarButtonItem:backButton];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor darkBlueGrayColor]] forBarMetrics:UIBarMetricsDefault];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor flatRedColor]] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning
