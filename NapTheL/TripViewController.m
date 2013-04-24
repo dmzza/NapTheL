@@ -182,13 +182,14 @@
     self.originButton.titleLabel.font = self.destinationButton.titleLabel.font = [UIFont fontWithName:@"Quicksand-Regular" size:17.0];
     self.originButton.backgroundColor = [UIColor lightAlgaeColor];
     self.destinationButton.backgroundColor = [UIColor algaeColor];
-    [self.originButton addTarget:self action:@selector(pickOrigin) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
-    [self.destinationButton addTarget:self action:@selector(pickDestination) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    
     self.swapButton.titleLabel.font = [UIFont fontWithName:@"Sosa-Regular" size:30.0];
     self.swapButton.transform = CGAffineTransformMakeRotation(M_PI_2);
     [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
     self.swapButton.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
-    //self.swapButton.alpha = 0.1;
+    [self.originButton addTarget:self action:@selector(pickOrigin) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    [self.destinationButton addTarget:self action:@selector(pickDestination) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    [self.swapButton addTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     resetButton.frame = CGRectMake(260, 0, 60, 60);
     [resetButton setTitle:@"x" forState:UIControlStateNormal];
     resetButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:36];
@@ -240,7 +241,7 @@
 - (void) setStopViewController:(id)controller didFinishSelectingStop:(NSString *)stop which:(BOOL)isOrigin {
     if(isOrigin) {
         self.trip.origin = stop;
-        [self.originButton setTitle:[NSString stringWithFormat:@"FROM %@", stop] forState:UIControlStateNormal];
+        [self.originButton setTitle:[NSString stringWithFormat:@"%@", stop] forState:UIControlStateNormal];
         if(self.trip.destination == nil) { // no destination chosen yet
             [self pickDestination];
         } else { // destination chosen
@@ -251,7 +252,7 @@
         }
     } else { // is destination
         self.trip.destination = stop;
-        [self.destinationButton setTitle:[NSString stringWithFormat:@"TO %@", stop] forState:UIControlStateNormal];
+        [self.destinationButton setTitle:[NSString stringWithFormat:@"%@", stop] forState:UIControlStateNormal];
         if(self.trip.departureTime != nil) { // trip is in progress
             [[UIApplication sharedApplication] cancelAllLocalNotifications];
             self.timer = nil;
@@ -340,11 +341,12 @@
 }
 
 - (void) updateClock {
-    int minutes = (int)(self.arrivalTime.timeIntervalSinceNow / 60.0);
+    int seconds = (int)self.arrivalTime.timeIntervalSinceNow;
+    int minutes = (seconds / 60);
     if(minutes >= 2) {
         //[self.startButton setTitle: [NSString stringWithFormat:@"%d", minutes] forState:UIControlStateNormal];
         self.subtextLabel.text = [NSString stringWithFormat:@"%f", self.arrivalTime.timeIntervalSinceNow];
-    } else if (minutes > 0) {
+    } else if (seconds > 0) {
         self.view.backgroundColor = [UIColor arrivingSoonColor];
         self.subtextLabel.text = @"arriving soon";
     } else {
@@ -396,6 +398,19 @@
     [self.navigationController pushViewController:destinationTableViewController animated:YES];
 }
 
+- (void) swap {
+    NSString *newDestination = self.trip.origin;
+    self.trip.origin = self.trip.destination;
+    self.trip.destination = newDestination;
+    if (self.trip.origin != nil) [self.originButton setTitle:[NSString stringWithFormat:@"%@", self.trip.origin] forState:UIControlStateNormal];
+    else [self.originButton setTitle:@"FROM " forState:UIControlStateNormal];
+    if (self.trip.destination != nil) [self.destinationButton setTitle:[NSString stringWithFormat:@"%@", self.trip.destination] forState:UIControlStateNormal];
+    else [self.destinationButton setTitle:@"TO " forState:UIControlStateNormal];
+    if(self.trip.departureTime != nil) { // and trip is already in progress
+        [self endTrip];
+    }
+}
+
 - (void) pause {
     [self spinWithTitle:@"N" subtext:@"resume" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor darkBlueGrayColor]];
     [self.startButton removeTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchDown];
@@ -421,6 +436,7 @@
     [self.startButton addTarget:self action:@selector(startClock) forControlEvents:UIControlEventTouchDown];
     
     self.trip.departureTime = nil;
+    [self.timer invalidate];
     self.timer = nil;
     [self calculateTime];
 }
