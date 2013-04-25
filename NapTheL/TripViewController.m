@@ -346,15 +346,14 @@
     int seconds = (int)self.arrivalTime.timeIntervalSinceNow;
     int minutes = (seconds / 60);
     if(minutes >= 2) {
-        //[self.startButton setTitle: [NSString stringWithFormat:@"%d", minutes] forState:UIControlStateNormal];
         self.subtextLabel.text = [NSString stringWithFormat:@"%f", self.arrivalTime.timeIntervalSinceNow];
     } else if (seconds > 0) {
         self.view.backgroundColor = [UIColor arrivingSoonColor];
         self.subtextLabel.text = @"arriving soon";
     } else {
         [self spinWithTitle:@"" subtext:@"end trip" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor darkAquaColor]];
-        [self.startButton removeTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchDown];
-        [self.startButton addTarget:self action:@selector(endTrip) forControlEvents:UIControlEventTouchDown];
+        [self.startButton removeTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
+        [self.startButton addTarget:self action:@selector(endTrip) forControlEvents:UIControlEventTouchUpInside];
         [self.timer invalidate];
     }
     
