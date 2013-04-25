@@ -12,6 +12,8 @@
 
 - (id)init {
     self = [super init];
+    
+    self.duration = 0;
     return self;
 }
 

@@ -164,6 +164,7 @@
     self.swapButton = [[UIButton alloc] initWithFrame:CGRectMake(245, 25, 100, 50)];
     UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.clockView = [[UIView alloc] initWithFrame:CGRectMake(51, 135, 218, 218)];
+    self.tripProgress = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
     self.startButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 380, 320, 40)];
     self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 240, 218, 40)];
@@ -196,6 +197,9 @@
     resetButton.backgroundColor = [UIColor blackColor];
     summaryBar.backgroundColor = [UIColor colorWithHue:0.6472 saturation:0.36 brightness:0.18 alpha:1.0];
     
+    // PROGRESS
+    [self.tripProgress setFrame:CGRectMake(0, 225, 220, 20)];
+    [self.tripProgress setProgress:1.0 animated:NO];
     
     // START
     self.startButton.titleLabel.font = [UIFont fontWithName:@"Linecons" size:90.0]; //[UIFont fontWithName:@"Avenir" size:18];
@@ -231,6 +235,7 @@
     [self.view addSubview:self.destinationButton];
     [self.view addSubview:self.swapButton];
     [summaryBar addSubview:resetButton];
+    [self.clockView addSubview:self.tripProgress];
     [self.clockView addSubview:self.startButton];
     [self.clockView addSubview:self.subtextLabel];
     //[self.view addSubview:summaryBar];
@@ -304,6 +309,9 @@
     
     if(self.trip.departureTime != nil) {
         [self setAlarm];
+        self.trip.duration = self.timeRemaining - self.trip.departureTime.timeIntervalSinceNow;
+    } else {
+        self.trip.duration = self.timeRemaining;
     }
 }
 
@@ -345,6 +353,9 @@
 - (void) updateClock {
     int seconds = (int)self.arrivalTime.timeIntervalSinceNow;
     int minutes = (seconds / 60);
+    float progress = (self.arrivalTime.timeIntervalSinceNow / (float)self.trip.duration);
+    
+    [self.tripProgress setProgress:progress animated:YES];
     if(minutes >= 2) {
         self.subtextLabel.text = [NSString stringWithFormat:@"%f", self.arrivalTime.timeIntervalSinceNow];
     } else if (seconds > 0) {
@@ -463,6 +474,7 @@
     [self.startButton addTarget:self action:@selector(startClock) forControlEvents:UIControlEventTouchUpInside];
     
     self.trip.departureTime = nil;
+    self.trip.duration = 0;
     [self.timer invalidate];
     self.timer = nil;
     [self calculateTime];
