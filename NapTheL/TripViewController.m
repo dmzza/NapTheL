@@ -202,6 +202,7 @@
     [self.tripProgress setProgress:1.0 animated:NO];
     [self.tripProgress setProgressTintColor:[UIColor colorWithRed:0.055 green:0.788 blue:0.573 alpha:1.0]];
     [self.tripProgress setTrackTintColor:[UIColor clearColor]];
+    self.tripProgress.thicknessRatio = 0.075;
     
     // START
     self.startButton.titleLabel.font = [UIFont fontWithName:@"Linecons" size:90.0]; //[UIFont fontWithName:@"Avenir" size:18];
