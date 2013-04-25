@@ -10,6 +10,7 @@
 #import <QuartzCore/CoreAnimation.h>
 #import "StopTableViewController.h"
 #import "Trip.h"
+#import "DACircularProgressView.h"
 
 @interface TripViewController : UIViewController <StopTableViewControllerDelegate>
 
@@ -22,7 +23,7 @@
 @property (strong, nonatomic) UIButton *swapButton;
 @property (strong, nonatomic) UILabel *subtextLabel;
 @property (strong, nonatomic) UIView *clockView;
-@property (strong, nonatomic) UIProgressView *tripProgress;
+@property (strong, nonatomic) DACircularProgressView *tripProgress;
 @property (strong, nonatomic) UIButton *startButton;
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) NSTimer *timer;

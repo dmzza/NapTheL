@@ -48,6 +48,7 @@
 		63649E29172507F90034BA35 /* IPInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E28172507F90034BA35 /* IPInsetLabel.m */; };
 		63649E2C172658590034BA35 /* UIImage+withColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E2B172658590034BA35 /* UIImage+withColor.m */; };
 		63649E2E17276F100034BA35 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63649E2D17276F100034BA35 /* Quicksand-Bold.ttf */; };
+		63649E321728EF8A0034BA35 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E311728EF8A0034BA35 /* DACircularProgressView.m */; };
 		636D22E3171FA4D4006F280B /* sosa-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E2171FA4D4006F280B /* sosa-regular-webfont.ttf */; };
 		636D22E5171FAFB1006F280B /* linecons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E4171FAFB1006F280B /* linecons.ttf */; };
 		636D22E7171FCADD006F280B /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E6171FCADD006F280B /* Quicksand-Regular.ttf */; };
@@ -130,6 +131,8 @@
 		63649E2A172658590034BA35 /* UIImage+withColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+withColor.h"; sourceTree = "<group>"; };
 		63649E2B172658590034BA35 /* UIImage+withColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+withColor.m"; sourceTree = "<group>"; };
 		63649E2D17276F100034BA35 /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
+		63649E301728EF8A0034BA35 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		63649E311728EF8A0034BA35 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		636D22E2171FA4D4006F280B /* sosa-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sosa-regular-webfont.ttf"; sourceTree = "<group>"; };
 		636D22E4171FAFB1006F280B /* linecons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = linecons.ttf; sourceTree = "<group>"; };
 		636D22E6171FCADD006F280B /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
@@ -225,6 +228,7 @@
 		6336F1F1170B5FBE00E67CA9 /* NapTheL */ = {
 			isa = PBXGroup;
 			children = (
+				63649E2F1728EF8A0034BA35 /* DACircularProgress */,
 				632CD7DE171F9D760030E8B9 /* Fonts */,
 				6336F230170BB49200E67CA9 /* Images */,
 				6336F22D170BB03300E67CA9 /* Sounds */,
@@ -325,6 +329,15 @@
 				6336F232170BB49F00E67CA9 /* napTheL@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		63649E2F1728EF8A0034BA35 /* DACircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				63649E301728EF8A0034BA35 /* DACircularProgressView.h */,
+				63649E311728EF8A0034BA35 /* DACircularProgressView.m */,
+			);
+			path = DACircularProgress;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -479,6 +492,7 @@
 				63649E241724F59B0034BA35 /* HomeViewController.m in Sources */,
 				63649E29172507F90034BA35 /* IPInsetLabel.m in Sources */,
 				63649E2C172658590034BA35 /* UIImage+withColor.m in Sources */,
+				63649E321728EF8A0034BA35 /* DACircularProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

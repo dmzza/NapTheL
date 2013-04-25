@@ -12,6 +12,7 @@
 #import "DestinationTableViewController.h"
 #import "UIColor+CustomColors.h"
 #import "UIImage+withColor.h"
+#import "DACircularProgressView.h"
 
 
 @interface TripViewController ()
@@ -163,8 +164,8 @@
     self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 50, 320, 50)];
     self.swapButton = [[UIButton alloc] initWithFrame:CGRectMake(245, 25, 100, 50)];
     UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.clockView = [[UIView alloc] initWithFrame:CGRectMake(51, 135, 218, 218)];
-    self.tripProgress = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
+    self.clockView = [[UIView alloc] initWithFrame:CGRectMake(46, 135, 228, 228)];
+    self.tripProgress = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 228, 228)];
     self.startButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 380, 320, 40)];
     self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 240, 218, 40)];
@@ -198,12 +199,13 @@
     summaryBar.backgroundColor = [UIColor colorWithHue:0.6472 saturation:0.36 brightness:0.18 alpha:1.0];
     
     // PROGRESS
-    [self.tripProgress setFrame:CGRectMake(0, 225, 220, 20)];
     [self.tripProgress setProgress:1.0 animated:NO];
+    [self.tripProgress setProgressTintColor:[UIColor colorWithRed:0.055 green:0.788 blue:0.573 alpha:1.0]];
+    [self.tripProgress setTrackTintColor:[UIColor clearColor]];
     
     // START
     self.startButton.titleLabel.font = [UIFont fontWithName:@"Linecons" size:90.0]; //[UIFont fontWithName:@"Avenir" size:18];
-    [self.startButton setFrame:self.clockView.bounds];
+    [self.startButton setFrame:CGRectMake(10, 10, 208, 208)];
     self.startButton.backgroundColor = [UIColor clearColor];
     [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateNormal];
     [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateHighlighted];
@@ -362,6 +364,7 @@
         self.view.backgroundColor = [UIColor arrivingSoonColor];
         self.subtextLabel.text = @"arriving soon";
     } else {
+        [self.tripProgress setProgress:0 animated:YES];
         [self spinWithTitle:@"" subtext:@"end trip" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor darkAquaColor]];
         [self.startButton removeTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
         [self.startButton addTarget:self action:@selector(endTrip) forControlEvents:UIControlEventTouchUpInside];
@@ -388,6 +391,11 @@
     } completion:^(BOOL finished) {
         [self.startButton setTitle:aTitle forState:UIControlStateNormal];
         [self.startButton setImage:nil forState:UIControlStateNormal];
+        if([aSubtext isEqual: @"resume"]) {
+            self.tripProgress.layer.transform = CATransform3DMakeRotation(0, 0, 1, 0);
+        } else {
+            self.tripProgress.layer.transform = CATransform3DMakeRotation(M_PI, 0, 1, 0);
+        }
         self.subtextLabel.text = aSubtext;
         self.startButton.titleLabel.font = aTitleFont;
         [self.subtextLabel setFrame:CGRectMake(0, 170, 218, 40)];
@@ -475,6 +483,7 @@
     
     self.trip.departureTime = nil;
     self.trip.duration = 0;
+    [self.tripProgress setProgress:1 animated:YES];
     [self.timer invalidate];
     self.timer = nil;
     [self calculateTime];
