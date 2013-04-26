@@ -24,8 +24,6 @@
     
     Trip *trip = [[Trip alloc] init];
     
-    HomeViewController *homeViewController = [[HomeViewController alloc] init];
-    
     TripViewController *tripViewController = [[TripViewController alloc] initWithNibName:@"TripViewController" bundle:nil];
     tripViewController.trip = trip;
     

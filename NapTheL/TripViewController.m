@@ -164,12 +164,8 @@
     self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 50, 320, 50)];
     self.swapButton = [[UIButton alloc] initWithFrame:CGRectMake(245, 25, 100, 50)];
     UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //self.clockView = [[UIView alloc] initWithFrame:CGRectMake(46, 135, 228, 228)];
-    //self.clockView = [[UIView alloc] init];
-    //self.tripProgress = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 228, 228)];
     self.tripProgress = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 228, 228)];
     [self.tripProgressView addSubview:self.tripProgress];
-    //self.startButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 380, 320, 40)];
     self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 240, 218, 40)];
     

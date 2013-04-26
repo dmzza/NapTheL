@@ -48,7 +48,6 @@
     [UIView setAnimationDuration:42.0];
     [UIView setAnimationCurve:UIViewAnimationCurveLinear];
     background.transform = CGAffineTransformMakeTranslation(-500, 0);
-    CALayer *layer = [background layer];
     
     [UIView commitAnimations];
     
