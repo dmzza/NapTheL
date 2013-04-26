@@ -49,6 +49,7 @@
 		63649E2C172658590034BA35 /* UIImage+withColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E2B172658590034BA35 /* UIImage+withColor.m */; };
 		63649E2E17276F100034BA35 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63649E2D17276F100034BA35 /* Quicksand-Bold.ttf */; };
 		63649E321728EF8A0034BA35 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E311728EF8A0034BA35 /* DACircularProgressView.m */; };
+		63649E36172A37BE0034BA35 /* TripViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63649E35172A37BE0034BA35 /* TripViewController.xib */; };
 		636D22E3171FA4D4006F280B /* sosa-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E2171FA4D4006F280B /* sosa-regular-webfont.ttf */; };
 		636D22E5171FAFB1006F280B /* linecons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E4171FAFB1006F280B /* linecons.ttf */; };
 		636D22E7171FCADD006F280B /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E6171FCADD006F280B /* Quicksand-Regular.ttf */; };
@@ -133,6 +134,7 @@
 		63649E2D17276F100034BA35 /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
 		63649E301728EF8A0034BA35 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		63649E311728EF8A0034BA35 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
+		63649E35172A37BE0034BA35 /* TripViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripViewController.xib; sourceTree = "<group>"; };
 		636D22E2171FA4D4006F280B /* sosa-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sosa-regular-webfont.ttf"; sourceTree = "<group>"; };
 		636D22E4171FAFB1006F280B /* linecons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = linecons.ttf; sourceTree = "<group>"; };
 		636D22E6171FCADD006F280B /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				63649E28172507F90034BA35 /* IPInsetLabel.m */,
 				63649E2A172658590034BA35 /* UIImage+withColor.h */,
 				63649E2B172658590034BA35 /* UIImage+withColor.m */,
+				63649E35172A37BE0034BA35 /* TripViewController.xib */,
 			);
 			path = NapTheL;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				636D22E7171FCADD006F280B /* Quicksand-Regular.ttf in Resources */,
 				63649E261724F7310034BA35 /* vintage_L_train.jpg in Resources */,
 				63649E2E17276F100034BA35 /* Quicksand-Bold.ttf in Resources */,
+				63649E36172A37BE0034BA35 /* TripViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,7 +26,7 @@
     
     HomeViewController *homeViewController = [[HomeViewController alloc] init];
     
-    TripViewController *tripViewController = [[TripViewController alloc] init];
+    TripViewController *tripViewController = [[TripViewController alloc] initWithNibName:@"TripViewController" bundle:nil];
     tripViewController.trip = trip;
     
     UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:tripViewController];

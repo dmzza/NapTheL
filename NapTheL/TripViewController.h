@@ -22,9 +22,10 @@
 @property (strong, nonatomic) UIButton *destinationButton;
 @property (strong, nonatomic) UIButton *swapButton;
 @property (strong, nonatomic) UILabel *subtextLabel;
-@property (strong, nonatomic) UIView *clockView;
+@property (strong, nonatomic) IBOutlet UIView *clockView;
+@property (strong, nonatomic) IBOutlet UIView *tripProgressView;
 @property (strong, nonatomic) DACircularProgressView *tripProgress;
-@property (strong, nonatomic) UIButton *startButton;
+@property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) Trip *trip;
