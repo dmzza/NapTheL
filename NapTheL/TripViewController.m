@@ -197,7 +197,8 @@
     summaryBar.backgroundColor = [UIColor colorWithHue:0.6472 saturation:0.36 brightness:0.18 alpha:1.0];
     
     // PROGRESS
-    [self.tripProgress setProgress:1.0 animated:NO];
+    [self.tripProgress setProgress:0.0 animated:NO];
+    [self.tripProgress setRoundedCorners:1];
     [self.tripProgress setProgressTintColor:[UIColor colorWithRed:0.055 green:0.788 blue:0.573 alpha:1.0]];
     [self.tripProgress setTrackTintColor:[UIColor clearColor]];
     self.tripProgress.thicknessRatio = 0.075;
@@ -251,11 +252,11 @@
     [self.startButton addGestureRecognizer:panGestureRecognizer];
     
     // SUBTEXT
-    self.subtextLabel.text = @"when the doors close";
+    self.subtextLabel.text = @"start";
     self.subtextLabel.textAlignment = NSTextAlignmentCenter;
     self.subtextLabel.backgroundColor = [UIColor clearColor];
     self.subtextLabel.textColor = [UIColor whiteColor];
-    self.subtextLabel.font = [UIFont fontWithName:@"Avenir" size:12];
+    self.subtextLabel.font = [UIFont fontWithName:@"Avenir" size:15];
     NSDictionary *viewDictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.subtextLabel, @"subtextLabel", nil];
     [self.startButton addSubview:self.subtextLabel];
     NSArray *subtextVerticalLayoutConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[subtextLabel]-20-|" options:0 metrics:nil views:viewDictionary];
@@ -360,6 +361,7 @@
         self.trip.duration = self.timeRemaining - self.trip.departureTime.timeIntervalSinceNow;
     } else {
         self.trip.duration = self.timeRemaining;
+        [self.tripProgress setProgress:1.0 animated:YES];
     }
 }
 
@@ -373,9 +375,11 @@
     
     // SUBTEXT
     //[self spinWithTitle:[NSString stringWithFormat:@"%d", (int)(self.arrivalTime.timeIntervalSinceNow / 60.0)] subtext:@"minutes"];
-    [self spinWithTitle:@"O" subtext:@"" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor darkBlueGrayColor]];
+    [self spinWithTitle:@"O" subtext:@"pause" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor darkBlueGrayColor]];
     
     if(self.timeRemaining <= 0) {
+        [self.tripProgress setProgress:0.95 animated:NO];
+        [self.tripProgress setIndeterminate:1];
         [self pickOrigin];
     } else {
         [self setAlarm];
@@ -444,7 +448,6 @@
         }
         self.subtextLabel.text = aSubtext;
         self.startButton.titleLabel.font = aTitleFont;
-        [self.subtextLabel setFrame:CGRectMake(0, 170, 218, 40)];
         self.view.backgroundColor = aBackgroundColor;
         [UIView animateWithDuration:0.25 animations:^{
             self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(0, 0, 1, 0), 1.0, 1.0, 1.0);
@@ -515,7 +518,7 @@
 }
 
 - (void) resume {
-    [self spinWithTitle:@"O" subtext:@"" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor darkBlueGrayColor]];
+    [self spinWithTitle:@"O" subtext:@"pause" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor darkBlueGrayColor]];
     [self.startButton removeTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton addTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
     
@@ -523,7 +526,7 @@
 }
 
 - (void) endTrip {
-    [self spinWithTitle:@"" subtext:@"" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor darkBlueGrayColor]];
+    [self spinWithTitle:@"" subtext:@"start" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor darkBlueGrayColor]];
     [self.startButton removeTarget:self action:@selector(endTrip) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton addTarget:self action:@selector(startClock) forControlEvents:UIControlEventTouchUpInside];
     
@@ -543,6 +546,9 @@
 {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillAppear:animated];
+    if(self.trip.departureTime != nil && self.timeRemaining == 0) {
+        [self.tripProgress setIndeterminate:1];
+    }
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
