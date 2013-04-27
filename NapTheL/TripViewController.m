@@ -408,12 +408,13 @@
     float progress = (self.arrivalTime.timeIntervalSinceNow / (float)self.trip.duration);
     
     [self.tripProgress setProgress:progress animated:YES];
-    if(minutes >= 2) {
-        self.subtextLabel.text = [NSString stringWithFormat:@"%f", self.arrivalTime.timeIntervalSinceNow];
-    } else if (seconds > 0) {
-        self.view.backgroundColor = [UIColor arrivingSoonColor];
-        self.subtextLabel.text = @"arriving soon";
-    } else {
+//    if(minutes >= 2) {
+//        self.subtextLabel.text = [NSString stringWithFormat:@"%f", self.arrivalTime.timeIntervalSinceNow];
+//    } else if (seconds > 0) {
+//        self.view.backgroundColor = [UIColor arrivingSoonColor];
+//        self.subtextLabel.text = @"arriving soon";
+//    } else {
+    if (seconds <= 0) {
         [self.tripProgress setProgress:0 animated:YES];
         [self spinWithTitle:@"" subtext:@"end trip" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor darkAquaColor]];
         [self.startButton removeTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
@@ -512,9 +513,11 @@
     [self.startButton addTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchUpInside];
     
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    self.timeRemaining = self.arrivalTime.timeIntervalSinceNow;
-    [self.timer invalidate];
-    self.timer = nil;
+    if(self.timeRemaining != 0) {
+        self.timeRemaining = self.arrivalTime.timeIntervalSinceNow;
+        [self.timer invalidate];
+        self.timer = nil;
+    }
 }
 
 - (void) resume {
@@ -522,7 +525,9 @@
     [self.startButton removeTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton addTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
     
-    [self setAlarm];
+    if(self.timeRemaining != 0) {
+        [self setAlarm];
+    }
 }
 
 - (void) endTrip {
@@ -532,10 +537,13 @@
     
     self.trip.departureTime = nil;
     self.trip.duration = 0;
-    [self.tripProgress setProgress:1 animated:YES];
-    [self.timer invalidate];
-    self.timer = nil;
-    [self calculateTime];
+    [self.tripProgress setProgress:0 animated:YES];
+    
+    if(self.timer != nil) {
+        [self.timer invalidate];
+        self.timer = nil;
+        [self calculateTime];
+    }
 }
 
 - (void) cancel {
