@@ -379,6 +379,10 @@
     //[self spinWithTitle:[NSString stringWithFormat:@"%d", (int)(self.arrivalTime.timeIntervalSinceNow / 60.0)] subtext:@"minutes"];
     [self spinWithTitle:@"O" subtext:@"pause" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor darkBlueGrayColor]];
     
+    [self.swapButton setTitle:@"ã" forState:UIControlStateNormal];
+    [self.swapButton removeTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    [self.swapButton addTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    
     self.hasStarted = YES;
     
     if(!self.stationsAreChosen) {
@@ -425,6 +429,9 @@
         [self spinWithTitle:@"" subtext:@"end trip" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor darkAquaColor]];
         [self.startButton removeTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
         [self.startButton addTarget:self action:@selector(endTrip) forControlEvents:UIControlEventTouchUpInside];
+        [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
+        [self.swapButton removeTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+        [self.swapButton addTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
         [self.timer invalidate];
     }
     
@@ -564,7 +571,18 @@
 }
 
 - (void) cancel {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    self.trip.origin = self.trip.destination = nil;
+    self.trip.departureTime = nil;
+    self.trip.duration = 0;
+    [self.timer invalidate];
+    self.timer = nil;
+    self.stationsAreChosen = NO;
+    [self.originButton setTitle:[NSString stringWithFormat:@"FROM"] forState:UIControlStateNormal];
+    [self.destinationButton setTitle:[NSString stringWithFormat:@"TO"] forState:UIControlStateNormal];
+    [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
+    [self.swapButton removeTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    [self.swapButton addTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    [self endTrip];
 }
 
 - (void)viewWillAppear:(BOOL)animated
