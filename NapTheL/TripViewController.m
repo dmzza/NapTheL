@@ -136,6 +136,10 @@
                           
                           nil];
         self.title = @"TUNE OUT";
+        self.hasStarted = NO;
+        self.isPaused = NO;
+        self.isFinished = NO;
+        self.stationsAreChosen = NO;
         
         
     }
@@ -301,18 +305,24 @@
         if(self.trip.destination == nil) { // no destination chosen yet
             [self pickDestination];
         } else { // destination chosen
-            [self.navigationController popToRootViewControllerAnimated:YES];
-            if(self.trip.departureTime != nil) { // and trip is already in progress
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            if(self.hasStarted && self.stationsAreChosen) { // and trip is already in progress
                 [self endTrip];
+            } else {
+                self.stationsAreChosen = YES;
+                [self calculateTime];
             }
         }
     } else { // is destination
         self.trip.destination = stop;
         [self.destinationButton setTitle:[NSString stringWithFormat:@"%@", stop] forState:UIControlStateNormal];
-        if(self.trip.departureTime != nil) { // trip is in progress
-            [[UIApplication sharedApplication] cancelAllLocalNotifications];
-            self.timer = nil;
-            [self calculateTime];
+        if(self.trip.origin != nil) {
+            self.stationsAreChosen = YES;
+            if(self.hasStarted && !self.isFinished) { // trip is in progress
+                [[UIApplication sharedApplication] cancelAllLocalNotifications];
+                self.timer = nil;
+                [self calculateTime];
+            }
         }
     }
     if(self.trip.origin != nil && self.trip.destination != nil) {
@@ -330,12 +340,22 @@
         if(name == self.trip.destination)
             self.destination = i;
     }
-    
-    // CALCULATE TIME REMAINING
-    self.timeRemaining = 0;
-    if(self.trip.departureTime != nil) {
-        self.timeRemaining = self.trip.departureTime.timeIntervalSinceNow;
+    int originalTimeRemaining = 0;
+    if(self.hasStarted && self.stationsAreChosen) {
+        originalTimeRemaining = self.timeRemaining;
+        if(self.isPaused) {
+            //how much time is left for the current trip
+            //the total duration for the current trip
+            self.timeRemaining = -1 * (self.trip.duration - originalTimeRemaining);
+        } else {
+            self.timeRemaining = self.trip.departureTime.timeIntervalSinceNow;
+        }
+    } else {
+        self.timeRemaining = 0;
     }
+
+    // CALCULATE TIME REMAINING
+
     int dest = self.destination, orig = self.origin;
     
     if (self.origin < self.destination) { // eastbound
@@ -356,9 +376,13 @@
         self.timeRemaining += arrival.intValue;
     }
     
-    if(self.trip.departureTime != nil) {
-        [self setAlarm];
-        self.trip.duration = self.timeRemaining - self.trip.departureTime.timeIntervalSinceNow;
+    if(self.hasStarted && self.stationsAreChosen) {
+        if(!self.isPaused) {
+            [self setAlarm];
+            self.trip.duration = self.timeRemaining - self.trip.departureTime.timeIntervalSinceNow; // set new total duration
+        } else {
+            self.trip.duration = self.timeRemaining + (self.trip.duration - originalTimeRemaining); // set new total duration
+        }
     } else {
         self.trip.duration = self.timeRemaining;
         [self.tripProgress setProgress:1.0 animated:YES];
@@ -377,7 +401,9 @@
     //[self spinWithTitle:[NSString stringWithFormat:@"%d", (int)(self.arrivalTime.timeIntervalSinceNow / 60.0)] subtext:@"minutes"];
     [self spinWithTitle:@"O" subtext:@"pause" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor darkBlueGrayColor]];
     
-    if(self.timeRemaining <= 0) {
+    self.hasStarted = YES;
+    
+    if(!self.stationsAreChosen) {
         [self.tripProgress setProgress:0.95 animated:NO];
         [self.tripProgress setIndeterminate:1];
         [self pickOrigin];
@@ -389,6 +415,7 @@
 - (void) setAlarm {
     if(self.timer == nil) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
+        [self.tripProgress setIndeterminate:0];
     }
     self.arrivalTime = [NSDate dateWithTimeIntervalSinceNow:self.timeRemaining];
     UILocalNotification *arrivalAlarm = [[UILocalNotification alloc] init];
@@ -404,7 +431,7 @@
 
 - (void) updateClock {
     int seconds = (int)self.arrivalTime.timeIntervalSinceNow;
-    int minutes = (seconds / 60);
+    //int minutes = (seconds / 60);
     float progress = (self.arrivalTime.timeIntervalSinceNow / (float)self.trip.duration);
     
     [self.tripProgress setProgress:progress animated:YES];
@@ -415,6 +442,7 @@
 //        self.subtextLabel.text = @"arriving soon";
 //    } else {
     if (seconds <= 0) {
+        self.isFinished = YES;
         [self.tripProgress setProgress:0 animated:YES];
         [self spinWithTitle:@"" subtext:@"end trip" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor darkAquaColor]];
         [self.startButton removeTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
@@ -458,7 +486,7 @@
 
 - (void) handleFlipFrom:(UIPanGestureRecognizer *)recognizer {
     CGPoint translation = [recognizer translationInView:recognizer.view];
-    CGPoint velocity = [recognizer velocityInView:recognizer.view];
+    //CGPoint velocity = [recognizer velocityInView:recognizer.view];
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
@@ -502,7 +530,7 @@
     else [self.originButton setTitle:@"FROM " forState:UIControlStateNormal];
     if (self.trip.destination != nil) [self.destinationButton setTitle:[NSString stringWithFormat:@"%@", self.trip.destination] forState:UIControlStateNormal];
     else [self.destinationButton setTitle:@"TO " forState:UIControlStateNormal];
-    if(self.trip.departureTime != nil) { // and trip is already in progress
+    if(self.hasStarted && self.stationsAreChosen) { // and trip is already in progress
         [self endTrip];
     }
 }
@@ -513,7 +541,10 @@
     [self.startButton addTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchUpInside];
     
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    if(self.timeRemaining != 0) {
+    
+    self.isPaused = YES;
+    
+    if(self.hasStarted && self.stationsAreChosen) {
         self.timeRemaining = self.arrivalTime.timeIntervalSinceNow;
         [self.timer invalidate];
         self.timer = nil;
@@ -525,7 +556,9 @@
     [self.startButton removeTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton addTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
     
-    if(self.timeRemaining != 0) {
+    self.isPaused = NO;
+    
+    if(self.hasStarted && self.stationsAreChosen) {
         [self setAlarm];
     }
 }
@@ -538,6 +571,10 @@
     self.trip.departureTime = nil;
     self.trip.duration = 0;
     [self.tripProgress setProgress:0 animated:YES];
+    
+    self.hasStarted = NO;
+    self.isPaused = NO;
+    self.isFinished = NO;
     
     if(self.timer != nil) {
         [self.timer invalidate];
@@ -554,7 +591,7 @@
 {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillAppear:animated];
-    if(self.trip.departureTime != nil && self.timeRemaining == 0) {
+    if(self.hasStarted && !self.stationsAreChosen) {
         [self.tripProgress setIndeterminate:1];
     }
 }

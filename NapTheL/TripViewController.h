@@ -31,4 +31,10 @@
 
 @property int timeRemaining;
 
+// STATES
+@property BOOL hasStarted;
+@property BOOL isPaused;
+@property BOOL isFinished;
+@property BOOL stationsAreChosen;
+
 @end
