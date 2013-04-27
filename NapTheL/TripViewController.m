@@ -510,10 +510,12 @@
 }
 
 - (void) pickOrigin {
-    OriginTableViewController *originTableViewController = [[OriginTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    originTableViewController.delegate = self;
+    if(!self.hasStarted || !self.stationsAreChosen) {
+        OriginTableViewController *originTableViewController = [[OriginTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        originTableViewController.delegate = self;
     
-    [self.navigationController pushViewController:originTableViewController animated:YES];
+        [self.navigationController pushViewController:originTableViewController animated:YES];
+    }
 }
 
 - (void) pickDestination {
