@@ -24,7 +24,7 @@
     
     Trip *trip = [[Trip alloc] init];
     
-    TripViewController *tripViewController = [[TripViewController alloc] initWithNibName:@"TripViewController" bundle:nil];
+    TripViewController *tripViewController = [[TripViewController alloc] init];
     tripViewController.trip = trip;
     
     UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:tripViewController];

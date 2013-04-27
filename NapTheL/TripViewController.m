@@ -32,7 +32,7 @@
 
 - (id)init
 {
-    self = [super initWithNibName:nil bundle:nil];
+    self = [super initWithNibName:@"TripViewController" bundle:nil];
     if (self) {
         self.durations = [NSArray arrayWithObjects:
                           [[NSDictionary alloc] initWithObjectsAndKeys:
