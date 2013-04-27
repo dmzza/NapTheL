@@ -152,9 +152,6 @@
     
     
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0.95 green:0.37 blue:0.3 alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
-    //[[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor flatRedColor]] forBarMetrics:UIBarMetricsDefault];
-	//[[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0.58 green:0.83 blue:0.41 alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
-    //[[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0 green:0.85 blue:0.72 alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
     
     UIImage *backButtonBackground = [UIImage imageWithColor:[UIColor darkerBlueGrayColor]];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStyleDone target:nil action:nil];
@@ -162,21 +159,17 @@
     [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Quicksand-Bold" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
     [[self navigationItem] setBackBarButtonItem:backButton];
     
-    
-    UIButton *summaryBar = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
     self.originButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 50, 320, 50)];
     self.swapButton = [[UIButton alloc] initWithFrame:CGRectMake(245, 25, 100, 50)];
-    UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.tripProgress = [[DACircularProgressView alloc] init];
-    self.cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 380, 320, 40)];
     self.subtextLabel = [[UILabel alloc] init];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterNoStyle];
     [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     
-    // SUMMARY/ORIGIN/DEST/SWAP
+    // ORIGIN/DEST/SWAP
     [self.originButton setTitle:[NSString stringWithFormat:@"FROM"] forState:UIControlStateNormal];
     [self.destinationButton setTitle:[NSString stringWithFormat:@"TO"] forState:UIControlStateNormal];
     self.originButton.titleEdgeInsets = self.destinationButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
@@ -191,14 +184,10 @@
     self.swapButton.transform = CGAffineTransformMakeRotation(M_PI_2);
     [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
     self.swapButton.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+    
     [self.originButton addTarget:self action:@selector(pickOrigin) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self.destinationButton addTarget:self action:@selector(pickDestination) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self.swapButton addTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
-    resetButton.frame = CGRectMake(260, 0, 60, 60);
-    [resetButton setTitle:@"x" forState:UIControlStateNormal];
-    resetButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:36];
-    resetButton.backgroundColor = [UIColor blackColor];
-    summaryBar.backgroundColor = [UIColor colorWithHue:0.6472 saturation:0.36 brightness:0.18 alpha:1.0];
     
     // PROGRESS
     [self.tripProgress setProgress:0.0 animated:NO];
@@ -250,7 +239,6 @@
     [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateNormal];
     [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateHighlighted];
     [self.startButton setTitle:@"" forState:UIControlStateNormal];
-    //[self.startButton setImage:[UIImage imageNamed:@"glyphicons_053_alarm"] forState:UIControlStateNormal];
     [self.startButton addTarget:self action:@selector(startClock) forControlEvents:(UIControlEvents)UIControlEventTouchUpInside];
     UIPanGestureRecognizer* panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleFlipFrom:)];
     [self.startButton addGestureRecognizer:panGestureRecognizer];
@@ -266,13 +254,6 @@
     NSArray *subtextVerticalLayoutConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[subtextLabel]-20-|" options:0 metrics:nil views:viewDictionary];
     NSArray *subtextHorizontalLayoutConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[subtextLabel]|" options:0 metrics:nil views:viewDictionary];
     
-    // CANCEL
-    [self.cancelButton setTitle:@"cancel" forState:UIControlStateNormal];
-    self.cancelButton.backgroundColor = [UIColor flatRedColor];
-    self.cancelButton.titleLabel.textColor = [UIColor whiteColor];
-    self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Avenir" size:12];
-    [self.cancelButton addTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
-    
     // SELF
     self.view.backgroundColor = [UIColor darkBlueGrayColor];
     
@@ -280,7 +261,6 @@
     [self.view addSubview:self.originButton];
     [self.view addSubview:self.destinationButton];
     [self.view addSubview:self.swapButton];
-    [summaryBar addSubview:resetButton];
     [self.clockView addSubview:self.tripProgress];
     //[self.startButton addSubview:self.subtextLabel];
     [self.clockView addSubview:self.startButton];
@@ -291,9 +271,7 @@
     [self.startButton addConstraints:subtextVerticalLayoutConstraints];
     [self.startButton addConstraints:subtextHorizontalLayoutConstraints];
     [self.clockView addConstraints:@[progressCenterXConstraint, progressCenterYConstraint, progressHeightConstraint, progressWidthConstraint]];
-    //[self.view addSubview:summaryBar];
     [self.view addSubview:self.clockView];
-    //[self.view addSubview:self.cancelButton];
     
     
 }
