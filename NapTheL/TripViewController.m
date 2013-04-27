@@ -164,10 +164,9 @@
     self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 50, 320, 50)];
     self.swapButton = [[UIButton alloc] initWithFrame:CGRectMake(245, 25, 100, 50)];
     UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.tripProgress = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 228, 228)];
-    [self.tripProgressView addSubview:self.tripProgress];
+    self.tripProgress = [[DACircularProgressView alloc] init];
     self.cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 380, 320, 40)];
-    self.subtextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 240, 218, 40)];
+    self.subtextLabel = [[UILabel alloc] init];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterNoStyle];
@@ -203,6 +202,42 @@
     [self.tripProgress setTrackTintColor:[UIColor clearColor]];
     self.tripProgress.thicknessRatio = 0.075;
     
+    
+    
+    NSLayoutConstraint *progressCenterYConstraint = [NSLayoutConstraint constraintWithItem:self.tripProgress
+                                                                                 attribute:NSLayoutAttributeCenterY
+                                                                                 relatedBy:NSLayoutRelationEqual
+                                                                                    toItem:self.clockView
+                                                                                 attribute:NSLayoutAttributeCenterY
+                                                                                multiplier:1.0
+                                                                                  constant:0.0];
+    
+    NSLayoutConstraint *progressCenterXConstraint = [NSLayoutConstraint constraintWithItem:self.tripProgress
+                                                                                 attribute:NSLayoutAttributeCenterX
+                                                                                 relatedBy:NSLayoutRelationEqual
+                                                                                    toItem:self.clockView
+                                                                                 attribute:NSLayoutAttributeCenterX
+                                                                                multiplier:1.0
+                                                                                  constant:0.0];
+    
+    NSLayoutConstraint *progressWidthConstraint = [NSLayoutConstraint constraintWithItem:self.tripProgress
+                                                                               attribute:NSLayoutAttributeWidth
+                                                                               relatedBy:NSLayoutRelationEqual
+                                                                                  toItem:self.clockView
+                                                                               attribute:NSLayoutAttributeWidth
+                                                                              multiplier:1.0
+                                                                                constant:0.0];
+    
+    NSLayoutConstraint *progressHeightConstraint = [NSLayoutConstraint constraintWithItem:self.tripProgress
+                                                                                attribute:NSLayoutAttributeHeight
+                                                                                relatedBy:NSLayoutRelationEqual
+                                                                                   toItem:self.clockView
+                                                                                attribute:NSLayoutAttributeWidth
+                                                                               multiplier:1.0
+                                                                                 constant:0.0];
+    
+    
+    
     // START
     self.startButton.titleLabel.font = [UIFont fontWithName:@"Linecons" size:90.0]; //[UIFont fontWithName:@"Avenir" size:18];
     [self.startButton setFrame:CGRectMake(10, 10, 208, 208)];
@@ -221,6 +256,10 @@
     self.subtextLabel.backgroundColor = [UIColor clearColor];
     self.subtextLabel.textColor = [UIColor whiteColor];
     self.subtextLabel.font = [UIFont fontWithName:@"Avenir" size:12];
+    NSDictionary *viewDictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.subtextLabel, @"subtextLabel", nil];
+    [self.startButton addSubview:self.subtextLabel];
+    NSArray *subtextVerticalLayoutConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[subtextLabel]-20-|" options:0 metrics:nil views:viewDictionary];
+    NSArray *subtextHorizontalLayoutConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[subtextLabel]|" options:0 metrics:nil views:viewDictionary];
     
     // CANCEL
     [self.cancelButton setTitle:@"cancel" forState:UIControlStateNormal];
@@ -238,8 +277,15 @@
     [self.view addSubview:self.swapButton];
     [summaryBar addSubview:resetButton];
     [self.clockView addSubview:self.tripProgress];
+    //[self.startButton addSubview:self.subtextLabel];
     [self.clockView addSubview:self.startButton];
-    [self.clockView addSubview:self.subtextLabel];
+    [self.startButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.subtextLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.clockView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.tripProgress setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.startButton addConstraints:subtextVerticalLayoutConstraints];
+    [self.startButton addConstraints:subtextHorizontalLayoutConstraints];
+    [self.clockView addConstraints:@[progressCenterXConstraint, progressCenterYConstraint, progressHeightConstraint, progressWidthConstraint]];
     //[self.view addSubview:summaryBar];
     [self.view addSubview:self.clockView];
     //[self.view addSubview:self.cancelButton];
