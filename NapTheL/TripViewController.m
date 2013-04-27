@@ -298,6 +298,7 @@
             self.stationsAreChosen = YES;
             if(self.hasStarted && !self.isFinished) { // trip is in progress
                 [[UIApplication sharedApplication] cancelAllLocalNotifications];
+                [self.timer invalidate];
                 self.timer = nil;
                 [self calculateTime];
             }
@@ -563,6 +564,8 @@
     self.isPaused = NO;
     self.isFinished = NO;
     
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
     if(self.timer != nil) {
         [self.timer invalidate];
         self.timer = nil;
@@ -587,7 +590,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillAppear:animated];
     if(self.hasStarted && !self.stationsAreChosen) {
         [self.tripProgress setIndeterminate:1];
@@ -595,12 +597,7 @@
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
-    
     [super viewWillDisappear:animated];
-    
-    [self.timer invalidate];
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
 }
 
 - (void)didReceiveMemoryWarning
