@@ -11,6 +11,7 @@
 #import "TripViewController.h"
 #import "Trip.h"
 #import "UIColor+CustomColors.h"
+#import <AudioToolbox/AudioServices.h>
 
 @implementation AppDelegate
 
@@ -45,6 +46,15 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    NSString *path  = [[NSBundle mainBundle] pathForResource:@"subwayAlarm" ofType:@"m4a"];
+    NSURL* filePath = [NSURL fileURLWithPath: path isDirectory: NO];
+    SystemSoundID soundID;
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)filePath, &soundID);
+    
+    AudioServicesPlaySystemSound(soundID);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
