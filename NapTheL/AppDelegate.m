@@ -28,8 +28,6 @@
     tripViewController.trip = trip;
     
     UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:tripViewController];
-    //alarmNavController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    //alarmNavController.navigationBar.tintColor = [UIColor darkBlueGrayColor];
     alarmNavController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                                             [UIColor whiteColor], UITextAttributeTextColor,
                                                             [UIColor clearColor], UITextAttributeTextShadowColor,

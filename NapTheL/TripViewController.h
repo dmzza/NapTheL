@@ -16,6 +16,7 @@
 
 @property int origin;
 @property int destination;
+@property int timeRemaining;
 @property (strong, nonatomic) NSArray *durations;
 @property (strong, nonatomic) NSDate *arrivalTime;
 @property (strong, nonatomic) UIButton *originButton;
@@ -29,12 +30,27 @@
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) Trip *trip;
 
-@property int timeRemaining;
-
 // STATES
 @property BOOL hasStarted;
 @property BOOL isPaused;
 @property BOOL isFinished;
 @property BOOL stationsAreChosen;
+
+- (void) calculateTime;
+- (void) startClock;
+- (void) setAlarm;
+- (void) updateClock;
+- (void) spinWithTitle:(NSString *)aTitle subtext:(NSString *)aSubtext titleFont:(UIFont *)aTitleFont backgroundColor:(UIColor *)aBackgroundColor;
+- (void) handleFlipFrom:(UIPanGestureRecognizer *)recognizer;
+- (void) pickOrigin;
+- (void) pickDestination;
+- (void) swap;
+- (void) pause;
+- (void) resume;
+- (void) endTrip;
+- (void) cancel;
+
+
+
 
 @end
