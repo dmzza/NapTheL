@@ -353,28 +353,26 @@
         if(self.trip.destination == nil) { // no destination chosen yet
             [self pickDestination];
         } else { // destination chosen
-            [self.navigationController popToRootViewControllerAnimated:NO];
+            [self.navigationController popToRootViewControllerAnimated:YES];
             if(self.hasStarted && self.stationsAreChosen) { // and trip is already in progress
                 [self endTrip];
             } else {
                 self.stationsAreChosen = YES;
-                [self calculateTime];
             }
         }
     } else { // is destination
         self.trip.destination = stop;
         [self.destinationButton setTitle:[NSString stringWithFormat:@"%@", stop] forState:UIControlStateNormal];
-        if(self.trip.origin != nil) {
+        if(self.trip.origin != nil) { // origin chosen
             self.stationsAreChosen = YES;
             if(self.hasStarted && !self.isFinished) { // trip is in progress
                 [[UIApplication sharedApplication] cancelAllLocalNotifications];
                 [self.timer invalidate];
                 self.timer = nil;
-                [self calculateTime];
             }
         }
     }
-    if(self.trip.origin != nil && self.trip.destination != nil) {
+    if(self.stationsAreChosen) {
         [self calculateTime];
     }
 }
@@ -408,13 +406,16 @@
     int dest = self.destination, orig = self.origin;
     
     if (self.origin < self.destination) { // eastbound
+        NSLog(@"  eastbound:");
         for (i = orig + 1; i <= dest - 1; i++) {
             NSNumber *arrival = self.durations[i][@"eastBoundArrival"];
             NSNumber *doors = self.durations[i][@"eastBoundDoors"];
             self.timeRemaining += arrival.intValue + doors.intValue;
+            NSLog([NSString stringWithFormat:@"%@ : %d + %d", self.durations[i][@"name"], arrival.intValue, doors.intValue]);
         }
         NSNumber *arrival = self.durations[dest][@"eastBoundArrival"];
         self.timeRemaining += arrival.intValue;
+        NSLog([NSString stringWithFormat:@"%@ : %d = %d", self.durations[dest][@"name"], arrival.intValue, self.timeRemaining]);
     } else { // westbound
         for (i = orig - 1; i >= dest + 1; i--) {
             NSNumber *arrival = self.durations[i][@"westBoundArrival"];
@@ -447,7 +448,6 @@
     self.startButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     // SUBTEXT
-    //[self spinWithTitle:[NSString stringWithFormat:@"%d", (int)(self.arrivalTime.timeIntervalSinceNow / 60.0)] subtext:@"minutes"];
     [self spinWithTitle:@"O" subtext:@"pause" titleFont:[UIFont fontWithName:@"Sosa-Regular" size:100.0] backgroundColor:[UIColor darkBlueGrayColor]];
     
     [self.swapButton setTitle:@"ã" forState:UIControlStateNormal];
@@ -459,7 +459,10 @@
     if(!self.stationsAreChosen) {
         [self.tripProgress setProgress:0.95 animated:NO];
         [self.tripProgress setIndeterminate:1];
-        [self pickOrigin];
+        if(self.trip.origin != nil)
+            [self pickDestination];
+        else
+            [self pickOrigin];
     } else {
         [self setAlarm];
     }
@@ -484,16 +487,10 @@
 
 - (void) updateClock {
     int seconds = (int)self.arrivalTime.timeIntervalSinceNow;
-    //int minutes = (seconds / 60);
     float progress = (self.arrivalTime.timeIntervalSinceNow / (float)self.trip.duration);
     
     [self.tripProgress setProgress:progress animated:YES];
-//    if(minutes >= 2) {
-//        self.subtextLabel.text = [NSString stringWithFormat:@"%f", self.arrivalTime.timeIntervalSinceNow];
-//    } else if (seconds > 0) {
-//        self.view.backgroundColor = [UIColor arrivingSoonColor];
-//        self.subtextLabel.text = @"arriving soon";
-//    } else {
+    //self.subtextLabel.text = [NSString stringWithFormat:@"%f", self.arrivalTime.timeIntervalSinceNow];
     if (seconds <= 0) {
         self.isFinished = YES;
         [self.tripProgress setProgress:0 animated:YES];
@@ -506,17 +503,6 @@
         [self.timer invalidate];
     }
     
-}
-
-- (void) spin {
-    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
-    rotationAnimation.duration = 0.5;
-    rotationAnimation.cumulative = YES;
-    rotationAnimation.repeatCount = 1.0;
-    rotationAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    
-    [self.clockView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
 }
 
 - (void) spinWithTitle:(NSString *)aTitle subtext:(NSString *)aSubtext titleFont:(UIFont *)aTitleFont backgroundColor:(UIColor *)aBackgroundColor {
@@ -566,7 +552,8 @@
 }
 
 - (void) pickOrigin {
-    if(!self.hasStarted || !self.stationsAreChosen) {
+    if(self.isFinished) [self endTrip];
+    if(!self.hasStarted || self.isFinished || !self.stationsAreChosen) {
         OriginTableViewController *originTableViewController = [[OriginTableViewController alloc] initWithStyle:UITableViewStylePlain];
         originTableViewController.delegate = self;
     
@@ -575,6 +562,7 @@
 }
 
 - (void) pickDestination {
+    if(self.isFinished) [self endTrip];
     DestinationTableViewController *destinationTableViewController = [[DestinationTableViewController alloc] initWithStyle:UITableViewStylePlain origin:self.trip.origin];
     destinationTableViewController.delegate = self;
     [self.navigationController pushViewController:destinationTableViewController animated:YES];
@@ -662,7 +650,7 @@
 {
     [super viewWillAppear:animated];
     if(self.hasStarted && !self.stationsAreChosen) {
-        [self.tripProgress setIndeterminate:1];
+        [self.tripProgress setIndeterminate:1]; //I wonder if this ever causes the layout bug
     }
 }
 
