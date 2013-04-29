@@ -46,7 +46,8 @@
                            @"6 Av", @"name",
                            [NSNumber numberWithInt:60], @"westBoundArrival",
                            [NSNumber numberWithInt:15], @"westBoundDoors",
-                           [NSNumber numberWithInt:58], @"eastBoundArrival",
+                           //[NSNumber numberWithInt:58], @"eastBoundArrival",
+                           [NSNumber numberWithInt:8], @"eastBoundArrival",
                            [NSNumber numberWithInt:15], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -133,7 +134,76 @@
                            [NSNumber numberWithInt:71], @"eastBoundArrival",
                            [NSNumber numberWithInt:15], @"eastBoundDoors", nil
                            ],
-                          
+                          [[NSDictionary alloc] initWithObjectsAndKeys:
+                           @"Halsey St", @"name",
+                           [NSNumber numberWithInt:87], @"westBoundArrival",
+                           [NSNumber numberWithInt:13], @"westBoundDoors",
+                           [NSNumber numberWithInt:68], @"eastBoundArrival",
+                           [NSNumber numberWithInt:13], @"eastBoundDoors", nil
+                           ],
+                          [[NSDictionary alloc] initWithObjectsAndKeys:
+                           @"Wilson Av", @"name",
+                           [NSNumber numberWithInt:66], @"westBoundArrival",
+                           [NSNumber numberWithInt:13], @"westBoundDoors",
+                           [NSNumber numberWithInt:87], @"eastBoundArrival",
+                           [NSNumber numberWithInt:13], @"eastBoundDoors", nil
+                           ],
+                          [[NSDictionary alloc] initWithObjectsAndKeys:
+                           @"Bushwick Av", @"name",
+                           [NSNumber numberWithInt:57], @"westBoundArrival",
+                           [NSNumber numberWithInt:13], @"westBoundDoors",
+                           [NSNumber numberWithInt:66], @"eastBoundArrival",
+                           [NSNumber numberWithInt:13], @"eastBoundDoors", nil
+                           ],
+                          [[NSDictionary alloc] initWithObjectsAndKeys:
+                           @"Broadway Junction", @"name",
+                           [NSNumber numberWithInt:66], @"westBoundArrival",
+                           [NSNumber numberWithInt:15], @"westBoundDoors",
+                           [NSNumber numberWithInt:55], @"eastBoundArrival",
+                           [NSNumber numberWithInt:15], @"eastBoundDoors", nil
+                           ],
+                          [[NSDictionary alloc] initWithObjectsAndKeys:
+                           @"Atlantic Av", @"name",
+                           [NSNumber numberWithInt:76], @"westBoundArrival",
+                           [NSNumber numberWithInt:13], @"westBoundDoors",
+                           [NSNumber numberWithInt:49], @"eastBoundArrival",
+                           [NSNumber numberWithInt:13], @"eastBoundDoors", nil
+                           ],
+                          [[NSDictionary alloc] initWithObjectsAndKeys:
+                           @"Sutter Av", @"name",
+                           [NSNumber numberWithInt:63], @"westBoundArrival",
+                           [NSNumber numberWithInt:13], @"westBoundDoors",
+                           [NSNumber numberWithInt:77], @"eastBoundArrival",
+                           [NSNumber numberWithInt:13], @"eastBoundDoors", nil
+                           ],
+                          [[NSDictionary alloc] initWithObjectsAndKeys:
+                           @"Livonia Av", @"name",
+                           [NSNumber numberWithInt:63], @"westBoundArrival",
+                           [NSNumber numberWithInt:13], @"westBoundDoors",
+                           [NSNumber numberWithInt:63], @"eastBoundArrival",
+                           [NSNumber numberWithInt:13], @"eastBoundDoors", nil
+                           ],
+                          [[NSDictionary alloc] initWithObjectsAndKeys:
+                           @"New Lots Av", @"name",
+                           [NSNumber numberWithInt:83], @"westBoundArrival",
+                           [NSNumber numberWithInt:15], @"westBoundDoors",
+                           [NSNumber numberWithInt:60], @"eastBoundArrival",
+                           [NSNumber numberWithInt:15], @"eastBoundDoors", nil
+                           ],
+                          [[NSDictionary alloc] initWithObjectsAndKeys:
+                           @"E 105 St", @"name",
+                           [NSNumber numberWithInt:76], @"westBoundArrival",
+                           [NSNumber numberWithInt:15], @"westBoundDoors",
+                           [NSNumber numberWithInt:77], @"eastBoundArrival",
+                           [NSNumber numberWithInt:15], @"eastBoundDoors", nil
+                           ],
+                          [[NSDictionary alloc] initWithObjectsAndKeys:
+                           @"Rockaway Parkway", @"name",
+                           [NSNumber numberWithInt:0], @"westBoundArrival",
+                           [NSNumber numberWithInt:0], @"westBoundDoors",
+                           [NSNumber numberWithInt:86], @"eastBoundArrival",
+                           [NSNumber numberWithInt:0], @"eastBoundDoors", nil
+                           ],
                           nil];
         self.title = @"TUNE OUT";
         self.hasStarted = NO;

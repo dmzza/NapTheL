@@ -28,17 +28,27 @@
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"Williamsburg", @"name",
                                [UIImage imageNamed:@"williamsburg"], @"image",
-                               @[@"Bedford Av", @"Lorimer St"], @"stops",
+                               @[@"Bedford Av", @"Lorimer St", @"Graham Av", @"Grand St", @"Montrose Av", @"Morgan Av"], @"stops",
                                nil],
-                              [[NSDictionary alloc] initWithObjectsAndKeys:
-                               @"East Williamsburg", @"name",
-                               [UIImage imageNamed:@"eastwilliamsburg"], @"image",
-                               @[@"Graham Av", @"Grand St", @"Montrose Av", @"Morgan Av"], @"stops",
-                               nil],
+//                              [[NSDictionary alloc] initWithObjectsAndKeys:
+//                               @"East Williamsburg", @"name",
+//                               [UIImage imageNamed:@"eastwilliamsburg"], @"image",
+//                               @[@"Graham Av", @"Grand St", @"Montrose Av", @"Morgan Av"], @"stops",
+//                               nil],
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"Bushwick", @"name",
                                [UIImage imageNamed:@"bushwick"], @"image",
-                               @[@"Jefferson St", @"DeKalb Av", @"Myrtle-Wyckoff Avs"], @"stops",
+                               @[@"Jefferson St", @"DeKalb Av", @"Myrtle-Wyckoff Avs", @"Halsey St", @"Wilson Av", @"Bushwich Av"], @"stops",
+                               nil],
+                              [[NSDictionary alloc] initWithObjectsAndKeys:
+                               @"East New York", @"name",
+                               [UIImage imageNamed:@"bushwick"], @"image",
+                               @[@"Broadway Junction", @"Atlantic Av", @"Sutter Av", @"Livonia Av"], @"stops",
+                               nil],
+                              [[NSDictionary alloc] initWithObjectsAndKeys:
+                               @"Canarsie", @"name",
+                               [UIImage imageNamed:@"bushwick"], @"image",
+                               @[@"New Lots Av", @"E 105 St", @"Rockaway Parkway"], @"stops",
                                nil],
                               nil];
     }
@@ -108,7 +118,7 @@
     }
     
     cell.textLabel.text = stops[indexPath.row];
-    cell.textLabel.font = [UIFont fontWithName:@"Avenir-Book" size:14.0];
+    cell.textLabel.font = [UIFont fontWithName:@"Avenir-Book" size:15.0];
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.contentView.backgroundColor = [UIColor colorWithHue:0.6472 saturation:0.36 brightness:0.18 alpha:1.0];
