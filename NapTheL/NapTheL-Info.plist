@@ -14,8 +14,11 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>napTheL.png</string>
 				<string>drifter@2x.png</string>
+				<string>drifter@2x.png</string>
+				<string>drifter.png</string>
+				<string>drifter.png</string>
+				<string>drifter.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
@@ -68,7 +71,7 @@
 				<key>Green</key>
 				<real>0.1861787067882287</real>
 				<key>Red</key>
-				<real>0.5360721660627601</real>
+				<real>0.53607216606276009</real>
 			</dict>
 			<key>Translucent</key>
 			<false/>

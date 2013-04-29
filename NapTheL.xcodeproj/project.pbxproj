@@ -41,9 +41,6 @@
 		6336F22F170BB05700E67CA9 /* subwayAlarm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6336F22E170BB05700E67CA9 /* subwayAlarm.m4a */; };
 		6336F233170BB49F00E67CA9 /* napTheL.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F231170BB49F00E67CA9 /* napTheL.png */; };
 		6336F234170BB49F00E67CA9 /* napTheL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F232170BB49F00E67CA9 /* napTheL@2x.png */; };
-		6336F236170BB4E900E67CA9 /* napTheL.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F235170BB4E900E67CA9 /* napTheL.png */; };
-		6336F238170BB4F000E67CA9 /* napTheL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F237170BB4F000E67CA9 /* napTheL@2x.png */; };
-		63649E241724F59B0034BA35 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E231724F59B0034BA35 /* HomeViewController.m */; };
 		63649E261724F7310034BA35 /* vintage_L_train.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63649E251724F7310034BA35 /* vintage_L_train.jpg */; };
 		63649E29172507F90034BA35 /* IPInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E28172507F90034BA35 /* IPInsetLabel.m */; };
 		63649E2C172658590034BA35 /* UIImage+withColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E2B172658590034BA35 /* UIImage+withColor.m */; };
@@ -55,10 +52,9 @@
 		636D22E7171FCADD006F280B /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E6171FCADD006F280B /* Quicksand-Regular.ttf */; };
 		636D22EA17207422006F280B /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 636D22E917207422006F280B /* UIColor+CustomColors.m */; };
 		63E16BD2172C635900BDA497 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E16BD1172C635900BDA497 /* AudioToolbox.framework */; };
+		63E16BD4172C8B3D00BDA497 /* drifter.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E16BD3172C8B3D00BDA497 /* drifter.png */; };
 		63F524C41710DA2E00215CBE /* drifter.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524C21710DA2E00215CBE /* drifter.png */; };
-		63F524C71710DA5D00215CBE /* drifter.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524C61710DA5D00215CBE /* drifter.png */; };
 		63F524C9171100EC00215CBE /* drift.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524C8171100EC00215CBE /* drift.png */; };
-		63F524CB171100F600215CBE /* drift.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524CA171100F600215CBE /* drift.png */; };
 		63F524D217111A0500215CBE /* manhattan.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524D017111A0500215CBE /* manhattan.png */; };
 		63F524D317111A0500215CBE /* manhattan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524D117111A0500215CBE /* manhattan@2x.png */; };
 		63F524D617111D6400215CBE /* eastwilliamsburg.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524D417111D6400215CBE /* eastwilliamsburg.png */; };
@@ -123,10 +119,6 @@
 		6336F22E170BB05700E67CA9 /* subwayAlarm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = subwayAlarm.m4a; sourceTree = "<group>"; };
 		6336F231170BB49F00E67CA9 /* napTheL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = napTheL.png; sourceTree = "<group>"; };
 		6336F232170BB49F00E67CA9 /* napTheL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "napTheL@2x.png"; sourceTree = "<group>"; };
-		6336F235170BB4E900E67CA9 /* napTheL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = napTheL.png; sourceTree = "<group>"; };
-		6336F237170BB4F000E67CA9 /* napTheL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "napTheL@2x.png"; sourceTree = "<group>"; };
-		63649E221724F59B0034BA35 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		63649E231724F59B0034BA35 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		63649E251724F7310034BA35 /* vintage_L_train.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vintage_L_train.jpg; sourceTree = "<group>"; };
 		63649E27172507F90034BA35 /* IPInsetLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPInsetLabel.h; sourceTree = "<group>"; };
 		63649E28172507F90034BA35 /* IPInsetLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPInsetLabel.m; sourceTree = "<group>"; };
@@ -142,10 +134,9 @@
 		636D22E817207422006F280B /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
 		636D22E917207422006F280B /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
 		63E16BD1172C635900BDA497 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		63E16BD3172C8B3D00BDA497 /* drifter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drifter.png; sourceTree = "<group>"; };
 		63F524C21710DA2E00215CBE /* drifter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = drifter.png; path = ../../../Documents/drifter.png; sourceTree = "<group>"; };
-		63F524C61710DA5D00215CBE /* drifter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drifter.png; sourceTree = "<group>"; };
 		63F524C8171100EC00215CBE /* drift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = drift.png; path = ../../../Documents/drift.png; sourceTree = "<group>"; };
-		63F524CA171100F600215CBE /* drift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drift.png; sourceTree = "<group>"; };
 		63F524D017111A0500215CBE /* manhattan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manhattan.png; sourceTree = "<group>"; };
 		63F524D117111A0500215CBE /* manhattan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "manhattan@2x.png"; sourceTree = "<group>"; };
 		63F524D417111D6400215CBE /* eastwilliamsburg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eastwilliamsburg.png; sourceTree = "<group>"; };
@@ -196,13 +187,8 @@
 		6336F1DD170B5FBE00E67CA9 = {
 			isa = PBXGroup;
 			children = (
-				63E16BD1172C635900BDA497 /* AudioToolbox.framework */,
-				6303E24617167E9500028F17 /* QuartzCore.framework */,
 				6303E2401715375600028F17 /* drifter@2x.png */,
-				63F524CA171100F600215CBE /* drift.png */,
-				63F524C61710DA5D00215CBE /* drifter.png */,
-				6336F237170BB4F000E67CA9 /* napTheL@2x.png */,
-				6336F235170BB4E900E67CA9 /* napTheL.png */,
+				63E16BD3172C8B3D00BDA497 /* drifter.png */,
 				6336F1F1170B5FBE00E67CA9 /* NapTheL */,
 				6336F213170B5FBF00E67CA9 /* NapTheLTests */,
 				6336F1E8170B5FBE00E67CA9 /* Frameworks */,
@@ -222,6 +208,8 @@
 		6336F1E8170B5FBE00E67CA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63E16BD1172C635900BDA497 /* AudioToolbox.framework */,
+				6303E24617167E9500028F17 /* QuartzCore.framework */,
 				6336F1E9170B5FBE00E67CA9 /* UIKit.framework */,
 				6336F1EB170B5FBE00E67CA9 /* Foundation.framework */,
 				6336F1ED170B5FBE00E67CA9 /* CoreGraphics.framework */,
@@ -254,8 +242,6 @@
 				632CD7D9171F2ED80030E8B9 /* Trip.m */,
 				636D22E817207422006F280B /* UIColor+CustomColors.h */,
 				636D22E917207422006F280B /* UIColor+CustomColors.m */,
-				63649E221724F59B0034BA35 /* HomeViewController.h */,
-				63649E231724F59B0034BA35 /* HomeViewController.m */,
 				63649E27172507F90034BA35 /* IPInsetLabel.h */,
 				63649E28172507F90034BA35 /* IPInsetLabel.m */,
 				63649E2A172658590034BA35 /* UIImage+withColor.h */,
@@ -425,14 +411,10 @@
 				6336F22F170BB05700E67CA9 /* subwayAlarm.m4a in Resources */,
 				6336F233170BB49F00E67CA9 /* napTheL.png in Resources */,
 				6336F234170BB49F00E67CA9 /* napTheL@2x.png in Resources */,
-				6336F236170BB4E900E67CA9 /* napTheL.png in Resources */,
-				6336F238170BB4F000E67CA9 /* napTheL@2x.png in Resources */,
 				6313C760170F5BD80069F480 /* williamsburg.jpg in Resources */,
 				6313C761170F5BD80069F480 /* manhattan.jpg in Resources */,
 				63F524C41710DA2E00215CBE /* drifter.png in Resources */,
-				63F524C71710DA5D00215CBE /* drifter.png in Resources */,
 				63F524C9171100EC00215CBE /* drift.png in Resources */,
-				63F524CB171100F600215CBE /* drift.png in Resources */,
 				63F524D217111A0500215CBE /* manhattan.png in Resources */,
 				63F524D317111A0500215CBE /* manhattan@2x.png in Resources */,
 				63F524D617111D6400215CBE /* eastwilliamsburg.png in Resources */,
@@ -454,6 +436,7 @@
 				63649E261724F7310034BA35 /* vintage_L_train.jpg in Resources */,
 				63649E2E17276F100034BA35 /* Quicksand-Bold.ttf in Resources */,
 				63649E36172A37BE0034BA35 /* TripViewController.xib in Resources */,
+				63E16BD4172C8B3D00BDA497 /* drifter.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,7 +480,6 @@
 				63F524E21711F79E00215CBE /* StopTableViewController.m in Sources */,
 				632CD7DA171F2ED80030E8B9 /* Trip.m in Sources */,
 				636D22EA17207422006F280B /* UIColor+CustomColors.m in Sources */,
-				63649E241724F59B0034BA35 /* HomeViewController.m in Sources */,
 				63649E29172507F90034BA35 /* IPInsetLabel.m in Sources */,
 				63649E2C172658590034BA35 /* UIImage+withColor.m in Sources */,
 				63649E321728EF8A0034BA35 /* DACircularProgressView.m in Sources */,
