@@ -438,6 +438,13 @@
 }
 
 - (void) startClock {
+    
+    UIPasteboard *pb = [UIPasteboard generalPasteboard];
+    [pb setString:@"Hello from Tune Out!"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"pastebot://"]];
+    
+    
+    
     self.trip.departureTime = [NSDate dateWithTimeIntervalSinceNow:0];
     
     // START
