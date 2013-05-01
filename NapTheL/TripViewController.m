@@ -46,8 +46,8 @@
                            @"6 Av", @"name",
                            [NSNumber numberWithInt:60], @"westBoundArrival",
                            [NSNumber numberWithInt:15], @"westBoundDoors",
-                           //[NSNumber numberWithInt:58], @"eastBoundArrival",
-                           [NSNumber numberWithInt:8], @"eastBoundArrival",
+                           [NSNumber numberWithInt:58], @"eastBoundArrival",
+                           //[NSNumber numberWithInt:8], @"eastBoundArrival",
                            [NSNumber numberWithInt:15], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -220,7 +220,7 @@
 {
     [super viewDidLoad];
     
-    
+    // NAV BAR
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0.95 green:0.37 blue:0.3 alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
     
     UIImage *backButtonBackground = [UIImage imageWithColor:[UIColor darkerBlueGrayColor]];
@@ -229,15 +229,13 @@
     [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Quicksand-Bold" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
     [[self navigationItem] setBackBarButtonItem:backButton];
     
+    
+    // INIT
     self.originButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 50, 320, 50)];
     self.swapButton = [[UIButton alloc] initWithFrame:CGRectMake(245, 25, 100, 50)];
     self.tripProgress = [[DACircularProgressView alloc] init];
     self.subtextLabel = [[UILabel alloc] init];
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterNoStyle];
-    [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     
     // ORIGIN/DEST/SWAP
     [self.originButton setTitle:[NSString stringWithFormat:@"FROM"] forState:UIControlStateNormal];
@@ -406,16 +404,16 @@
     int dest = self.destination, orig = self.origin;
     
     if (self.origin < self.destination) { // eastbound
-        NSLog(@"  eastbound:");
+        //NSLog(@"  eastbound:");
         for (i = orig + 1; i <= dest - 1; i++) {
             NSNumber *arrival = self.durations[i][@"eastBoundArrival"];
             NSNumber *doors = self.durations[i][@"eastBoundDoors"];
             self.timeRemaining += arrival.intValue + doors.intValue;
-            NSLog([NSString stringWithFormat:@"%@ : %d + %d", self.durations[i][@"name"], arrival.intValue, doors.intValue]);
+            //NSLog([NSString stringWithFormat:@"%@ : %d + %d", self.durations[i][@"name"], arrival.intValue, doors.intValue]);
         }
         NSNumber *arrival = self.durations[dest][@"eastBoundArrival"];
         self.timeRemaining += arrival.intValue;
-        NSLog([NSString stringWithFormat:@"%@ : %d = %d", self.durations[dest][@"name"], arrival.intValue, self.timeRemaining]);
+        //NSLog([NSString stringWithFormat:@"%@ : %d = %d", self.durations[dest][@"name"], arrival.intValue, self.timeRemaining]);
     } else { // westbound
         for (i = orig - 1; i >= dest + 1; i--) {
             NSNumber *arrival = self.durations[i][@"westBoundArrival"];
@@ -474,10 +472,11 @@
         [self.tripProgress setIndeterminate:0];
     }
     self.arrivalTime = [NSDate dateWithTimeIntervalSinceNow:self.timeRemaining];
+    NSDate *earlyAlarmTime = [NSDate dateWithTimeIntervalSinceNow:(self.timeRemaining - 15)];
     UILocalNotification *arrivalAlarm = [[UILocalNotification alloc] init];
     
     // ARRIVAL ALARM
-    arrivalAlarm.fireDate = self.arrivalTime;
+    arrivalAlarm.fireDate = earlyAlarmTime;
     arrivalAlarm.alertBody = [NSString stringWithFormat:@"%@ is coming soon.", self.durations[(int)self.destination][@"name"]];
     arrivalAlarm.alertAction = @"Tune In";
     arrivalAlarm.soundName = @"subwayAlarm.m4a";
@@ -542,8 +541,18 @@
         if (translation.x > 50.0 || translation.x < -50.0) {
             self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(M_PI_2 * 0.5, 0, 1, 0), 1.0, 1.0, 1.0);
             NSArray *actions = [self.startButton actionsForTarget:self forControlEvent:UIControlEventTouchUpInside];
-            SEL action = NSSelectorFromString(actions[0]);
-            [self performSelector:action];
+            //SEL action = NSSelectorFromString(actions[0]);
+            //[self performSelector:action];
+            // In the interest of avoiding a potential memory leak, I'll do this manually for now
+            if([actions[0] isEqual: @"startClock"])
+                [self startClock];
+            else if ([actions[0] isEqual: @"pause"])
+                [self pause];
+            else if ([actions[0] isEqual: @"resume"])
+                [self resume];
+            else if ([actions[0] isEqual: @"endTrip"])
+                [self endTrip];
+            
         } else {
             self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(0, 0, 1, 0), 1.0, 1.0, 1.0);
         }
