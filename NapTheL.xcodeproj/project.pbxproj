@@ -40,6 +40,7 @@
 		6336F22F170BB05700E67CA9 /* subwayAlarm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6336F22E170BB05700E67CA9 /* subwayAlarm.m4a */; };
 		6336F233170BB49F00E67CA9 /* napTheL.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F231170BB49F00E67CA9 /* napTheL.png */; };
 		6336F234170BB49F00E67CA9 /* napTheL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F232170BB49F00E67CA9 /* napTheL@2x.png */; };
+		634FED511731BA6A00AF3854 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634FED501731BA6A00AF3854 /* MessageUI.framework */; };
 		63649E261724F7310034BA35 /* vintage_L_train.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63649E251724F7310034BA35 /* vintage_L_train.jpg */; };
 		63649E29172507F90034BA35 /* IPInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E28172507F90034BA35 /* IPInsetLabel.m */; };
 		63649E2C172658590034BA35 /* UIImage+withColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E2B172658590034BA35 /* UIImage+withColor.m */; };
@@ -115,6 +116,7 @@
 		6336F22E170BB05700E67CA9 /* subwayAlarm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = subwayAlarm.m4a; sourceTree = "<group>"; };
 		6336F231170BB49F00E67CA9 /* napTheL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = napTheL.png; sourceTree = "<group>"; };
 		6336F232170BB49F00E67CA9 /* napTheL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "napTheL@2x.png"; sourceTree = "<group>"; };
+		634FED501731BA6A00AF3854 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		63649E251724F7310034BA35 /* vintage_L_train.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vintage_L_train.jpg; sourceTree = "<group>"; };
 		63649E27172507F90034BA35 /* IPInsetLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPInsetLabel.h; sourceTree = "<group>"; };
 		63649E28172507F90034BA35 /* IPInsetLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPInsetLabel.m; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				634FED511731BA6A00AF3854 /* MessageUI.framework in Frameworks */,
 				63E16BD2172C635900BDA497 /* AudioToolbox.framework in Frameworks */,
 				6303E24717167E9500028F17 /* QuartzCore.framework in Frameworks */,
 				6336F1EA170B5FBE00E67CA9 /* UIKit.framework in Frameworks */,
@@ -181,6 +184,7 @@
 		6336F1DD170B5FBE00E67CA9 = {
 			isa = PBXGroup;
 			children = (
+				634FED501731BA6A00AF3854 /* MessageUI.framework */,
 				6303E2401715375600028F17 /* drifter@2x.png */,
 				63E16BD3172C8B3D00BDA497 /* drifter.png */,
 				6336F1F1170B5FBE00E67CA9 /* NapTheL */,

@@ -322,6 +322,11 @@
     NSArray *subtextVerticalLayoutConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[subtextLabel]-20-|" options:0 metrics:nil views:viewDictionary];
     NSArray *subtextHorizontalLayoutConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[subtextLabel]|" options:0 metrics:nil views:viewDictionary];
     
+    // MAIL
+    self.mailButton.hidden = YES;
+    self.mailButton.titleLabel.font = [UIFont fontWithName:@"linecons" size:28.0];
+    [self.mailButton addTarget:self action:@selector(mail) forControlEvents:UIControlEventTouchDown];
+    
     // SELF
     self.view.backgroundColor = [UIColor darkBlueGrayColor];
     
@@ -438,13 +443,6 @@
 }
 
 - (void) startClock {
-    
-    UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    [pb setString:@"Hello from Tune Out!"];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"pastebot://"]];
-    
-    
-    
     self.trip.departureTime = [NSDate dateWithTimeIntervalSinceNow:0];
     
     // START
@@ -498,17 +496,38 @@
     [self.tripProgress setProgress:progress animated:YES];
     //self.subtextLabel.text = [NSString stringWithFormat:@"%f", self.arrivalTime.timeIntervalSinceNow];
     if (seconds <= 0) {
-        self.isFinished = YES;
-        [self.tripProgress setProgress:0 animated:YES];
-        [self spinWithTitle:@"" subtext:@"end trip" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor darkAquaColor]];
-        [self.startButton removeTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
-        [self.startButton addTarget:self action:@selector(endTrip) forControlEvents:UIControlEventTouchUpInside];
-        [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
-        [self.swapButton removeTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
-        [self.swapButton addTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
-        [self.timer invalidate];
+        [self finishClock];
     }
     
+}
+
+- (void) finishClock {
+    self.isFinished = YES;
+    [self.tripProgress setProgress:0 animated:YES];
+    [self spinWithTitle:@"" subtext:@"end trip" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor darkAquaColor]];
+    [self.startButton removeTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
+    [self.startButton addTarget:self action:@selector(endTrip) forControlEvents:UIControlEventTouchUpInside];
+    [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
+    [self.swapButton removeTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    [self.swapButton addTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    if ([MFMailComposeViewController canSendMail]) {
+        [self showMailButton];
+    }
+    [self.timer invalidate];
+}
+
+- (void) showMailButton {
+    self.mailButton.layer.transform = CATransform3DMakeAffineTransform(CGAffineTransformMakeTranslation(0, 100));
+    [self.mailButton setHidden:NO];
+    [self.mailButton setTitle:@"" forState:UIControlStateNormal];
+    self.mailButton.titleLabel.font = [UIFont fontWithName:@"linecons" size:28];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.mailButton.layer.transform = CATransform3DMakeAffineTransform(CGAffineTransformMakeTranslation(0, -15));
+    }completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.mailButton.layer.transform = CATransform3DMakeAffineTransform(CGAffineTransformMakeTranslation(0, 0));
+        }];
+    }];
 }
 
 - (void) spinWithTitle:(NSString *)aTitle subtext:(NSString *)aSubtext titleFont:(UIFont *)aTitleFont backgroundColor:(UIColor *)aBackgroundColor {
@@ -629,6 +648,7 @@
     [self spinWithTitle:@"" subtext:@"start" titleFont:[UIFont fontWithName:@"Linecons" size:90.0] backgroundColor:[UIColor darkBlueGrayColor]];
     [self.startButton removeTarget:self action:@selector(endTrip) forControlEvents:UIControlEventTouchUpInside];
     [self.startButton addTarget:self action:@selector(startClock) forControlEvents:UIControlEventTouchUpInside];
+    [self.mailButton setHidden:YES];
     
     self.trip.departureTime = nil;
     self.trip.duration = 0;
@@ -660,6 +680,31 @@
     [self.swapButton removeTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self.swapButton addTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self endTrip];
+}
+
+- (void) mail {
+    MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+    controller.mailComposeDelegate = self;
+    [controller.navigationBar setTintColor:[UIColor colorWithRed:0.85 green:0.27 blue:0.2 alpha:1.0]];
+    [controller setToRecipients:@[@"david@tuneoutapp.com"]];
+    [controller setSubject:@"Dear Sir"];
+    [controller setMessageBody:[NSString stringWithFormat:@"Would you believe that I was aboard the L train from %@ to %@ and this app: \n\n\n [  ] Was about    seconds late \n\n [  ] Didn't ring at all \n\n [  ] Other Bug/Comment/Suggestion: \n\n\n\n\n", self.trip.origin, self.trip.destination] isHTML:NO];
+    if (controller) [self presentViewController:controller animated:YES completion:^{
+        
+    }];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error;
+{
+    if (result == MFMailComposeResultSent) {
+        [self.mailButton setTitle:@"THANKS" forState:UIControlStateNormal];
+        self.mailButton.titleLabel.font = [UIFont fontWithName:@"Quicksand-Regular" size:12];
+    }
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
