@@ -721,7 +721,7 @@
     [controller.navigationBar setTintColor:[UIColor colorWithRed:0.85 green:0.27 blue:0.2 alpha:1.0]];
     [controller setToRecipients:@[@"david@tuneoutapp.com"]];
     [controller setSubject:@"Dear Sir"];
-    [controller setMessageBody:[NSString stringWithFormat:@"Would you believe that I was aboard the L train from %@ to %@ and this app: \n\n\n [  ] Was about    seconds late \n\n [  ] Didn't ring at all \n\n [  ] Other Bug/Comment/Suggestion: \n\n\n\n\n", self.trip.origin, self.trip.destination] isHTML:NO];
+    [controller setMessageBody:[NSString stringWithFormat:@"I was aboard the L train from %@ to %@ and this app: \n\n\n [  ] Was about    seconds late \n\n [  ] Didn't ring at all \n\n [  ] Other Bug/Comment/Suggestion: \n\n\n\n\n", self.trip.origin, self.trip.destination] isHTML:NO];
     if (controller) [self presentViewController:controller animated:YES completion:^{
         
     }];
