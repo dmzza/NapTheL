@@ -12,8 +12,9 @@
 #import "StopTableViewController.h"
 #import "Trip.h"
 #import "DACircularProgressView.h"
+#import "GAITrackedViewController.h"
 
-@interface TripViewController : UIViewController <StopTableViewControllerDelegate, MFMailComposeViewControllerDelegate>
+@interface TripViewController : GAITrackedViewController <StopTableViewControllerDelegate, MFMailComposeViewControllerDelegate>
 
 @property int origin;
 @property int destination;

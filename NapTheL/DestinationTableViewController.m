@@ -35,7 +35,12 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor darkBlueGrayColor]] forBarMetrics:UIBarMetricsDefault];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    // manual screen tracking
+    [tracker sendView:@"Destination Screen"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

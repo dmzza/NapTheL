@@ -11,6 +11,9 @@
 		6303E2441716066800028F17 /* startClock.png in Resources */ = {isa = PBXBuildFile; fileRef = 6303E2421716066800028F17 /* startClock.png */; };
 		6303E2451716066800028F17 /* startClock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6303E2431716066800028F17 /* startClock@2x.png */; };
 		6303E24717167E9500028F17 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6303E24617167E9500028F17 /* QuartzCore.framework */; };
+		630595351732DA4E003410A9 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 630595331732DA4E003410A9 /* libGoogleAnalytics.a */; };
+		630595361732DA4E003410A9 /* libGoogleAnalytics_debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 630595341732DA4E003410A9 /* libGoogleAnalytics_debug.a */; };
+		630595381732DAAB003410A9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 630595371732DAAB003410A9 /* SystemConfiguration.framework */; };
 		6313C760170F5BD80069F480 /* williamsburg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6313C75E170F5BD80069F480 /* williamsburg.jpg */; };
 		6313C761170F5BD80069F480 /* manhattan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6313C75F170F5BD80069F480 /* manhattan.jpg */; };
 		632CD7D6171F1FCD0030E8B9 /* glyphicons_053_alarm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 632CD7D4171F1FCD0030E8B9 /* glyphicons_053_alarm@2x.png */; };
@@ -79,6 +82,14 @@
 		6303E2421716066800028F17 /* startClock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startClock.png; sourceTree = "<group>"; };
 		6303E2431716066800028F17 /* startClock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startClock@2x.png"; sourceTree = "<group>"; };
 		6303E24617167E9500028F17 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6305952E1732DA4E003410A9 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		6305952F1732DA4E003410A9 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		630595301732DA4E003410A9 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		630595311732DA4E003410A9 /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
+		630595321732DA4E003410A9 /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
+		630595331732DA4E003410A9 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
+		630595341732DA4E003410A9 /* libGoogleAnalytics_debug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics_debug.a; sourceTree = "<group>"; };
+		630595371732DAAB003410A9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6313C75E170F5BD80069F480 /* williamsburg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = williamsburg.jpg; path = ../../../Downloads/williamsburg.jpg; sourceTree = "<group>"; };
 		6313C75F170F5BD80069F480 /* manhattan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = manhattan.jpg; path = ../../../Downloads/manhattan.jpg; sourceTree = "<group>"; };
 		632CD7D4171F1FCD0030E8B9 /* glyphicons_053_alarm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_053_alarm@2x.png"; sourceTree = "<group>"; };
@@ -150,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				630595381732DAAB003410A9 /* SystemConfiguration.framework in Frameworks */,
 				634FED511731BA6A00AF3854 /* MessageUI.framework in Frameworks */,
 				63E16BD2172C635900BDA497 /* AudioToolbox.framework in Frameworks */,
 				6303E24717167E9500028F17 /* QuartzCore.framework in Frameworks */,
@@ -157,6 +169,8 @@
 				6336F1EC170B5FBE00E67CA9 /* Foundation.framework in Frameworks */,
 				6336F1EE170B5FBE00E67CA9 /* CoreGraphics.framework in Frameworks */,
 				6336F1F0170B5FBE00E67CA9 /* CoreData.framework in Frameworks */,
+				630595351732DA4E003410A9 /* libGoogleAnalytics.a in Frameworks */,
+				630595361732DA4E003410A9 /* libGoogleAnalytics_debug.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +188,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6305952D1732DA4E003410A9 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				6305952E1732DA4E003410A9 /* GAI.h */,
+				6305952F1732DA4E003410A9 /* GAITrackedViewController.h */,
+				630595301732DA4E003410A9 /* GAITracker.h */,
+				630595311732DA4E003410A9 /* GAITransaction.h */,
+				630595321732DA4E003410A9 /* GAITransactionItem.h */,
+				630595331732DA4E003410A9 /* libGoogleAnalytics.a */,
+				630595341732DA4E003410A9 /* libGoogleAnalytics_debug.a */,
+			);
+			name = GoogleAnalytics;
+			path = Library;
+			sourceTree = "<group>";
+		};
 		632CD7DE171F9D760030E8B9 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +213,7 @@
 		6336F1DD170B5FBE00E67CA9 = {
 			isa = PBXGroup;
 			children = (
+				630595371732DAAB003410A9 /* SystemConfiguration.framework */,
 				634FED501731BA6A00AF3854 /* MessageUI.framework */,
 				6303E2401715375600028F17 /* drifter@2x.png */,
 				63E16BD3172C8B3D00BDA497 /* drifter.png */,
@@ -220,6 +250,7 @@
 		6336F1F1170B5FBE00E67CA9 /* NapTheL */ = {
 			isa = PBXGroup;
 			children = (
+				6305952D1732DA4E003410A9 /* GoogleAnalytics */,
 				63649E2F1728EF8A0034BA35 /* DACircularProgress */,
 				632CD7DE171F9D760030E8B9 /* Fonts */,
 				6336F230170BB49200E67CA9 /* Images */,
@@ -578,6 +609,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/NapTheL/Library\"",
+				);
 				PRODUCT_NAME = "Tune Out";
 				WRAPPER_EXTENSION = app;
 			};
@@ -589,6 +624,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/NapTheL/Library\"",
+				);
 				PRODUCT_NAME = "Tune Out";
 				WRAPPER_EXTENSION = app;
 			};

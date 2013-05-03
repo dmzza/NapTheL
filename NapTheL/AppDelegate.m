@@ -11,6 +11,7 @@
 #import "Trip.h"
 #import "UIColor+CustomColors.h"
 #import <AudioToolbox/AudioServices.h>
+#import "GAI.h"
 
 @implementation AppDelegate
 
@@ -42,6 +43,15 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    // Optional: set debug to YES for extra debugging information.
+    [GAI sharedInstance].debug = NO;
+    // Create tracker instance.
+    id<GAITracker> tracker;
+    tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-40632324-1"];
+    
     return YES;
 }
 
