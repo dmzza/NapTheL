@@ -14,9 +14,9 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>tuneout-icon@2x.png</string>
 				<string>drifter@2x.png</string>
-				<string>drifter@2x.png</string>
-				<string>drifter.png</string>
+				<string>tuneout-icon.png</string>
 				<string>drifter.png</string>
 				<string>drifter.png</string>
 			</array>

@@ -33,6 +33,8 @@
 		6305956217338C83003410A9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305956117338C83003410A9 /* Default@2x.png */; };
 		6305956317338D56003410A9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305955D173387E4003410A9 /* Default.png */; };
 		6305956517338DFC003410A9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305956417338DFC003410A9 /* Default-568h@2x.png */; };
+		630595671733B71E003410A9 /* tuneout-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 630595661733B71D003410A9 /* tuneout-icon@2x.png */; };
+		630595691733C958003410A9 /* tuneout-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 630595681733C958003410A9 /* tuneout-icon.png */; };
 		6313C760170F5BD80069F480 /* williamsburg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6313C75E170F5BD80069F480 /* williamsburg.jpg */; };
 		6313C761170F5BD80069F480 /* manhattan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6313C75F170F5BD80069F480 /* manhattan.jpg */; };
 		632CD7DA171F2ED80030E8B9 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 632CD7D9171F2ED80030E8B9 /* Trip.m */; };
@@ -120,6 +122,8 @@
 		6305955D173387E4003410A9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		6305956117338C83003410A9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		6305956417338DFC003410A9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		630595661733B71D003410A9 /* tuneout-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuneout-icon@2x.png"; sourceTree = "<group>"; };
+		630595681733C958003410A9 /* tuneout-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuneout-icon.png"; sourceTree = "<group>"; };
 		6313C75E170F5BD80069F480 /* williamsburg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = williamsburg.jpg; path = ../../../Downloads/williamsburg.jpg; sourceTree = "<group>"; };
 		6313C75F170F5BD80069F480 /* manhattan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = manhattan.jpg; path = ../../../Downloads/manhattan.jpg; sourceTree = "<group>"; };
 		632CD7D8171F2ED80030E8B9 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trip.h; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 		6336F1DD170B5FBE00E67CA9 = {
 			isa = PBXGroup;
 			children = (
+				630595681733C958003410A9 /* tuneout-icon.png */,
+				630595661733B71D003410A9 /* tuneout-icon@2x.png */,
 				6305956417338DFC003410A9 /* Default-568h@2x.png */,
 				6305956117338C83003410A9 /* Default@2x.png */,
 				6305955D173387E4003410A9 /* Default.png */,
@@ -504,6 +510,8 @@
 				6305956217338C83003410A9 /* Default@2x.png in Resources */,
 				6305956317338D56003410A9 /* Default.png in Resources */,
 				6305956517338DFC003410A9 /* Default-568h@2x.png in Resources */,
+				630595671733B71E003410A9 /* tuneout-icon@2x.png in Resources */,
+				630595691733C958003410A9 /* tuneout-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
