@@ -60,7 +60,6 @@
 		6336F233170BB49F00E67CA9 /* napTheL.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F231170BB49F00E67CA9 /* napTheL.png */; };
 		6336F234170BB49F00E67CA9 /* napTheL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F232170BB49F00E67CA9 /* napTheL@2x.png */; };
 		634FED511731BA6A00AF3854 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634FED501731BA6A00AF3854 /* MessageUI.framework */; };
-		63649E29172507F90034BA35 /* IPInsetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E28172507F90034BA35 /* IPInsetLabel.m */; };
 		63649E2C172658590034BA35 /* UIImage+withColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E2B172658590034BA35 /* UIImage+withColor.m */; };
 		63649E2E17276F100034BA35 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63649E2D17276F100034BA35 /* Quicksand-Bold.ttf */; };
 		63649E321728EF8A0034BA35 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E311728EF8A0034BA35 /* DACircularProgressView.m */; };
@@ -157,8 +156,6 @@
 		6336F231170BB49F00E67CA9 /* napTheL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = napTheL.png; sourceTree = "<group>"; };
 		6336F232170BB49F00E67CA9 /* napTheL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "napTheL@2x.png"; sourceTree = "<group>"; };
 		634FED501731BA6A00AF3854 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		63649E27172507F90034BA35 /* IPInsetLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPInsetLabel.h; sourceTree = "<group>"; };
-		63649E28172507F90034BA35 /* IPInsetLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPInsetLabel.m; sourceTree = "<group>"; };
 		63649E2A172658590034BA35 /* UIImage+withColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+withColor.h"; sourceTree = "<group>"; };
 		63649E2B172658590034BA35 /* UIImage+withColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+withColor.m"; sourceTree = "<group>"; };
 		63649E2D17276F100034BA35 /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
@@ -302,8 +299,6 @@
 				632CD7D9171F2ED80030E8B9 /* Trip.m */,
 				636D22E817207422006F280B /* UIColor+CustomColors.h */,
 				636D22E917207422006F280B /* UIColor+CustomColors.m */,
-				63649E27172507F90034BA35 /* IPInsetLabel.h */,
-				63649E28172507F90034BA35 /* IPInsetLabel.m */,
 				63649E2A172658590034BA35 /* UIImage+withColor.h */,
 				63649E2B172658590034BA35 /* UIImage+withColor.m */,
 				63649E35172A37BE0034BA35 /* TripViewController.xib */,
@@ -555,7 +550,6 @@
 				63F524E21711F79E00215CBE /* StopTableViewController.m in Sources */,
 				632CD7DA171F2ED80030E8B9 /* Trip.m in Sources */,
 				636D22EA17207422006F280B /* UIColor+CustomColors.m in Sources */,
-				63649E29172507F90034BA35 /* IPInsetLabel.m in Sources */,
 				63649E2C172658590034BA35 /* UIImage+withColor.m in Sources */,
 				63649E321728EF8A0034BA35 /* DACircularProgressView.m in Sources */,
 			);
