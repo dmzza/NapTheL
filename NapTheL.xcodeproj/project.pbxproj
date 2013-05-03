@@ -14,6 +14,22 @@
 		630595351732DA4E003410A9 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 630595331732DA4E003410A9 /* libGoogleAnalytics.a */; };
 		630595361732DA4E003410A9 /* libGoogleAnalytics_debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 630595341732DA4E003410A9 /* libGoogleAnalytics_debug.a */; };
 		630595381732DAAB003410A9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 630595371732DAAB003410A9 /* SystemConfiguration.framework */; };
+		6305953D17336B9E003410A9 /* canarsie.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305953917336B9E003410A9 /* canarsie.png */; };
+		6305953E17336B9E003410A9 /* canarsie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305953A17336B9E003410A9 /* canarsie@2x.png */; };
+		6305953F17336B9E003410A9 /* eastnewyork.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305953B17336B9E003410A9 /* eastnewyork.png */; };
+		6305954017336B9E003410A9 /* eastnewyork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305953C17336B9E003410A9 /* eastnewyork@2x.png */; };
+		6305954717336F74003410A9 /* bushwick.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305954517336F74003410A9 /* bushwick.png */; };
+		6305954817336F74003410A9 /* bushwick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305954617336F74003410A9 /* bushwick@2x.png */; };
+		6305954A173370CB003410A9 /* bushwickkr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63059549173370CB003410A9 /* bushwickkr@2x.png */; };
+		6305954E17337173003410A9 /* williamsburgkr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305954B17337173003410A9 /* williamsburgkr@2x.png */; };
+		6305954F17337173003410A9 /* eastnewyorkkr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305954C17337173003410A9 /* eastnewyorkkr@2x.png */; };
+		6305955017337173003410A9 /* canarsiekr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305954D17337173003410A9 /* canarsiekr@2x.png */; };
+		6305955717337276003410A9 /* bushwickkr.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305955117337276003410A9 /* bushwickkr.png */; };
+		6305955817337276003410A9 /* canarsiekr.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305955217337276003410A9 /* canarsiekr.png */; };
+		6305955917337276003410A9 /* eastnewyorkkr.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305955317337276003410A9 /* eastnewyorkkr.png */; };
+		6305955A17337276003410A9 /* williamsburgkr.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305955417337276003410A9 /* williamsburgkr.png */; };
+		6305955B17337276003410A9 /* manhattankr.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305955517337276003410A9 /* manhattankr.png */; };
+		6305955C17337276003410A9 /* manhattankr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305955617337276003410A9 /* manhattankr@2x.png */; };
 		6313C760170F5BD80069F480 /* williamsburg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6313C75E170F5BD80069F480 /* williamsburg.jpg */; };
 		6313C761170F5BD80069F480 /* manhattan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6313C75F170F5BD80069F480 /* manhattan.jpg */; };
 		632CD7D6171F1FCD0030E8B9 /* glyphicons_053_alarm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 632CD7D4171F1FCD0030E8B9 /* glyphicons_053_alarm@2x.png */; };
@@ -60,8 +76,6 @@
 		63F524D317111A0500215CBE /* manhattan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524D117111A0500215CBE /* manhattan@2x.png */; };
 		63F524D617111D6400215CBE /* eastwilliamsburg.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524D417111D6400215CBE /* eastwilliamsburg.png */; };
 		63F524D717111D6400215CBE /* eastwilliamsburg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524D517111D6400215CBE /* eastwilliamsburg@2x.png */; };
-		63F524DA1711200C00215CBE /* bushwick.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524D81711200C00215CBE /* bushwick.png */; };
-		63F524DB1711200C00215CBE /* bushwick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524D91711200C00215CBE /* bushwick@2x.png */; };
 		63F524DE1711218700215CBE /* williamsburg.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524DC1711218700215CBE /* williamsburg.png */; };
 		63F524DF1711218700215CBE /* williamsburg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63F524DD1711218700215CBE /* williamsburg@2x.png */; };
 		63F524E21711F79E00215CBE /* StopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F524E11711F79E00215CBE /* StopTableViewController.m */; };
@@ -90,6 +104,22 @@
 		630595331732DA4E003410A9 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		630595341732DA4E003410A9 /* libGoogleAnalytics_debug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics_debug.a; sourceTree = "<group>"; };
 		630595371732DAAB003410A9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6305953917336B9E003410A9 /* canarsie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canarsie.png; sourceTree = "<group>"; };
+		6305953A17336B9E003410A9 /* canarsie@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "canarsie@2x.png"; sourceTree = "<group>"; };
+		6305953B17336B9E003410A9 /* eastnewyork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eastnewyork.png; sourceTree = "<group>"; };
+		6305953C17336B9E003410A9 /* eastnewyork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eastnewyork@2x.png"; sourceTree = "<group>"; };
+		6305954517336F74003410A9 /* bushwick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bushwick.png; sourceTree = "<group>"; };
+		6305954617336F74003410A9 /* bushwick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bushwick@2x.png"; sourceTree = "<group>"; };
+		63059549173370CB003410A9 /* bushwickkr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bushwickkr@2x.png"; sourceTree = "<group>"; };
+		6305954B17337173003410A9 /* williamsburgkr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "williamsburgkr@2x.png"; sourceTree = "<group>"; };
+		6305954C17337173003410A9 /* eastnewyorkkr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eastnewyorkkr@2x.png"; sourceTree = "<group>"; };
+		6305954D17337173003410A9 /* canarsiekr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "canarsiekr@2x.png"; sourceTree = "<group>"; };
+		6305955117337276003410A9 /* bushwickkr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bushwickkr.png; sourceTree = "<group>"; };
+		6305955217337276003410A9 /* canarsiekr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canarsiekr.png; sourceTree = "<group>"; };
+		6305955317337276003410A9 /* eastnewyorkkr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eastnewyorkkr.png; sourceTree = "<group>"; };
+		6305955417337276003410A9 /* williamsburgkr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = williamsburgkr.png; sourceTree = "<group>"; };
+		6305955517337276003410A9 /* manhattankr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manhattankr.png; sourceTree = "<group>"; };
+		6305955617337276003410A9 /* manhattankr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "manhattankr@2x.png"; sourceTree = "<group>"; };
 		6313C75E170F5BD80069F480 /* williamsburg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = williamsburg.jpg; path = ../../../Downloads/williamsburg.jpg; sourceTree = "<group>"; };
 		6313C75F170F5BD80069F480 /* manhattan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = manhattan.jpg; path = ../../../Downloads/manhattan.jpg; sourceTree = "<group>"; };
 		632CD7D4171F1FCD0030E8B9 /* glyphicons_053_alarm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_053_alarm@2x.png"; sourceTree = "<group>"; };
@@ -148,8 +178,6 @@
 		63F524D117111A0500215CBE /* manhattan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "manhattan@2x.png"; sourceTree = "<group>"; };
 		63F524D417111D6400215CBE /* eastwilliamsburg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eastwilliamsburg.png; sourceTree = "<group>"; };
 		63F524D517111D6400215CBE /* eastwilliamsburg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eastwilliamsburg@2x.png"; sourceTree = "<group>"; };
-		63F524D81711200C00215CBE /* bushwick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bushwick.png; sourceTree = "<group>"; };
-		63F524D91711200C00215CBE /* bushwick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bushwick@2x.png"; sourceTree = "<group>"; };
 		63F524DC1711218700215CBE /* williamsburg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = williamsburg.png; sourceTree = "<group>"; };
 		63F524DD1711218700215CBE /* williamsburg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "williamsburg@2x.png"; sourceTree = "<group>"; };
 		63F524E01711F79D00215CBE /* StopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTableViewController.h; sourceTree = "<group>"; };
@@ -329,6 +357,22 @@
 		6336F230170BB49200E67CA9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6305955117337276003410A9 /* bushwickkr.png */,
+				6305955217337276003410A9 /* canarsiekr.png */,
+				6305955317337276003410A9 /* eastnewyorkkr.png */,
+				6305955417337276003410A9 /* williamsburgkr.png */,
+				6305955517337276003410A9 /* manhattankr.png */,
+				6305955617337276003410A9 /* manhattankr@2x.png */,
+				6305954B17337173003410A9 /* williamsburgkr@2x.png */,
+				6305954C17337173003410A9 /* eastnewyorkkr@2x.png */,
+				6305954D17337173003410A9 /* canarsiekr@2x.png */,
+				63059549173370CB003410A9 /* bushwickkr@2x.png */,
+				6305954517336F74003410A9 /* bushwick.png */,
+				6305954617336F74003410A9 /* bushwick@2x.png */,
+				6305953917336B9E003410A9 /* canarsie.png */,
+				6305953A17336B9E003410A9 /* canarsie@2x.png */,
+				6305953B17336B9E003410A9 /* eastnewyork.png */,
+				6305953C17336B9E003410A9 /* eastnewyork@2x.png */,
 				63649E251724F7310034BA35 /* vintage_L_train.jpg */,
 				632CD7D4171F1FCD0030E8B9 /* glyphicons_053_alarm@2x.png */,
 				632CD7D5171F1FCD0030E8B9 /* glyphicons_053_alarm.png */,
@@ -336,8 +380,6 @@
 				6303E2431716066800028F17 /* startClock@2x.png */,
 				63F524DC1711218700215CBE /* williamsburg.png */,
 				63F524DD1711218700215CBE /* williamsburg@2x.png */,
-				63F524D81711200C00215CBE /* bushwick.png */,
-				63F524D91711200C00215CBE /* bushwick@2x.png */,
 				63F524D417111D6400215CBE /* eastwilliamsburg.png */,
 				63F524D517111D6400215CBE /* eastwilliamsburg@2x.png */,
 				63F524D017111A0500215CBE /* manhattan.png */,
@@ -443,8 +485,6 @@
 				63F524D317111A0500215CBE /* manhattan@2x.png in Resources */,
 				63F524D617111D6400215CBE /* eastwilliamsburg.png in Resources */,
 				63F524D717111D6400215CBE /* eastwilliamsburg@2x.png in Resources */,
-				63F524DA1711200C00215CBE /* bushwick.png in Resources */,
-				63F524DB1711200C00215CBE /* bushwick@2x.png in Resources */,
 				63F524DE1711218700215CBE /* williamsburg.png in Resources */,
 				63F524DF1711218700215CBE /* williamsburg@2x.png in Resources */,
 				6303E2411715375600028F17 /* drifter@2x.png in Resources */,
@@ -460,6 +500,22 @@
 				63649E2E17276F100034BA35 /* Quicksand-Bold.ttf in Resources */,
 				63649E36172A37BE0034BA35 /* TripViewController.xib in Resources */,
 				63E16BD4172C8B3D00BDA497 /* drifter.png in Resources */,
+				6305953D17336B9E003410A9 /* canarsie.png in Resources */,
+				6305953E17336B9E003410A9 /* canarsie@2x.png in Resources */,
+				6305953F17336B9E003410A9 /* eastnewyork.png in Resources */,
+				6305954017336B9E003410A9 /* eastnewyork@2x.png in Resources */,
+				6305954717336F74003410A9 /* bushwick.png in Resources */,
+				6305954817336F74003410A9 /* bushwick@2x.png in Resources */,
+				6305954A173370CB003410A9 /* bushwickkr@2x.png in Resources */,
+				6305954E17337173003410A9 /* williamsburgkr@2x.png in Resources */,
+				6305954F17337173003410A9 /* eastnewyorkkr@2x.png in Resources */,
+				6305955017337173003410A9 /* canarsiekr@2x.png in Resources */,
+				6305955717337276003410A9 /* bushwickkr.png in Resources */,
+				6305955817337276003410A9 /* canarsiekr.png in Resources */,
+				6305955917337276003410A9 /* eastnewyorkkr.png in Resources */,
+				6305955A17337276003410A9 /* williamsburgkr.png in Resources */,
+				6305955B17337276003410A9 /* manhattankr.png in Resources */,
+				6305955C17337276003410A9 /* manhattankr@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,7 +27,7 @@
                                nil],
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"Williamsburg", @"name",
-                               [UIImage imageNamed:@"williamsburg"], @"image",
+                               [UIImage imageNamed:@"williamsburgkr"], @"image",
                                @[@"Bedford Av", @"Lorimer St", @"Graham Av", @"Grand St", @"Montrose Av", @"Morgan Av"], @"stops",
                                nil],
 //                              [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -37,18 +37,18 @@
 //                               nil],
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"Bushwick", @"name",
-                               [UIImage imageNamed:@"bushwick"], @"image",
+                               [UIImage imageNamed:@"bushwickkr"], @"image",
                                @[@"Jefferson St", @"DeKalb Av", @"Myrtle-Wyckoff Avs", @"Halsey St", @"Wilson Av", @"Bushwich Av"], @"stops",
                                nil],
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"East New York", @"name",
-                               [UIImage imageNamed:@"bushwick"], @"image",
-                               @[@"Broadway Junction", @"Atlantic Av", @"Sutter Av", @"Livonia Av"], @"stops",
+                               [UIImage imageNamed:@"eastnewyorkkr"], @"image",
+                               @[@"Broadway Junction", @"Atlantic Av", @"Sutter Av", @"Livonia Av", @"New Lots Av"], @"stops",
                                nil],
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"Canarsie", @"name",
-                               [UIImage imageNamed:@"bushwick"], @"image",
-                               @[@"New Lots Av", @"E 105 St", @"Rockaway Parkway"], @"stops",
+                               [UIImage imageNamed:@"canarsiekr"], @"image",
+                               @[@"E 105 St", @"Rockaway Parkway"], @"stops",
                                nil],
                               nil];
     }
