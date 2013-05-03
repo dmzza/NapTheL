@@ -61,7 +61,7 @@
     SystemSoundID soundID;
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)filePath, &soundID);
     
-    AudioServicesPlaySystemSound(soundID);
+    //AudioServicesPlaySystemSound(soundID);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
