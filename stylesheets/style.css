@@ -39,6 +39,10 @@ h3 {
 	color: #DDD;
 }
 
+a {
+	color: #00b862;
+}
+
 .icon {
 	float: left;
 	width: 200px;
@@ -66,6 +70,7 @@ h3 {
 	float: left;
 	background-color: #ff6f67;
 	padding: 15px 20px;
+	margin: 0 3px;
 }
 
 .header li a {
@@ -104,4 +109,22 @@ h3 {
 	margin-top: 50px;
 	padding: 20px 100px;
 	clear: both;
+}
+
+article {
+	padding: 10px;
+	font-size: 0.95em;
+}
+
+article header {
+	font-weight: bold;
+	margin-left: -5px;
+	font-size: 1.1em;
+}
+
+article aside {
+	background: #DDD;
+	padding: 15px;
+	width: 50%;
+	margin-top: 10px;
 }
