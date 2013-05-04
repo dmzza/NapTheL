@@ -1,0 +1,107 @@
+body {
+	margin:0;
+	padding: 0;
+	font-family: 'Helvetica', arial, sans-serif;
+}
+
+.container {
+
+
+
+}
+
+.app-block {
+	background: rgba(0,0,0,0.0);
+	width: 550px;
+	height: 200px;
+	padding: 28px 0;
+	/*border-radius: 45px 0 0 45px; */
+}
+
+.app-name {
+	width: 300px;
+	float: left;
+	text-align: right;
+	margin-right: 20px;
+
+}
+
+h1 {
+	font-size: 4em;
+	line-height: 0.3em;
+	margin-top: 70px;
+	text-shadow: 0px 3px 7px #000;
+}
+
+h3 {
+	font-weight: normal;
+	line-height: 5px;
+	color: #DDD;
+}
+
+.icon {
+	float: left;
+	width: 200px;
+	margin: 0 20px 0 0;
+	border-radius: 30px;
+	box-shadow: 0px 5px 27px #000;
+}
+
+.iphone {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 700px;
+}
+
+.header ul {
+	position: absolute;
+	bottom: 0;
+	padding: 0;
+	margin: 0;
+}
+
+.header li {
+	list-style: none;
+	float: left;
+	background-color: #ff6f67;
+	padding: 15px 20px;
+}
+
+.header li a {
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+}
+
+.header {
+	height: 438px;
+	padding: 100px;
+	padding-bottom: 0;
+	color: white;
+	position: relative;
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.65) 100%), url('../images/morganavesubway.png'); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.18)), color-stop(100%,rgba(0,0,0,0.65))), url('../images/morganavesubway.png'); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.65) 100%), url('../images/morganavesubway.png'); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.65) 100%), url('../images/morganavesubway.png'); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+	background-size: cover;
+}
+
+.body {
+	color: black;
+	padding: 20px 100px;
+	width: 50%;
+	line-height: 1.5em;
+}
+
+.footer {
+	width: 100%;
+	background: #32354D;
+	color: white;
+	margin-top: 50px;
+	padding: 20px 100px;
+	clear: both;
+}
