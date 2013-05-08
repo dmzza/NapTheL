@@ -656,7 +656,7 @@
 		6336F21F170B5FBF00E67CA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: David Mazza";
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Mazza (J3XDF4GPW5)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
@@ -665,7 +665,7 @@
 					"\"$(SRCROOT)/NapTheL/Library\"",
 				);
 				PRODUCT_NAME = "Tune Out";
-				PROVISIONING_PROFILE = "22FAF23D-EEAC-4065-B569-06BB0A13C4D8";
+				PROVISIONING_PROFILE = "7926D438-F9C8-4E53-94BE-35687446202B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -673,7 +673,7 @@
 		6336F220170B5FBF00E67CA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: David Mazza";
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Mazza (J3XDF4GPW5)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
@@ -682,7 +682,7 @@
 					"\"$(SRCROOT)/NapTheL/Library\"",
 				);
 				PRODUCT_NAME = "Tune Out";
-				PROVISIONING_PROFILE = "22FAF23D-EEAC-4065-B569-06BB0A13C4D8";
+				PROVISIONING_PROFILE = "7926D438-F9C8-4E53-94BE-35687446202B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
