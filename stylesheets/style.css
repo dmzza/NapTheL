@@ -12,7 +12,7 @@ body {
 
 .app-block {
 	background: rgba(0,0,0,0.0);
-	top:410px;
+	top:-128px;
 	position: absolute;
 	width: 550px;
 	height: 200px;
@@ -34,14 +34,17 @@ h1 {
 	line-height: 0.3em;
 	margin-top: 59px;
 	text-shadow: 0px 3px 7px black;
-
+	color: white;
 	font-family: 'brandon-grotesque', sans-serif;
 	font-weight: 100;
 	font-size: 4em;
 }
 
 h2 {
-
+	font-family: "freight-micro-pro", serif;
+	font-size: 2em;
+	line-height: 1.4em;
+	font-weight: normal;
 }
 
 h3 {
@@ -49,6 +52,13 @@ h3 {
 	font-weight: normal;
 	line-height: 5px;
 	color: #333;
+}
+
+p, li {
+	font-family: "freight-micro-pro", serif;
+	font-size: 1.5em;
+	line-height: 1.4em;
+	font-weight: 200;
 }
 
 a {
@@ -61,13 +71,25 @@ a {
 	margin: 0 20px 0 0;
 	border-radius: 30px;
 	box-shadow: 0px 5px 27px #000;
+	-webkit-transition: border-radius 1s;
 }
 
-.iphone {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	width: 700px;
+.icon:hover {
+	border-radius: 0px;
+	-webkit-transition: border-radius 1s;
+}
+
+
+
+
+.L {
+	background-color: #888;
+	color: white;
+	margin: 0 5px 0 6px;
+	padding: 3px 4px;
+	border-radius: 26px;
+	font-family: 'Helvetica Neue', 'Helvetica', arial, sans-serif;
+	font-weight: bold;
 }
 
 header ul {
@@ -97,30 +119,57 @@ header {
 	padding-bottom: 0;
 	color: white;
 	position: relative;
-	background: -moz-linear-gradient(top,  rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.65) 100%), url('../images/morganavesubway.png'); /* FF3.6+ */
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.65) 100%), url('../images/morganavesubway.jpg'); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.18)), color-stop(100%,rgba(0,0,0,0.65))), url('../images/morganavesubway.png'); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.65) 100%), url('../images/morganavesubway.png'); /* Chrome10+,Safari5.1+ */
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.65) 100%), url('../images/morganavesubway.jpg'); /* Chrome10+,Safari5.1+ */
 	background: -o-linear-gradient(top,  rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(top,  rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.65) 100%), url('../images/morganavesubway.png'); /* W3C */
+	background: linear-gradient(to bottom,  rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.65) 100%), url('../images/morganavesubway.jpg'); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
 	background-size: cover;
+	background-attachment: fixed;
+
 }
 
 .body {
 	color: black;
-	padding: 20px 100px;
+	padding: 20px 30px 100px 80px;
 	width: 50%;
 	line-height: 1.5em;
+	position: relative;
+	background-color: white;
+	/*box-shadow: -12px 12px 20px 0px rgba(0,0,0,0.5);*/
 }
 
-.footer {
-	width: 100%;
-	background: #32354D;
+footer {
+	position: relative;
+	padding: 94px 90px;
+	margin-left: 690px;
+	padding-right: 0;
+	background-color: #325;
 	color: white;
-	margin-top: 50px;
-	padding: 20px 100px;
-	clear: both;
+}
+
+footer a {
+	color:white;
+}
+
+.iphone {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 700px;
+}
+.iphone.left {
+	left: 0;
+	background-color: rgb(148, 93, 223);
+}
+
+.fixed {
+	position:fixed;
+	top:auto;
+	z-index: -1;
+	bottom: 0;
 }
 
 article {
