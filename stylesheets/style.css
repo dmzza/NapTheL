@@ -12,6 +12,8 @@ body {
 
 .app-block {
 	background: rgba(0,0,0,0.0);
+	top:410px;
+	position: absolute;
 	width: 550px;
 	height: 200px;
 	padding: 28px 0;
@@ -22,6 +24,7 @@ body {
 	width: 300px;
 	float: left;
 	text-align: right;
+	margin-top: -160px;
 	margin-right: 20px;
 
 }
@@ -29,14 +32,23 @@ body {
 h1 {
 	font-size: 4em;
 	line-height: 0.3em;
-	margin-top: 70px;
-	text-shadow: 0px 3px 7px #000;
+	margin-top: 59px;
+	text-shadow: 0px 3px 7px black;
+
+	font-family: 'brandon-grotesque', sans-serif;
+	font-weight: 100;
+	font-size: 4em;
+}
+
+h2 {
+
 }
 
 h3 {
+	font-family: 'brandon-grotesque', sans-serif;
 	font-weight: normal;
 	line-height: 5px;
-	color: #DDD;
+	color: #333;
 }
 
 a {
@@ -58,14 +70,14 @@ a {
 	width: 700px;
 }
 
-.header ul {
+header ul {
 	position: absolute;
 	bottom: 0;
 	padding: 0;
 	margin: 0;
 }
 
-.header li {
+header li {
 	list-style: none;
 	float: left;
 	background-color: #ff6f67;
@@ -73,13 +85,13 @@ a {
 	margin: 0 3px;
 }
 
-.header li a {
+header li a {
 	text-decoration: none;
 	color: white;
 	font-weight: bold;
 }
 
-.header {
+header {
 	height: 438px;
 	padding: 100px;
 	padding-bottom: 0;
@@ -116,7 +128,7 @@ article {
 	font-size: 0.95em;
 }
 
-article header {
+article h2 {
 	font-weight: bold;
 	margin-left: -5px;
 	font-size: 1.1em;
