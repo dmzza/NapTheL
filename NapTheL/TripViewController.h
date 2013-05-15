@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/CoreAnimation.h>
+#import <CoreMotion/CoreMotion.h>
 #import <MessageUI/MFMailComposeViewController.h>
 #import "StopTableViewController.h"
 #import "Trip.h"
@@ -18,7 +19,16 @@
 
 @property int origin;
 @property int destination;
-@property int timeRemaining;
+@property double timeRemaining;
+@property double stoppedTime;
+@property double movingTime;
+@property double accumulatedPauseTime;
+@property double errorThreshold;
+@property double movementThreshold;
+@property double movementSum;
+@property double lastMovementSum;
+@property double stdDoorTime;
+
 @property (strong, nonatomic) NSArray *durations;
 @property (strong, nonatomic) NSDate *arrivalTime;
 @property (strong, nonatomic) UIButton *originButton;
@@ -31,7 +41,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *mailButton;
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) NSTimer *timer;
+@property (strong, nonatomic) NSTimer *movementTimer;
 @property (strong, nonatomic) Trip *trip;
+@property (strong, nonatomic) CMMotionManager *motionManager;
 
 // STATES
 @property BOOL hasStarted;
@@ -55,7 +67,8 @@
 - (void) endTrip;
 - (void) cancel;
 - (void) mail;
-
+- (void) movementLoop;
+- (void) resetMovementLoop;
 
 
 

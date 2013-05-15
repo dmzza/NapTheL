@@ -211,6 +211,10 @@
         self.isFinished = NO;
         self.stationsAreChosen = NO;
         
+        self.stoppedTime = self.movingTime = self.accumulatedPauseTime = self.movementSum = self.lastMovementSum = 0.0;
+        self.errorThreshold = 2.238;
+        self.movementThreshold = 0.70;
+        self.stdDoorTime = 13.0;
         
     }
     return self;
@@ -327,6 +331,9 @@
     self.mailButton.titleLabel.font = [UIFont fontWithName:@"linecons" size:28.0];
     [self.mailButton addTarget:self action:@selector(mail) forControlEvents:UIControlEventTouchDown];
     
+    // MOVEMENT
+    self.motionManager = [[CMMotionManager alloc] init];
+    
     // SELF
     self.view.backgroundColor = [UIColor darkBlueGrayColor];
     
@@ -400,13 +407,13 @@
         if(name == self.trip.destination)
             self.destination = i;
     }
-    int originalTimeRemaining = 0;
+    double originalTimeRemaining = 0.0;
     if(self.hasStarted && self.stationsAreChosen) {
         originalTimeRemaining = self.timeRemaining;
         if(self.isPaused) {
             //how much time is left for the current trip
             //the total duration for the current trip
-            self.timeRemaining = -1 * (self.trip.duration - originalTimeRemaining);
+            self.timeRemaining = -1 * ((double)self.trip.duration - originalTimeRemaining);
         } else {
             self.timeRemaining = self.trip.departureTime.timeIntervalSinceNow;
         }
@@ -423,20 +430,20 @@
         for (i = orig + 1; i <= dest - 1; i++) {
             NSNumber *arrival = self.durations[i][@"eastBoundArrival"];
             NSNumber *doors = self.durations[i][@"eastBoundDoors"];
-            self.timeRemaining += arrival.intValue + doors.intValue;
+            self.timeRemaining += arrival.doubleValue + doors.doubleValue;
             //NSLog([NSString stringWithFormat:@"%@ : %d + %d", self.durations[i][@"name"], arrival.intValue, doors.intValue]);
         }
         NSNumber *arrival = self.durations[dest][@"eastBoundArrival"];
-        self.timeRemaining += arrival.intValue;
+        self.timeRemaining += arrival.doubleValue;
         //NSLog([NSString stringWithFormat:@"%@ : %d = %d", self.durations[dest][@"name"], arrival.intValue, self.timeRemaining]);
     } else { // westbound
         for (i = orig - 1; i >= dest + 1; i--) {
             NSNumber *arrival = self.durations[i][@"westBoundArrival"];
             NSNumber *doors = self.durations[i][@"westBoundDoors"];
-            self.timeRemaining += arrival.intValue + doors.intValue;
+            self.timeRemaining += arrival.doubleValue + doors.doubleValue;
         }
         NSNumber *arrival = self.durations[dest][@"westBoundArrival"];
-        self.timeRemaining += arrival.intValue;
+        self.timeRemaining += arrival.doubleValue;
     }
     
     if(self.hasStarted && self.stationsAreChosen) {
@@ -469,6 +476,10 @@
     [self.swapButton removeTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self.swapButton addTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     
+    // MOVEMENT
+    [self.motionManager startDeviceMotionUpdates];
+    self.movementTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(movementLoop) userInfo:nil repeats:YES];
+    
     self.hasStarted = YES;
     
     if(!self.stationsAreChosen) {
@@ -485,7 +496,7 @@
 
 - (void) setAlarm {
     if(self.timer == nil) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
         [self.tripProgress setIndeterminate:0];
     }
     self.arrivalTime = [NSDate dateWithTimeIntervalSinceNow:self.timeRemaining];
@@ -502,11 +513,13 @@
 }
 
 - (void) updateClock {
-    int seconds = (int)self.arrivalTime.timeIntervalSinceNow;
+    [self resetMovementLoop];
+    
+    double seconds = self.arrivalTime.timeIntervalSinceNow;
     float progress = (self.arrivalTime.timeIntervalSinceNow / (float)self.trip.duration);
     
     [self.tripProgress setProgress:progress animated:YES];
-    //self.subtextLabel.text = [NSString stringWithFormat:@"%f", self.arrivalTime.timeIntervalSinceNow];
+    self.subtextLabel.text = [NSString stringWithFormat:@"%f", self.arrivalTime.timeIntervalSinceNow];
     if (seconds <= 0) {
         [self finishClock];
     }
@@ -522,6 +535,10 @@
     [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
     [self.swapButton removeTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self.swapButton addTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+    [self.motionManager stopDeviceMotionUpdates];
+    [self.movementTimer invalidate];
+    self.movementTimer = nil;
+    self.stoppedTime = self.movingTime = 0.0;
     if ([MFMailComposeViewController canSendMail]) {
         [self showMailButton];
     }
@@ -656,6 +673,9 @@
         self.timeRemaining = self.arrivalTime.timeIntervalSinceNow;
         [self.timer invalidate];
         self.timer = nil;
+        [self.movementTimer invalidate];
+        self.movementTimer = nil;
+        self.stoppedTime = self.movingTime = 0.0;
     }
 }
 
@@ -668,6 +688,8 @@
     
     if(self.hasStarted && self.stationsAreChosen) {
         [self setAlarm];
+        [self.motionManager startDeviceMotionUpdates];
+        self.movementTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(movementLoop) userInfo:nil repeats:YES];
     }
 }
 
@@ -700,6 +722,10 @@
     self.trip.duration = 0;
     [self.timer invalidate];
     self.timer = nil;
+    [self.motionManager stopDeviceMotionUpdates];
+    [self.movementTimer invalidate];
+    self.movementTimer = nil;
+    self.stoppedTime = self.movingTime = 0.0;
     self.stationsAreChosen = NO;
     [self.originButton setTitle:[NSString stringWithFormat:@"FROM"] forState:UIControlStateNormal];
     [self.destinationButton setTitle:[NSString stringWithFormat:@"TO"] forState:UIControlStateNormal];
@@ -748,6 +774,57 @@
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
+}
+
+- (void)movementLoop
+{
+    CMAcceleration vector = self.motionManager.deviceMotion.userAcceleration;
+    
+    double currentTotal = vector.x + vector.y + vector.z;
+    self.movementSum += currentTotal;
+}
+
+- (void)resetMovementLoop
+{
+    double currentDiff = fabs(self.movementSum - self.lastMovementSum);
+    
+    if(currentDiff < self.movementThreshold) {
+        self.stoppedTime += 0.5;
+        if (self.stoppedTime > self.stdDoorTime)
+            self.accumulatedPauseTime += 0.5;
+        if(self.movingTime <= self.errorThreshold) {
+            self.stoppedTime += self.movingTime;
+            if (self.stoppedTime > self.stdDoorTime)
+                self.accumulatedPauseTime += self.movingTime;
+        }
+        if(self.accumulatedPauseTime > 0 && self.hasStarted && self.stationsAreChosen) {
+            self.timeRemaining = self.arrivalTime.timeIntervalSinceNow;
+            [self.timer invalidate];
+            self.timer = nil;
+            [[UIApplication sharedApplication] cancelAllLocalNotifications];
+            self.timeRemaining += self.accumulatedPauseTime;
+            self.accumulatedPauseTime = 0;
+            [self setAlarm];
+        }
+        self.movingTime = 0;
+    }
+    else {
+        self.movingTime += 0.5;
+        if(self.movingTime > self.errorThreshold) {
+            if (self.stoppedTime > self.stdDoorTime) {
+                UIPasteboard *pb = [UIPasteboard generalPasteboard];
+                [pb setString:[NSString stringWithFormat:@"%f", self.stoppedTime]];
+            }
+            self.stoppedTime = 0;
+        }
+    }
+    
+    
+    [self.originButton setTitle:[NSString stringWithFormat:@"%f", self.stoppedTime] forState:UIControlStateNormal];
+    [self.destinationButton setTitle:[NSString stringWithFormat:@"%f", self.movingTime] forState:UIControlStateNormal];
+    
+    self.lastMovementSum = self.movementSum;
+    self.movementSum = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated
