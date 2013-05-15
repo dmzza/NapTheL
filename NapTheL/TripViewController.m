@@ -213,7 +213,7 @@
         
         self.stoppedTime = self.movingTime = self.accumulatedPauseTime = self.movementSum = self.lastMovementSum = 0.0;
         self.errorThreshold = 2.238;
-        self.movementThreshold = 0.70;
+        self.movementThreshold = 0.070;
         self.stdDoorTime = 13.0;
         
     }
@@ -333,6 +333,8 @@
     
     // MOVEMENT
     self.motionManager = [[CMMotionManager alloc] init];
+    self.motionManager.deviceMotionUpdateInterval = 0.01;
+    
     
     // SELF
     self.view.backgroundColor = [UIColor darkBlueGrayColor];
@@ -477,8 +479,13 @@
     [self.swapButton addTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     
     // MOVEMENT
-    [self.motionManager startDeviceMotionUpdates];
-    self.movementTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(movementLoop) userInfo:nil repeats:YES];
+    [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
+        CMAcceleration vector = motion.userAcceleration;
+        
+        double currentTotal = vector.x + vector.y + vector.z;
+        self.movementSum += currentTotal;
+    }];
+    //self.movementTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(movementLoop) userInfo:nil repeats:YES];
     
     self.hasStarted = YES;
     
@@ -535,9 +542,9 @@
     [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
     [self.swapButton removeTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self.swapButton addTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
-    [self.motionManager stopDeviceMotionUpdates];
-    [self.movementTimer invalidate];
-    self.movementTimer = nil;
+    //[self.motionManager stopDeviceMotionUpdates];
+    //[self.movementTimer invalidate];
+    //self.movementTimer = nil;
     self.stoppedTime = self.movingTime = 0.0;
     if ([MFMailComposeViewController canSendMail]) {
         [self showMailButton];
@@ -673,8 +680,8 @@
         self.timeRemaining = self.arrivalTime.timeIntervalSinceNow;
         [self.timer invalidate];
         self.timer = nil;
-        [self.movementTimer invalidate];
-        self.movementTimer = nil;
+        //[self.movementTimer invalidate];
+        //self.movementTimer = nil;
         self.stoppedTime = self.movingTime = 0.0;
     }
 }
@@ -688,8 +695,8 @@
     
     if(self.hasStarted && self.stationsAreChosen) {
         [self setAlarm];
-        [self.motionManager startDeviceMotionUpdates];
-        self.movementTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(movementLoop) userInfo:nil repeats:YES];
+        //[self.motionManager startDeviceMotionUpdates];
+        //self.movementTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(movementLoop) userInfo:nil repeats:YES];
     }
 }
 
@@ -722,9 +729,9 @@
     self.trip.duration = 0;
     [self.timer invalidate];
     self.timer = nil;
-    [self.motionManager stopDeviceMotionUpdates];
-    [self.movementTimer invalidate];
-    self.movementTimer = nil;
+    //[self.motionManager stopDeviceMotionUpdates];
+    //[self.movementTimer invalidate];
+    //self.movementTimer = nil;
     self.stoppedTime = self.movingTime = 0.0;
     self.stationsAreChosen = NO;
     [self.originButton setTitle:[NSString stringWithFormat:@"FROM"] forState:UIControlStateNormal];
