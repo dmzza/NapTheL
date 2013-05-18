@@ -365,10 +365,11 @@
     // LOCATION
     self.locationButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.locationButton setFrame:CGRectMake(220, 0, 50, 50)];
-    [self.locationButton setBackgroundImage:[UIImage imageNamed:@"location-2"] forState:UIControlStateNormal];
+    [self.locationButton setBackgroundImage:[UIImage imageNamed:@"location"] forState:UIControlStateNormal];
     [self.locationButton addTarget:self action:@selector(detectOrigin) forControlEvents:UIControlEventTouchDown];
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager setDelegate:self];
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
     
     
     // SELF
@@ -892,12 +893,21 @@
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     NSLog(@"HELLO");
     CLLocation *currentLocation = locations.lastObject;
+    NSString *nearestStation = [self findNearestStationToLocation:currentLocation];
     if (self.detectingOrigin) {
-        self.trip.origin = [self findNearestStationToLocation:currentLocation];
+        self.trip.origin = nearestStation;
         self.detectingOrigin = NO;
-        [self.originButton setTitle:[self findNearestStationToLocation:currentLocation] forState:UIControlStateNormal];
+        [self.originButton setTitle:nearestStation forState:UIControlStateNormal];
         [self.locationManager stopUpdatingLocation];
+    } else if ([nearestStation isEqualToString:self.trip.destination]) {
+        self.timeRemaining = 16.0;
+        [self.timer invalidate];
+        self.timer = nil;
+        [self.locationManager stopUpdatingLocation];
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        [self setAlarm];
     }
+    
 }
 
 - (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
