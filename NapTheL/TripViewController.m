@@ -37,6 +37,7 @@
         self.durations = [NSArray arrayWithObjects:
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"8 Av", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.737762 longitude:-74.001554], @"location",
                            [NSNumber numberWithInt:60], @"westBoundArrival", //huge delays here usually
                            [NSNumber numberWithInt:0], @"westBoundDoors",
                            [NSNumber numberWithInt:0], @"eastBoundArrival",
@@ -44,6 +45,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"6 Av", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.737283 longitude:-73.99704], @"location",
                            [NSNumber numberWithInt:60], @"westBoundArrival",
                            [NSNumber numberWithInt:15], @"westBoundDoors",
                            [NSNumber numberWithInt:58], @"eastBoundArrival",
@@ -52,6 +54,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Union Sq - 14 St", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.734787 longitude:-73.99071], @"location",
                            [NSNumber numberWithInt:53], @"westBoundArrival",
                            [NSNumber numberWithInt:16], @"westBoundDoors",
                            [NSNumber numberWithInt:60], @"eastBoundArrival",
@@ -59,6 +62,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"3 Av", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.733277 longitude:-73.987199], @"location",
                            [NSNumber numberWithInt:51], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:56], @"eastBoundArrival",
@@ -66,6 +70,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"1 Av", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.731348 longitude:-73.98262], @"location",
                            [NSNumber numberWithInt:150], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:53], @"eastBoundArrival",
@@ -73,6 +78,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Bedford Av", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.717038 longitude:-73.956442], @"location",
                            [NSNumber numberWithInt:71], @"westBoundArrival",
                            [NSNumber numberWithInt:15], @"westBoundDoors",
                            [NSNumber numberWithInt:150], @"eastBoundArrival",
@@ -80,6 +86,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Lorimer St", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.714084 longitude:-73.949382], @"location",
                            [NSNumber numberWithInt:55], @"westBoundArrival",
                            [NSNumber numberWithInt:15], @"westBoundDoors",
                            [NSNumber numberWithInt:71], @"eastBoundArrival",
@@ -87,6 +94,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Graham Av", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.714523 longitude:-73.944383], @"location",
                            [NSNumber numberWithInt:69], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:55], @"eastBoundArrival",
@@ -94,6 +102,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Grand St", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.711955 longitude:-73.940695], @"location",
                            [NSNumber numberWithInt:53], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:63], @"eastBoundArrival",
@@ -101,6 +110,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Montrose St", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.707659 longitude:-73.939831], @"location",
                            [NSNumber numberWithInt:79], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:53], @"eastBoundArrival",
@@ -108,6 +118,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Morgan Av", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.706153 longitude:-73.933555], @"location",
                            [NSNumber numberWithInt:80], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:80], @"eastBoundArrival",
@@ -115,6 +126,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Jefferson St", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.706978 longitude:-73.923633], @"location",
                            [NSNumber numberWithInt:55], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:80], @"eastBoundArrival",
@@ -122,6 +134,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"DeKalb Av", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.704306 longitude:-73.91925], @"location",
                            [NSNumber numberWithInt:71], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:55], @"eastBoundArrival",
@@ -129,6 +142,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Myrtle-Wyckoff Avs", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.699666 longitude:-73.911338], @"location",
                            [NSNumber numberWithInt:71], @"westBoundArrival",
                            [NSNumber numberWithInt:15], @"westBoundDoors",
                            [NSNumber numberWithInt:71], @"eastBoundArrival",
@@ -136,6 +150,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Halsey St", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.696111 longitude:-73.904986], @"location",
                            [NSNumber numberWithInt:87], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:68], @"eastBoundArrival",
@@ -143,6 +158,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Wilson Av", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.68881 longitude:-73.904831], @"location",
                            [NSNumber numberWithInt:66], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:87], @"eastBoundArrival",
@@ -150,6 +166,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Bushwick Av", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.682379 longitude:-73.905635], @"location",
                            [NSNumber numberWithInt:57], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:66], @"eastBoundArrival",
@@ -157,6 +174,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Broadway Junction", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.678893 longitude:-73.903441], @"location",
                            [NSNumber numberWithInt:66], @"westBoundArrival",
                            [NSNumber numberWithInt:15], @"westBoundDoors",
                            [NSNumber numberWithInt:55], @"eastBoundArrival",
@@ -164,6 +182,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Atlantic Av", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.675504 longitude:-73.903061], @"location",
                            [NSNumber numberWithInt:76], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:49], @"eastBoundArrival",
@@ -171,6 +190,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Sutter Av", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.668652 longitude:-73.901843], @"location",
                            [NSNumber numberWithInt:63], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:77], @"eastBoundArrival",
@@ -178,6 +198,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Livonia Av", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.663835 longitude:-73.900523], @"location",
                            [NSNumber numberWithInt:63], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
                            [NSNumber numberWithInt:63], @"eastBoundArrival",
@@ -185,6 +206,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"New Lots Av", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.659073 longitude:-73.8993], @"location",
                            [NSNumber numberWithInt:83], @"westBoundArrival",
                            [NSNumber numberWithInt:15], @"westBoundDoors",
                            [NSNumber numberWithInt:60], @"eastBoundArrival",
@@ -192,6 +214,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"E 105 St", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.65139 longitude:-73.898989], @"location",
                            [NSNumber numberWithInt:76], @"westBoundArrival",
                            [NSNumber numberWithInt:15], @"westBoundDoors",
                            [NSNumber numberWithInt:77], @"eastBoundArrival",
@@ -199,6 +222,7 @@
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"Rockaway Parkway", @"name",
+                           [[CLLocation alloc] initWithLatitude:40.647157 longitude:-73.901843], @"location",
                            [NSNumber numberWithInt:0], @"westBoundArrival",
                            [NSNumber numberWithInt:0], @"westBoundDoors",
                            [NSNumber numberWithInt:86], @"eastBoundArrival",
@@ -206,6 +230,7 @@
                            ],
                           nil];
         self.title = @"TUNE OUT";
+        self.detectingOrigin = NO;
         self.hasStarted = NO;
         self.isPaused = NO;
         self.isFinished = NO;
@@ -252,7 +277,9 @@
     self.originButton.backgroundColor = [UIColor lightAlgaeColor];
     self.destinationButton.backgroundColor = [UIColor algaeColor];
     
-    self.swapButton.titleLabel.font = [UIFont fontWithName:@"Sosa-Regular" size:30.0];
+    self.swapButton.titleLabel.font = [UIFont fontWithName:@"Sosa-Regular" size:35.0];
+    //[self.swapButton setTitleColor:[UIColor lightAlgaeColor] forState:UIControlStateNormal];
+    //self.swapButton.titleLabel.alpha = 1.0;
     self.swapButton.transform = CGAffineTransformMakeRotation(M_PI_2);
     [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
     self.swapButton.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
@@ -335,11 +362,20 @@
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.deviceMotionUpdateInterval = 0.01;
     
+    // LOCATION
+    self.locationButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.locationButton setFrame:CGRectMake(220, 0, 50, 50)];
+    [self.locationButton setBackgroundImage:[UIImage imageNamed:@"location-2"] forState:UIControlStateNormal];
+    [self.locationButton addTarget:self action:@selector(detectOrigin) forControlEvents:UIControlEventTouchDown];
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager setDelegate:self];
+    
     
     // SELF
     self.view.backgroundColor = [UIColor darkBlueGrayColor];
     
     // SUBVIEWS
+    [self.originButton addSubview:self.locationButton];
     [self.view addSubview:self.originButton];
     [self.view addSubview:self.destinationButton];
     [self.view addSubview:self.swapButton];
@@ -363,16 +399,10 @@
     if(isOrigin) {
         self.trip.origin = stop;
         [self.originButton setTitle:[NSString stringWithFormat:@"%@", stop] forState:UIControlStateNormal];
-        if(self.trip.destination == nil) { // no destination chosen yet
-            [self pickDestination];
-        } else { // destination chosen
-            [self.navigationController popToRootViewControllerAnimated:YES];
-            if(self.hasStarted && self.stationsAreChosen) { // and trip is already in progress
-                [self endTrip];
-            } else {
-                self.stationsAreChosen = YES;
-            }
+        if(self.trip.destination != nil) { // destination chosen
+            self.stationsAreChosen = YES;
         }
+        [self.navigationController popToRootViewControllerAnimated:YES];
         
         [tracker sendEventWithCategory:@"userAction"
                             withAction:@"originChosen"
@@ -478,7 +508,10 @@
     [self.swapButton removeTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self.swapButton addTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     
+    [self.locationButton removeFromSuperview];
+    
     // MOVEMENT
+    [self.locationManager startUpdatingLocation];
     [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
         CMAcceleration vector = motion.userAcceleration;
         
@@ -542,9 +575,11 @@
     [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
     [self.swapButton removeTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self.swapButton addTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
-    //[self.motionManager stopDeviceMotionUpdates];
-    //[self.movementTimer invalidate];
-    //self.movementTimer = nil;
+    [self.originButton addSubview:self.locationButton];
+    [self.locationManager stopUpdatingLocation];
+    [self.motionManager stopDeviceMotionUpdates];
+    [self.movementTimer invalidate];
+    self.movementTimer = nil;
     self.stoppedTime = self.movingTime = 0.0;
     if ([MFMailComposeViewController canSendMail]) {
         [self showMailButton];
@@ -629,6 +664,11 @@
         }
         
     }
+}
+
+- (void) detectOrigin {
+    [self.locationManager startUpdatingLocation];
+    self.detectingOrigin = YES;
 }
 
 - (void) pickOrigin {
@@ -729,9 +769,11 @@
     self.trip.duration = 0;
     [self.timer invalidate];
     self.timer = nil;
-    //[self.motionManager stopDeviceMotionUpdates];
-    //[self.movementTimer invalidate];
-    //self.movementTimer = nil;
+    [self.originButton addSubview:self.locationButton];
+    [self.locationManager stopUpdatingLocation];
+    [self.motionManager stopDeviceMotionUpdates];
+    [self.movementTimer invalidate];
+    self.movementTimer = nil;
     self.stoppedTime = self.movingTime = 0.0;
     self.stationsAreChosen = NO;
     [self.originButton setTitle:[NSString stringWithFormat:@"FROM"] forState:UIControlStateNormal];
@@ -832,6 +874,42 @@
     
     self.lastMovementSum = self.movementSum;
     self.movementSum = 0;
+}
+
+- (NSString *) findNearestStationToLocation:(CLLocation *)location {
+    NSString *nearestStation;
+    double nearestDistance = MAXFLOAT;
+    for(int i = 0; i < self.durations.count - 1; i++) {
+        double distance = [location distanceFromLocation:self.durations[i][@"location"]];
+        if (distance < nearestDistance) {
+            nearestStation = self.durations[i][@"name"];
+            nearestDistance = distance;
+        }
+    }
+    return nearestStation;
+}
+
+- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    NSLog(@"HELLO");
+    CLLocation *currentLocation = locations.lastObject;
+    if (self.detectingOrigin) {
+        self.trip.origin = [self findNearestStationToLocation:currentLocation];
+        self.detectingOrigin = NO;
+        [self.originButton setTitle:[self findNearestStationToLocation:currentLocation] forState:UIControlStateNormal];
+        [self.locationManager stopUpdatingLocation];
+    }
+}
+
+- (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"ERROR LOCATION DONG");
+}
+
+- (void) locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager {
+    NSLog(@"PAUSE LOCATION");
+}
+
+- (void) locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager {
+    NSLog(@"RESUME LOCATION");
 }
 
 - (void)viewWillAppear:(BOOL)animated

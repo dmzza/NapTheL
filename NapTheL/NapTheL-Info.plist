@@ -68,12 +68,16 @@
 				<key>Green</key>
 				<real>0.1861787067882287</real>
 				<key>Red</key>
-				<real>0.53607216606276009</real>
+				<real>0.5360721660627601</real>
 			</dict>
 			<key>Translucent</key>
 			<false/>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

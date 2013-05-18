@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/CoreAnimation.h>
 #import <CoreMotion/CoreMotion.h>
+#import <CoreLocation/CoreLocation.h>
 #import <MessageUI/MFMailComposeViewController.h>
 #import "StopTableViewController.h"
 #import "Trip.h"
 #import "DACircularProgressView.h"
 #import "GAITrackedViewController.h"
 
-@interface TripViewController : GAITrackedViewController <StopTableViewControllerDelegate, MFMailComposeViewControllerDelegate>
+@interface TripViewController : GAITrackedViewController <StopTableViewControllerDelegate, MFMailComposeViewControllerDelegate, CLLocationManagerDelegate>
 
 @property int origin;
 @property int destination;
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) NSDate *arrivalTime;
 @property (strong, nonatomic) UIButton *originButton;
 @property (strong, nonatomic) UIButton *destinationButton;
+@property (strong, nonatomic) UIButton *locationButton;
 @property (strong, nonatomic) UIButton *swapButton;
 @property (strong, nonatomic) UILabel *subtextLabel;
 @property (strong, nonatomic) IBOutlet UIView *clockView;
@@ -44,8 +46,10 @@
 @property (strong, nonatomic) NSTimer *movementTimer;
 @property (strong, nonatomic) Trip *trip;
 @property (strong, nonatomic) CMMotionManager *motionManager;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 // STATES
+@property BOOL detectingOrigin;
 @property BOOL hasStarted;
 @property BOOL isPaused;
 @property BOOL isFinished;
@@ -69,6 +73,7 @@
 - (void) mail;
 - (void) movementLoop;
 - (void) resetMovementLoop;
+- (NSString *) findNearestStationToLocation:(CLLocation *)location;
 
 
 
