@@ -109,7 +109,7 @@
                            [NSNumber numberWithInt:13], @"eastBoundDoors", nil
                            ],
                           [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"Montrose St", @"name",
+                           @"Montrose Av", @"name",
                            [[CLLocation alloc] initWithLatitude:40.707659 longitude:-73.939831], @"location",
                            [NSNumber numberWithInt:79], @"westBoundArrival",
                            [NSNumber numberWithInt:13], @"westBoundDoors",
@@ -237,8 +237,8 @@
         self.stationsAreChosen = NO;
         
         self.stoppedTime = self.movingTime = self.accumulatedPauseTime = self.movementSum = self.lastMovementSum = 0.0;
-        self.errorThreshold = 2.238;
-        self.movementThreshold = 0.070;
+        self.errorThreshold = 2.25;
+        self.movementThreshold = 0.100;
         self.stdDoorTime = 13.0;
         
     }
@@ -278,8 +278,6 @@
     self.destinationButton.backgroundColor = [UIColor algaeColor];
     
     self.swapButton.titleLabel.font = [UIFont fontWithName:@"Sosa-Regular" size:35.0];
-    //[self.swapButton setTitleColor:[UIColor lightAlgaeColor] forState:UIControlStateNormal];
-    //self.swapButton.titleLabel.alpha = 1.0;
     self.swapButton.transform = CGAffineTransformMakeRotation(M_PI_2);
     [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
     self.swapButton.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
@@ -541,7 +539,7 @@
         [self.tripProgress setIndeterminate:0];
     }
     self.arrivalTime = [NSDate dateWithTimeIntervalSinceNow:self.timeRemaining];
-    NSDate *earlyAlarmTime = [NSDate dateWithTimeIntervalSinceNow:(self.timeRemaining - 15)];
+    NSDate *earlyAlarmTime = [NSDate dateWithTimeIntervalSinceNow:(self.timeRemaining - 30)];
     UILocalNotification *arrivalAlarm = [[UILocalNotification alloc] init];
     
     // ARRIVAL ALARM
@@ -579,8 +577,6 @@
     [self.originButton addSubview:self.locationButton];
     [self.locationManager stopUpdatingLocation];
     [self.motionManager stopDeviceMotionUpdates];
-    [self.movementTimer invalidate];
-    self.movementTimer = nil;
     self.stoppedTime = self.movingTime = 0.0;
     if ([MFMailComposeViewController canSendMail]) {
         [self showMailButton];
@@ -721,8 +717,6 @@
         self.timeRemaining = self.arrivalTime.timeIntervalSinceNow;
         [self.timer invalidate];
         self.timer = nil;
-        //[self.movementTimer invalidate];
-        //self.movementTimer = nil;
         self.stoppedTime = self.movingTime = 0.0;
     }
 }
@@ -736,8 +730,6 @@
     
     if(self.hasStarted && self.stationsAreChosen) {
         [self setAlarm];
-        //[self.motionManager startDeviceMotionUpdates];
-        //self.movementTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(movementLoop) userInfo:nil repeats:YES];
     }
 }
 
@@ -773,8 +765,6 @@
     [self.originButton addSubview:self.locationButton];
     [self.locationManager stopUpdatingLocation];
     [self.motionManager stopDeviceMotionUpdates];
-    [self.movementTimer invalidate];
-    self.movementTimer = nil;
     self.stoppedTime = self.movingTime = 0.0;
     self.stationsAreChosen = NO;
     [self.originButton setTitle:[NSString stringWithFormat:@"FROM"] forState:UIControlStateNormal];

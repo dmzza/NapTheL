@@ -63,6 +63,7 @@
 - (void) showMailButton;
 - (void) spinWithTitle:(NSString *)aTitle subtext:(NSString *)aSubtext titleFont:(UIFont *)aTitleFont backgroundColor:(UIColor *)aBackgroundColor;
 - (void) handleFlipFrom:(UIPanGestureRecognizer *)recognizer;
+- (void) detectOrigin;
 - (void) pickOrigin;
 - (void) pickDestination;
 - (void) swap;
@@ -74,6 +75,10 @@
 - (void) movementLoop;
 - (void) resetMovementLoop;
 - (NSString *) findNearestStationToLocation:(CLLocation *)location;
+- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
+- (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
+- (void) locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager;
+- (void) locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager;
 
 
 
