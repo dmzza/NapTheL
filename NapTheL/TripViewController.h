@@ -29,6 +29,7 @@
 @property double movementSum;
 @property double lastMovementSum;
 @property double stdDoorTime;
+@property double earlyAlarmTime;
 
 @property (strong, nonatomic) NSArray *durations;
 @property (strong, nonatomic) NSDate *arrivalTime;

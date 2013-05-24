@@ -240,6 +240,7 @@
         self.errorThreshold = 2.25;
         self.movementThreshold = 0.100;
         self.stdDoorTime = 13.0;
+        self.earlyAlarmTime = 30.0;
         
     }
     return self;
@@ -539,11 +540,11 @@
         [self.tripProgress setIndeterminate:0];
     }
     self.arrivalTime = [NSDate dateWithTimeIntervalSinceNow:self.timeRemaining];
-    NSDate *earlyAlarmTime = [NSDate dateWithTimeIntervalSinceNow:(self.timeRemaining - 30)];
+    NSDate *alarmTime = [NSDate dateWithTimeIntervalSinceNow:(self.timeRemaining - self.earlyAlarmTime)];
     UILocalNotification *arrivalAlarm = [[UILocalNotification alloc] init];
     
     // ARRIVAL ALARM
-    arrivalAlarm.fireDate = earlyAlarmTime;
+    arrivalAlarm.fireDate = alarmTime;
     arrivalAlarm.alertBody = [NSString stringWithFormat:@"%@ is coming soon.", self.durations[(int)self.destination][@"name"]];
     arrivalAlarm.alertAction = @"Tune In";
     arrivalAlarm.soundName = @"subwayAlarm.m4a";
@@ -891,7 +892,7 @@
         [self.originButton setTitle:nearestStation forState:UIControlStateNormal];
         [self.locationManager stopUpdatingLocation];
     } else if ([nearestStation isEqualToString:self.trip.destination]) {
-        self.timeRemaining = 16.0;
+        self.timeRemaining = self.earlyAlarmTime + 1.0;
         [self.timer invalidate];
         self.timer = nil;
         [self.locationManager stopUpdatingLocation];
