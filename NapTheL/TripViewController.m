@@ -599,6 +599,7 @@
 }
 
 - (void) spinWithTitle:(NSString *)aTitle subtext:(NSString *)aSubtext titleFont:(UIFont *)aTitleFont backgroundColor:(UIColor *)aBackgroundColor {
+    [self.view layoutIfNeeded];
     self.clockView.layer.transform = CATransform3DMakeRotation(M_PI_2 * 0.5, 0, 1, 0);
     [UIView animateWithDuration:0.18 animations:^{
         self.clockView.layer.transform = CATransform3DMakeRotation(M_PI_2, 0, 1, 0); //CATransform3DScale(CATransform3DMakeRotation(M_PI_2, 0, 1, 0), 1.25, 1.25, 1.25);
