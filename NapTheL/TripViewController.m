@@ -362,20 +362,32 @@
     self.motionManager.deviceMotionUpdateInterval = 0.01;
     
     // LOCATION
+    self.locationView = [[UIView alloc] initWithFrame:CGRectMake(220, 0, 50, 50)];
     self.locationButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.locationButton setFrame:CGRectMake(220, 0, 50, 50)];
+    [self.locationButton setFrame:CGRectMake(0, 0, 50, 50)];
     [self.locationButton setBackgroundImage:[UIImage imageNamed:@"location"] forState:UIControlStateNormal];
     [self.locationButton addTarget:self action:@selector(detectOrigin) forControlEvents:UIControlEventTouchDown];
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager setDelegate:self];
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+    //self.locationSpinner = [[DACircularProgressView alloc] initWithFrame:CGRectMake(225, 5, 40, 40)];
+    self.locationSpinner = [[DACircularProgressView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
+    [self.locationSpinner setProgress:0.00];
+    [self.locationSpinner setIndeterminateDuration:0.7];
+    [self.locationSpinner setIndeterminate:1];
+    [self.locationSpinner setThicknessRatio:0.2];
+    [self.locationSpinner setRoundedCorners:1];
+    [self.locationSpinner setTrackTintColor:[UIColor clearColor]];
+    
     
     
     // SELF
     self.view.backgroundColor = [UIColor darkBlueGrayColor];
     
     // SUBVIEWS
-    [self.originButton addSubview:self.locationButton];
+    [self.locationView addSubview:self.locationSpinner];
+    [self.locationView addSubview:self.locationButton];
+    [self.originButton addSubview:self.locationView];
     [self.view addSubview:self.originButton];
     [self.view addSubview:self.destinationButton];
     [self.view addSubview:self.swapButton];
@@ -508,7 +520,7 @@
     [self.swapButton removeTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self.swapButton addTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     
-    [self.locationButton removeFromSuperview];
+    [self.locationView removeFromSuperview];
     
     // MOVEMENT
     [self.locationManager startUpdatingLocation];
@@ -557,9 +569,11 @@
     
     double seconds = self.arrivalTime.timeIntervalSinceNow;
     float progress = (self.arrivalTime.timeIntervalSinceNow / (float)self.trip.duration);
+    int minutes = seconds / 60;
+    int remainderSeconds = fmod(seconds, 60);
     
     [self.tripProgress setProgress:progress animated:YES];
-    self.subtextLabel.text = [NSString stringWithFormat:@"%f", self.arrivalTime.timeIntervalSinceNow];
+    self.subtextLabel.text = [NSString stringWithFormat:@"%d:%02d", minutes, remainderSeconds];
     if (seconds <= 0) {
         [self finishClock];
     }
@@ -575,7 +589,7 @@
     [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
     [self.swapButton removeTarget:self action:@selector(cancel) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self.swapButton addTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
-    [self.originButton addSubview:self.locationButton];
+    [self.originButton addSubview:self.locationView];
     [self.locationManager stopUpdatingLocation];
     [self.motionManager stopDeviceMotionUpdates];
     self.stoppedTime = self.movingTime = 0.0;
@@ -668,6 +682,8 @@
 - (void) detectOrigin {
     [self.locationManager startUpdatingLocation];
     self.detectingOrigin = YES;
+    [self.locationSpinner setProgressTintColor:[UIColor whiteColor]];
+    [self.locationSpinner setProgress:0.9 animated:YES];
 }
 
 - (void) pickOrigin {
@@ -764,7 +780,7 @@
     self.trip.duration = 0;
     [self.timer invalidate];
     self.timer = nil;
-    [self.originButton addSubview:self.locationButton];
+    [self.originButton addSubview:self.locationView];
     [self.locationManager stopUpdatingLocation];
     [self.motionManager stopDeviceMotionUpdates];
     self.stoppedTime = self.movingTime = 0.0;
@@ -862,8 +878,8 @@
     }
     
     
-    [self.originButton setTitle:[NSString stringWithFormat:@"%f", self.stoppedTime] forState:UIControlStateNormal];
-    [self.destinationButton setTitle:[NSString stringWithFormat:@"%f", self.movingTime] forState:UIControlStateNormal];
+    //[self.originButton setTitle:[NSString stringWithFormat:@"%f", self.stoppedTime] forState:UIControlStateNormal];
+    //[self.destinationButton setTitle:[NSString stringWithFormat:@"%f", self.movingTime] forState:UIControlStateNormal];
     
     self.lastMovementSum = self.movementSum;
     self.movementSum = 0;
@@ -883,11 +899,12 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    NSLog(@"HELLO");
     CLLocation *currentLocation = locations.lastObject;
     NSString *nearestStation = [self findNearestStationToLocation:currentLocation];
+    //[self.originButton setBackgroundColor:[UIColor lightAlgaeColor]];
     if (self.detectingOrigin) {
         self.trip.origin = nearestStation;
+        [self.locationSpinner setProgress:1 animated:YES];
         self.detectingOrigin = NO;
         [self.originButton setTitle:nearestStation forState:UIControlStateNormal];
         [self.locationManager stopUpdatingLocation];
@@ -903,15 +920,31 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    NSLog(@"ERROR LOCATION DONG");
+    
+    if (self.detectingOrigin) {
+        [self.locationSpinner setProgress:1 animated:YES];
+        [self.locationSpinner setProgressTintColor:[UIColor algaeColor]];
+        [self.locationManager stopUpdatingLocation];
+        self.detectingOrigin = NO;
+    }
+    
+    NSLog(@"Failed");
+//    [self.originButton setBackgroundColor:[UIColor flatRedColor]];
+//    UIPasteboard *pb = [UIPasteboard generalPasteboard];
+//    
+//    [pb setString:[error localizedDescription]];
 }
 
 - (void) locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager {
     NSLog(@"PAUSE LOCATION");
+//    UIPasteboard *pb = [UIPasteboard generalPasteboard];
+//    [pb setString:@"location paused"];
 }
 
 - (void) locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager {
     NSLog(@"RESUME LOCATION");
+//    UIPasteboard *pb = [UIPasteboard generalPasteboard];
+//    [pb setString:@"location resumed"];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -35,7 +35,9 @@
 @property (strong, nonatomic) NSDate *arrivalTime;
 @property (strong, nonatomic) UIButton *originButton;
 @property (strong, nonatomic) UIButton *destinationButton;
+@property (strong, nonatomic) UIView *locationView;
 @property (strong, nonatomic) UIButton *locationButton;
+@property (strong, nonatomic) DACircularProgressView *locationSpinner;
 @property (strong, nonatomic) UIButton *swapButton;
 @property (strong, nonatomic) UILabel *subtextLabel;
 @property (strong, nonatomic) IBOutlet UIView *clockView;
