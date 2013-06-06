@@ -568,12 +568,14 @@
     [self resetMovementLoop];
     
     double seconds = self.arrivalTime.timeIntervalSinceNow;
-    float progress = (self.arrivalTime.timeIntervalSinceNow / (float)self.trip.duration);
+    float progress = 0.96 * (self.arrivalTime.timeIntervalSinceNow / (float)self.trip.duration);
     int minutes = seconds / 60;
     int remainderSeconds = fmod(seconds, 60);
+    NSString *mins = @"mins";
     
+    if(minutes == 1) mins = @"min";
     [self.tripProgress setProgress:progress animated:YES];
-    self.subtextLabel.text = [NSString stringWithFormat:@"%d:%02d", minutes, remainderSeconds];
+    self.subtextLabel.text = [NSString stringWithFormat:@"%d %@", minutes, mins];
     if (seconds <= 0) {
         [self finishClock];
     }
