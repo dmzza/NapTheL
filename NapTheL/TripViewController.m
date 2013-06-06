@@ -530,7 +530,6 @@
         double currentTotal = vector.x + vector.y + vector.z;
         self.movementSum += currentTotal;
     }];
-    //self.movementTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(movementLoop) userInfo:nil repeats:YES];
     
     self.hasStarted = YES;
     
@@ -565,7 +564,7 @@
 }
 
 - (void) updateClock {
-    [self resetMovementLoop];
+    if (self.motionManager.deviceMotionAvailable) [self resetMovementLoop];
     
     double seconds = self.arrivalTime.timeIntervalSinceNow;
     float progress = 0.96 * (self.arrivalTime.timeIntervalSinceNow / (float)self.trip.duration);
