@@ -30,15 +30,10 @@
                                [UIImage imageNamed:@"williamsburgkr"], @"image",
                                @[@"Bedford Av", @"Lorimer St", @"Graham Av", @"Grand St", @"Montrose Av", @"Morgan Av"], @"stops",
                                nil],
-//                              [[NSDictionary alloc] initWithObjectsAndKeys:
-//                               @"East Williamsburg", @"name",
-//                               [UIImage imageNamed:@"eastwilliamsburg"], @"image",
-//                               @[@"Graham Av", @"Grand St", @"Montrose Av", @"Morgan Av"], @"stops",
-//                               nil],
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"Bushwick", @"name",
                                [UIImage imageNamed:@"bushwickkr"], @"image",
-                               @[@"Jefferson St", @"DeKalb Av", @"Myrtle-Wyckoff Avs", @"Halsey St", @"Wilson Av", @"Bushwich Av"], @"stops",
+                               @[@"Jefferson St", @"DeKalb Av", @"Myrtle-Wyckoff Avs", @"Halsey St", @"Wilson Av", @"Bushwick Av"], @"stops",
                                nil],
                               [[NSDictionary alloc] initWithObjectsAndKeys:
                                @"East New York", @"name",
