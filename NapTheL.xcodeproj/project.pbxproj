@@ -56,8 +56,6 @@
 		6336F229170B638C00E67CA9 /* DestinationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6336F228170B638C00E67CA9 /* DestinationTableViewController.m */; };
 		6336F22C170B6F5200E67CA9 /* TripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6336F22B170B6F5200E67CA9 /* TripViewController.m */; };
 		6336F22F170BB05700E67CA9 /* subwayAlarm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6336F22E170BB05700E67CA9 /* subwayAlarm.m4a */; };
-		6336F233170BB49F00E67CA9 /* napTheL.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F231170BB49F00E67CA9 /* napTheL.png */; };
-		6336F234170BB49F00E67CA9 /* napTheL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6336F232170BB49F00E67CA9 /* napTheL@2x.png */; };
 		634FED511731BA6A00AF3854 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634FED501731BA6A00AF3854 /* MessageUI.framework */; };
 		63649E2C172658590034BA35 /* UIImage+withColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 63649E2B172658590034BA35 /* UIImage+withColor.m */; };
 		63649E2E17276F100034BA35 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63649E2D17276F100034BA35 /* Quicksand-Bold.ttf */; };
@@ -155,8 +153,6 @@
 		6336F22A170B6F5200E67CA9 /* TripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripViewController.h; sourceTree = "<group>"; };
 		6336F22B170B6F5200E67CA9 /* TripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripViewController.m; sourceTree = "<group>"; };
 		6336F22E170BB05700E67CA9 /* subwayAlarm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = subwayAlarm.m4a; sourceTree = "<group>"; };
-		6336F231170BB49F00E67CA9 /* napTheL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = napTheL.png; sourceTree = "<group>"; };
-		6336F232170BB49F00E67CA9 /* napTheL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "napTheL@2x.png"; sourceTree = "<group>"; };
 		634FED501731BA6A00AF3854 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		63649E2A172658590034BA35 /* UIImage+withColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+withColor.h"; sourceTree = "<group>"; };
 		63649E2B172658590034BA35 /* UIImage+withColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+withColor.m"; sourceTree = "<group>"; };
@@ -386,8 +382,6 @@
 				63F524D117111A0500215CBE /* manhattan@2x.png */,
 				6313C75E170F5BD80069F480 /* williamsburg.jpg */,
 				6313C75F170F5BD80069F480 /* manhattan.jpg */,
-				6336F231170BB49F00E67CA9 /* napTheL.png */,
-				6336F232170BB49F00E67CA9 /* napTheL@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -487,8 +481,6 @@
 			files = (
 				6336F1F6170B5FBE00E67CA9 /* InfoPlist.strings in Resources */,
 				6336F22F170BB05700E67CA9 /* subwayAlarm.m4a in Resources */,
-				6336F233170BB49F00E67CA9 /* napTheL.png in Resources */,
-				6336F234170BB49F00E67CA9 /* napTheL@2x.png in Resources */,
 				6313C760170F5BD80069F480 /* williamsburg.jpg in Resources */,
 				6313C761170F5BD80069F480 /* manhattan.jpg in Resources */,
 				63F524D217111A0500215CBE /* manhattan.png in Resources */,
@@ -674,7 +666,8 @@
 		6336F21F170B5FBF00E67CA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: David Mazza (J3XDF4GPW5)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: David Mazza";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Mazza";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
@@ -683,7 +676,8 @@
 					"\"$(SRCROOT)/NapTheL/Library\"",
 				);
 				PRODUCT_NAME = "Tune Out";
-				PROVISIONING_PROFILE = "7926D438-F9C8-4E53-94BE-35687446202B";
+				PROVISIONING_PROFILE = "22FAF23D-EEAC-4065-B569-06BB0A13C4D8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "22FAF23D-EEAC-4065-B569-06BB0A13C4D8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -691,7 +685,8 @@
 		6336F220170B5FBF00E67CA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: David Mazza (J3XDF4GPW5)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: David Mazza";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Mazza";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
@@ -700,7 +695,8 @@
 					"\"$(SRCROOT)/NapTheL/Library\"",
 				);
 				PRODUCT_NAME = "Tune Out";
-				PROVISIONING_PROFILE = "7926D438-F9C8-4E53-94BE-35687446202B";
+				PROVISIONING_PROFILE = "22FAF23D-EEAC-4065-B569-06BB0A13C4D8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "22FAF23D-EEAC-4065-B569-06BB0A13C4D8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

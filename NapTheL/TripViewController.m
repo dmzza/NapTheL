@@ -569,7 +569,7 @@
     double seconds = self.arrivalTime.timeIntervalSinceNow;
     float progress = 0.96 * (self.arrivalTime.timeIntervalSinceNow / (float)self.trip.duration);
     int minutes = seconds / 60;
-    int remainderSeconds = fmod(seconds, 60);
+    // int remainderSeconds = fmod(seconds, 60);
     NSString *mins = @"mins";
     
     if(minutes == 1) mins = @"min";
@@ -878,8 +878,8 @@
         self.movingTime += 0.5;
         if(self.movingTime > self.errorThreshold) {
             if (self.stoppedTime > self.stdDoorTime) {
-                UIPasteboard *pb = [UIPasteboard generalPasteboard];
-                [pb setString:[NSString stringWithFormat:@"%f", self.stoppedTime]];
+//                UIPasteboard *pb = [UIPasteboard generalPasteboard];
+//                [pb setString:[NSString stringWithFormat:@"%f", self.stoppedTime]];
             }
             self.stoppedTime = 0;
         }
