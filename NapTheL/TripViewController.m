@@ -261,9 +261,9 @@
     
     
     // INIT
-    self.originButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-    self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 50, 320, 50)];
-    self.swapButton = [[UIButton alloc] initWithFrame:CGRectMake(245, 25, 100, 50)];
+    self.originButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, 320, 50)];
+    self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 114, 320, 50)];
+    self.swapButton = [[UIButton alloc] initWithFrame:CGRectMake(245, 89, 100, 50)];
     self.tripProgress = [[DACircularProgressView alloc] init];
     self.subtextLabel = [[UILabel alloc] init];
     
@@ -360,6 +360,8 @@
     // MOVEMENT
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.deviceMotionUpdateInterval = 0.01;
+    self.motionActivityManager = [[CMMotionActivityManager alloc] init];
+    
     
     // LOCATION
     self.locationView = [[UIView alloc] initWithFrame:CGRectMake(220, 0, 50, 50)];
@@ -530,6 +532,28 @@
         double currentTotal = vector.x + vector.y + vector.z;
         self.movementSum += currentTotal;
     }];
+    if ([CMMotionActivityManager isActivityAvailable]) {
+        [self.motionActivityManager startActivityUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMMotionActivity *activity) {
+            if (activity.stationary) {
+                [self.tripProgress setTrackTintColor:[UIColor colorWithRed:0.95 green:0.37 blue:0.3 alpha:1.0]];
+                [self.subtextLabel setText:@"stopped"];
+            } else {
+                [self.tripProgress setTrackTintColor:[UIColor clearColor]];
+                
+                if(activity.walking) {
+                    [self.subtextLabel setText:@"walking"];
+                } else if (activity.running) {
+                    [self.subtextLabel setText:@"running"];
+                } else if (activity.automotive) {
+                    [self.subtextLabel setText:@"car"];
+                } else if (activity.unknown) {
+                    [self.subtextLabel setText:@"unknown"];
+                } else {
+                    [self.subtextLabel setText:@"nil motion"];
+                }
+            }
+        }];
+    }
     
     self.hasStarted = YES;
     
@@ -574,7 +598,7 @@
     
     if(minutes == 1) mins = @"min";
     [self.tripProgress setProgress:progress animated:YES];
-    self.subtextLabel.text = [NSString stringWithFormat:@"%d %@", minutes, mins];
+    //self.subtextLabel.text = [NSString stringWithFormat:@"%d %@", minutes, mins];
     if (seconds <= 0) {
         [self finishClock];
     }

@@ -666,8 +666,8 @@
 		6336F21F170B5FBF00E67CA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: David Mazza";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Mazza";
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Mazza (J3XDF4GPW5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Mazza (J3XDF4GPW5)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
@@ -676,8 +676,8 @@
 					"\"$(SRCROOT)/NapTheL/Library\"",
 				);
 				PRODUCT_NAME = "Tune Out";
-				PROVISIONING_PROFILE = "22FAF23D-EEAC-4065-B569-06BB0A13C4D8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "22FAF23D-EEAC-4065-B569-06BB0A13C4D8";
+				PROVISIONING_PROFILE = "3E34F560-4971-4096-B988-E8222086A9A6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3E34F560-4971-4096-B988-E8222086A9A6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -685,8 +685,8 @@
 		6336F220170B5FBF00E67CA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: David Mazza";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Mazza";
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Mazza (J3XDF4GPW5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Mazza (J3XDF4GPW5)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
@@ -695,8 +695,8 @@
 					"\"$(SRCROOT)/NapTheL/Library\"",
 				);
 				PRODUCT_NAME = "Tune Out";
-				PROVISIONING_PROFILE = "22FAF23D-EEAC-4065-B569-06BB0A13C4D8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "22FAF23D-EEAC-4065-B569-06BB0A13C4D8";
+				PROVISIONING_PROFILE = "3E34F560-4971-4096-B988-E8222086A9A6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3E34F560-4971-4096-B988-E8222086A9A6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

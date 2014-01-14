@@ -49,6 +49,7 @@
 @property (strong, nonatomic) NSTimer *movementTimer;
 @property (strong, nonatomic) Trip *trip;
 @property (strong, nonatomic) CMMotionManager *motionManager;
+@property (strong, nonatomic) CMMotionActivityManager *motionActivityManager;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
 // STATES
