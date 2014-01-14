@@ -618,6 +618,7 @@
     [self.locationSpinner setProgress:0 animated:YES];
     [self.locationManager stopUpdatingLocation];
     [self.motionManager stopDeviceMotionUpdates];
+    [self.motionActivityManager stopActivityUpdates];
     self.stoppedTime = self.movingTime = 0.0;
     if ([MFMailComposeViewController canSendMail]) {
         [self showMailButton];
@@ -879,6 +880,7 @@
     double currentDiff = fabs(self.movementSum - self.lastMovementSum);
     
     if(currentDiff < self.movementThreshold) {
+        [self.swapButton setBackgroundColor:[UIColor redColor]];
         self.stoppedTime += 0.5;
         if (self.stoppedTime > self.stdDoorTime)
             self.accumulatedPauseTime += 0.5;
@@ -899,6 +901,7 @@
         self.movingTime = 0;
     }
     else {
+        [self.swapButton setBackgroundColor:[UIColor greenColor]];
         self.movingTime += 0.5;
         if(self.movingTime > self.errorThreshold) {
             if (self.stoppedTime > self.stdDoorTime) {
