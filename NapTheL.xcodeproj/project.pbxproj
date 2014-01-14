@@ -671,6 +671,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NapTheL/Library\"",
@@ -690,6 +691,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NapTheL/Library\"",

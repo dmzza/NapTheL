@@ -33,7 +33,7 @@
     UIImage *backButtonBackground = [UIImage imageWithColor:[UIColor darkerBlueGrayColor]];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStyleDone target:nil action:nil];
     [backButton setBackButtonBackgroundImage:backButtonBackground forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Quicksand-Bold" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Quicksand-Bold" size:20.0], NSFontAttributeName, nil] forState:UIControlStateNormal];
     [[self navigationItem] setBackBarButtonItem:backButton];
 }
 

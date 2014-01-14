@@ -30,10 +30,8 @@
     
     UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:tripViewController];
     alarmNavController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                            [UIColor whiteColor], UITextAttributeTextColor,
-                                                            [UIColor clearColor], UITextAttributeTextShadowColor,
-                                                            [UIFont fontWithName:@"Quicksand-Bold" size:20.0], UITextAttributeFont,
-                                                            [NSValue valueWithCGSize:CGSizeMake(0.0, 0.0)], UITextAttributeTextShadowOffset,
+                                                            [UIColor whiteColor], NSForegroundColorAttributeName,
+                                                            [UIFont fontWithName:@"Quicksand-Bold" size:20.0], NSFontAttributeName,
                                                             nil];
     
     

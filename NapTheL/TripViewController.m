@@ -256,7 +256,7 @@
     UIImage *backButtonBackground = [UIImage imageWithColor:[UIColor darkerBlueGrayColor]];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStyleDone target:nil action:nil];
     [backButton setBackButtonBackgroundImage:backButtonBackground forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Quicksand-Bold" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Quicksand-Bold" size:20.0], NSFontAttributeName, nil] forState:UIControlStateNormal];
     [[self navigationItem] setBackBarButtonItem:backButton];
     
     
@@ -712,7 +712,7 @@
     [self.locationSpinner setIndeterminate:1];
     [self.locationSpinner setProgress:0.9 animated:YES];
     if (![CLLocationManager locationServicesEnabled]) {
-        [self locationManager:self.locationManager didFailWithError:[NSError errorWithDomain:@"LocationDisabled" code:nil userInfo:nil]];
+        [self locationManager:self.locationManager didFailWithError:[NSError errorWithDomain:@"LocationDisabled" code:0 userInfo:nil]];
     }
     
 }
