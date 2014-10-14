@@ -715,7 +715,7 @@
     [self.locationSpinner setIndeterminate:1];
     [self.locationSpinner setProgress:0.9 animated:YES];
     if (![CLLocationManager locationServicesEnabled]) {
-        [self locationManager:self.locationManager didFailWithError:[NSError errorWithDomain:@"LocationDisabled" code:nil userInfo:nil]];
+        [self locationManager:self.locationManager didFailWithError:[NSError errorWithDomain:@"LocationDisabled" code:0 userInfo:0]];
     }
     
 }
