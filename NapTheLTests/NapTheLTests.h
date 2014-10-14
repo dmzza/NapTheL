@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 David Mazza. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface NapTheLTests : SenTestCase
+@interface NapTheLTests : XCTestCase
 
 @end

@@ -43,7 +43,6 @@
 		6336F1F8170B5FBE00E67CA9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6336F1F7170B5FBE00E67CA9 /* main.m */; };
 		6336F1FC170B5FBE00E67CA9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6336F1FB170B5FBE00E67CA9 /* AppDelegate.m */; };
 		6336F205170B5FBE00E67CA9 /* NapTheL.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6336F203170B5FBE00E67CA9 /* NapTheL.xcdatamodeld */; };
-		6336F20D170B5FBF00E67CA9 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6336F20C170B5FBF00E67CA9 /* SenTestingKit.framework */; };
 		6336F20E170B5FBF00E67CA9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6336F1E9170B5FBE00E67CA9 /* UIKit.framework */; };
 		6336F20F170B5FBF00E67CA9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6336F1EB170B5FBE00E67CA9 /* Foundation.framework */; };
 		6336F210170B5FBF00E67CA9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6336F1EF170B5FBE00E67CA9 /* CoreData.framework */; };
@@ -127,8 +126,7 @@
 		6336F1FA170B5FBE00E67CA9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6336F1FB170B5FBE00E67CA9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6336F204170B5FBE00E67CA9 /* NapTheL.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NapTheL.xcdatamodel; sourceTree = "<group>"; };
-		6336F20B170B5FBF00E67CA9 /* NapTheLTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NapTheLTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6336F20C170B5FBF00E67CA9 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6336F20B170B5FBF00E67CA9 /* NapTheLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NapTheLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6336F215170B5FBF00E67CA9 /* NapTheLTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NapTheLTests-Info.plist"; sourceTree = "<group>"; };
 		6336F217170B5FBF00E67CA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6336F219170B5FBF00E67CA9 /* NapTheLTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NapTheLTests.h; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6336F20D170B5FBF00E67CA9 /* SenTestingKit.framework in Frameworks */,
 				6336F20E170B5FBF00E67CA9 /* UIKit.framework in Frameworks */,
 				6336F20F170B5FBF00E67CA9 /* Foundation.framework in Frameworks */,
 				6336F210170B5FBF00E67CA9 /* CoreData.framework in Frameworks */,
@@ -227,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				6336F1E6170B5FBE00E67CA9 /* Tune Out.app */,
-				6336F20B170B5FBF00E67CA9 /* NapTheLTests.octest */,
+				6336F20B170B5FBF00E67CA9 /* NapTheLTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,7 +242,6 @@
 				6336F1EB170B5FBE00E67CA9 /* Foundation.framework */,
 				6336F1ED170B5FBE00E67CA9 /* CoreGraphics.framework */,
 				6336F1EF170B5FBE00E67CA9 /* CoreData.framework */,
-				6336F20C170B5FBF00E67CA9 /* SenTestingKit.framework */,
 				EE40BD5A3C804EE18239EE08 /* libPods-NapTheL.a */,
 			);
 			name = Frameworks;
@@ -418,8 +414,8 @@
 			);
 			name = NapTheLTests;
 			productName = NapTheLTests;
-			productReference = 6336F20B170B5FBF00E67CA9 /* NapTheLTests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
+			productReference = 6336F20B170B5FBF00E67CA9 /* NapTheLTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -427,6 +423,7 @@
 		6336F1DE170B5FBE00E67CA9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0600;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "David Mazza";
 				TargetAttributes = {
@@ -638,7 +635,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -662,7 +659,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -678,10 +675,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/NapTheL/Library\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "Tune Out";
 				PROVISIONING_PROFILE = "a79b82c5-be39-4197-b768-3cbbda530924";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "a79b82c5-be39-4197-b768-3cbbda530924";
@@ -698,10 +692,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/NapTheL/Library\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "Tune Out";
 				PROVISIONING_PROFILE = "a79b82c5-be39-4197-b768-3cbbda530924";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "a79b82c5-be39-4197-b768-3cbbda530924";
@@ -716,13 +707,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheLTests/NapTheLTests-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -733,13 +725,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheLTests/NapTheLTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
