@@ -1,10 +1,11 @@
 # Uncomment this line to define a global platform for your project
 platform :ios, "8.0"
 
-target "NapTheL" do
+target "Tune Out" do
   pod "GoogleAnalytics-iOS-SDK"
+  pod "DACircularProgress"
 end
 
-target "NapTheLTests" do
+target "Tune OutTests" do
 
 end
