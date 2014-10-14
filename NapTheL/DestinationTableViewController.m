@@ -10,6 +10,9 @@
 #import "TripViewController.h"
 #import "UIColor+CustomColors.h"
 #import "UIImage+withColor.h"
+#import <GAI.h>
+#import "GAIFields.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface DestinationTableViewController ()
 
@@ -38,9 +41,11 @@
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor darkBlueGrayColor]] forBarMetrics:UIBarMetricsDefault];
     
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    id tracker = [[GAI sharedInstance] defaultTracker];
     // manual screen tracking
-    [tracker sendView:@"Destination Screen"];
+    [tracker set:kGAIScreenName
+           value:@"Destination Screen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

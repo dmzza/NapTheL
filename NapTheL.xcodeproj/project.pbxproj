@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BBA70CA6BD64925B41C03A9 /* libPods-NapTheL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE40BD5A3C804EE18239EE08 /* libPods-NapTheL.a */; };
 		6303E2441716066800028F17 /* startClock.png in Resources */ = {isa = PBXBuildFile; fileRef = 6303E2421716066800028F17 /* startClock.png */; };
 		6303E2451716066800028F17 /* startClock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6303E2431716066800028F17 /* startClock@2x.png */; };
 		6303E24717167E9500028F17 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6303E24617167E9500028F17 /* QuartzCore.framework */; };
-		630595351732DA4E003410A9 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 630595331732DA4E003410A9 /* libGoogleAnalytics.a */; };
-		630595361732DA4E003410A9 /* libGoogleAnalytics_debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 630595341732DA4E003410A9 /* libGoogleAnalytics_debug.a */; };
 		630595381732DAAB003410A9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 630595371732DAAB003410A9 /* SystemConfiguration.framework */; };
 		6305953D17336B9E003410A9 /* canarsie.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305953917336B9E003410A9 /* canarsie.png */; };
 		6305953E17336B9E003410A9 /* canarsie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305953A17336B9E003410A9 /* canarsie@2x.png */; };
@@ -34,8 +33,6 @@
 		6305956517338DFC003410A9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6305956417338DFC003410A9 /* Default-568h@2x.png */; };
 		630595671733B71E003410A9 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 630595661733B71D003410A9 /* Icon@2x.png */; };
 		630595691733C958003410A9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 630595681733C958003410A9 /* Icon.png */; };
-		6313C760170F5BD80069F480 /* williamsburg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6313C75E170F5BD80069F480 /* williamsburg.jpg */; };
-		6313C761170F5BD80069F480 /* manhattan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6313C75F170F5BD80069F480 /* manhattan.jpg */; };
 		632CD7DA171F2ED80030E8B9 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 632CD7D9171F2ED80030E8B9 /* Trip.m */; };
 		632CD7E0171F9DBC0030E8B9 /* glyphicons-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 632CD7DF171F9DBC0030E8B9 /* glyphicons-regular.ttf */; };
 		6336F1EA170B5FBE00E67CA9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6336F1E9170B5FBE00E67CA9 /* UIKit.framework */; };
@@ -65,7 +62,6 @@
 		636D22E5171FAFB1006F280B /* linecons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E4171FAFB1006F280B /* linecons.ttf */; };
 		636D22E7171FCADD006F280B /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636D22E6171FCADD006F280B /* Quicksand-Regular.ttf */; };
 		636D22EA17207422006F280B /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 636D22E917207422006F280B /* UIColor+CustomColors.m */; };
-		63DB750D17346D1C00D2AD6F /* ItunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DB750C17346D1C00D2AD6F /* ItunesArtwork.png */; };
 		63E16BD2172C635900BDA497 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E16BD1172C635900BDA497 /* AudioToolbox.framework */; };
 		63EC3F1A17432AC900773B35 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EC3F1917432AC900773B35 /* CoreMotion.framework */; };
 		63EC3F1C1746A72F00773B35 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EC3F1B1746A72F00773B35 /* CoreLocation.framework */; };
@@ -94,13 +90,6 @@
 		6303E2421716066800028F17 /* startClock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startClock.png; sourceTree = "<group>"; };
 		6303E2431716066800028F17 /* startClock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startClock@2x.png"; sourceTree = "<group>"; };
 		6303E24617167E9500028F17 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		6305952E1732DA4E003410A9 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		6305952F1732DA4E003410A9 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		630595301732DA4E003410A9 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		630595311732DA4E003410A9 /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
-		630595321732DA4E003410A9 /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
-		630595331732DA4E003410A9 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
-		630595341732DA4E003410A9 /* libGoogleAnalytics_debug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics_debug.a; sourceTree = "<group>"; };
 		630595371732DAAB003410A9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6305953917336B9E003410A9 /* canarsie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canarsie.png; sourceTree = "<group>"; };
 		6305953A17336B9E003410A9 /* canarsie@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "canarsie@2x.png"; sourceTree = "<group>"; };
@@ -123,8 +112,6 @@
 		6305956417338DFC003410A9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		630595661733B71D003410A9 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		630595681733C958003410A9 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		6313C75E170F5BD80069F480 /* williamsburg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = williamsburg.jpg; path = ../../../Downloads/williamsburg.jpg; sourceTree = "<group>"; };
-		6313C75F170F5BD80069F480 /* manhattan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = manhattan.jpg; path = ../../../Downloads/manhattan.jpg; sourceTree = "<group>"; };
 		632CD7D8171F2ED80030E8B9 /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trip.h; sourceTree = "<group>"; };
 		632CD7D9171F2ED80030E8B9 /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trip.m; sourceTree = "<group>"; };
 		632CD7DF171F9DBC0030E8B9 /* glyphicons-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "glyphicons-regular.ttf"; sourceTree = "<group>"; };
@@ -180,6 +167,8 @@
 		63F524DD1711218700215CBE /* williamsburg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "williamsburg@2x.png"; sourceTree = "<group>"; };
 		63F524E01711F79D00215CBE /* StopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTableViewController.h; sourceTree = "<group>"; };
 		63F524E11711F79E00215CBE /* StopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTableViewController.m; sourceTree = "<group>"; };
+		65D1F3FA2A35496CA0B326FF /* Pods-NapTheL.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NapTheL.xcconfig"; path = "Pods/Pods-NapTheL.xcconfig"; sourceTree = "<group>"; };
+		EE40BD5A3C804EE18239EE08 /* libPods-NapTheL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NapTheL.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,8 +186,7 @@
 				6336F1EC170B5FBE00E67CA9 /* Foundation.framework in Frameworks */,
 				6336F1EE170B5FBE00E67CA9 /* CoreGraphics.framework in Frameworks */,
 				6336F1F0170B5FBE00E67CA9 /* CoreData.framework in Frameworks */,
-				630595351732DA4E003410A9 /* libGoogleAnalytics.a in Frameworks */,
-				630595361732DA4E003410A9 /* libGoogleAnalytics_debug.a in Frameworks */,
+				0BBA70CA6BD64925B41C03A9 /* libPods-NapTheL.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,21 +204,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6305952D1732DA4E003410A9 /* GoogleAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				6305952E1732DA4E003410A9 /* GAI.h */,
-				6305952F1732DA4E003410A9 /* GAITrackedViewController.h */,
-				630595301732DA4E003410A9 /* GAITracker.h */,
-				630595311732DA4E003410A9 /* GAITransaction.h */,
-				630595321732DA4E003410A9 /* GAITransactionItem.h */,
-				630595331732DA4E003410A9 /* libGoogleAnalytics.a */,
-				630595341732DA4E003410A9 /* libGoogleAnalytics_debug.a */,
-			);
-			name = GoogleAnalytics;
-			path = Library;
-			sourceTree = "<group>";
-		};
 		632CD7DE171F9D760030E8B9 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +219,7 @@
 				6336F213170B5FBF00E67CA9 /* NapTheLTests */,
 				6336F1E8170B5FBE00E67CA9 /* Frameworks */,
 				6336F1E7170B5FBE00E67CA9 /* Products */,
+				65D1F3FA2A35496CA0B326FF /* Pods-NapTheL.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -272,6 +246,7 @@
 				6336F1ED170B5FBE00E67CA9 /* CoreGraphics.framework */,
 				6336F1EF170B5FBE00E67CA9 /* CoreData.framework */,
 				6336F20C170B5FBF00E67CA9 /* SenTestingKit.framework */,
+				EE40BD5A3C804EE18239EE08 /* libPods-NapTheL.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -279,7 +254,6 @@
 		6336F1F1170B5FBE00E67CA9 /* NapTheL */ = {
 			isa = PBXGroup;
 			children = (
-				6305952D1732DA4E003410A9 /* GoogleAnalytics */,
 				63649E2F1728EF8A0034BA35 /* DACircularProgress */,
 				632CD7DE171F9D760030E8B9 /* Fonts */,
 				6336F230170BB49200E67CA9 /* Images */,
@@ -380,8 +354,6 @@
 				63F524D517111D6400215CBE /* eastwilliamsburg@2x.png */,
 				63F524D017111A0500215CBE /* manhattan.png */,
 				63F524D117111A0500215CBE /* manhattan@2x.png */,
-				6313C75E170F5BD80069F480 /* williamsburg.jpg */,
-				6313C75F170F5BD80069F480 /* manhattan.jpg */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -415,9 +387,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6336F21E170B5FBF00E67CA9 /* Build configuration list for PBXNativeTarget "NapTheL" */;
 			buildPhases = (
+				7B335D30C7F84A73B0BFC153 /* Check Pods Manifest.lock */,
 				6336F1E2170B5FBE00E67CA9 /* Sources */,
 				6336F1E3170B5FBE00E67CA9 /* Frameworks */,
 				6336F1E4170B5FBE00E67CA9 /* Resources */,
+				BCCF844C601744389220FE57 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -445,7 +419,7 @@
 			name = NapTheLTests;
 			productName = NapTheLTests;
 			productReference = 6336F20B170B5FBF00E67CA9 /* NapTheLTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -455,6 +429,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "David Mazza";
+				TargetAttributes = {
+					6336F1E5170B5FBE00E67CA9 = {
+						DevelopmentTeam = DNPVU838JE;
+					};
+				};
 			};
 			buildConfigurationList = 6336F1E1170B5FBE00E67CA9 /* Build configuration list for PBXProject "NapTheL" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -481,8 +460,6 @@
 			files = (
 				6336F1F6170B5FBE00E67CA9 /* InfoPlist.strings in Resources */,
 				6336F22F170BB05700E67CA9 /* subwayAlarm.m4a in Resources */,
-				6313C760170F5BD80069F480 /* williamsburg.jpg in Resources */,
-				6313C761170F5BD80069F480 /* manhattan.jpg in Resources */,
 				63F524D217111A0500215CBE /* manhattan.png in Resources */,
 				63F524D317111A0500215CBE /* manhattan@2x.png in Resources */,
 				63F524D617111D6400215CBE /* eastwilliamsburg.png in Resources */,
@@ -518,7 +495,6 @@
 				6305956517338DFC003410A9 /* Default-568h@2x.png in Resources */,
 				630595671733B71E003410A9 /* Icon@2x.png in Resources */,
 				630595691733C958003410A9 /* Icon.png in Resources */,
-				63DB750D17346D1C00D2AD6F /* ItunesArtwork.png in Resources */,
 				63EC3F381747398400773B35 /* location.png in Resources */,
 				63EC3F391747398400773B35 /* location@2x.png in Resources */,
 			);
@@ -547,6 +523,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		7B335D30C7F84A73B0BFC153 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BCCF844C601744389220FE57 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-NapTheL-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -665,9 +671,10 @@
 		};
 		6336F21F170B5FBF00E67CA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65D1F3FA2A35496CA0B326FF /* Pods-NapTheL.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: David Mazza (J3XDF4GPW5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Mazza (J3XDF4GPW5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
@@ -676,17 +683,18 @@
 					"\"$(SRCROOT)/NapTheL/Library\"",
 				);
 				PRODUCT_NAME = "Tune Out";
-				PROVISIONING_PROFILE = "3E34F560-4971-4096-B988-E8222086A9A6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3E34F560-4971-4096-B988-E8222086A9A6";
+				PROVISIONING_PROFILE = "a79b82c5-be39-4197-b768-3cbbda530924";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "a79b82c5-be39-4197-b768-3cbbda530924";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		6336F220170B5FBF00E67CA9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65D1F3FA2A35496CA0B326FF /* Pods-NapTheL.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: David Mazza (J3XDF4GPW5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Mazza (J3XDF4GPW5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NapTheL/NapTheL-Prefix.pch";
 				INFOPLIST_FILE = "NapTheL/NapTheL-Info.plist";
@@ -695,8 +703,8 @@
 					"\"$(SRCROOT)/NapTheL/Library\"",
 				);
 				PRODUCT_NAME = "Tune Out";
-				PROVISIONING_PROFILE = "3E34F560-4971-4096-B988-E8222086A9A6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3E34F560-4971-4096-B988-E8222086A9A6";
+				PROVISIONING_PROFILE = "a79b82c5-be39-4197-b768-3cbbda530924";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "a79b82c5-be39-4197-b768-3cbbda530924";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

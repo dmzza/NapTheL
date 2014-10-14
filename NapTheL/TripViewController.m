@@ -13,6 +13,9 @@
 #import "UIColor+CustomColors.h"
 #import "UIImage+withColor.h"
 #import "DACircularProgressView.h"
+#import <GAI.h>
+#import "GAIFields.h"
+#import "GAIDictionaryBuilder.h"
 
 
 @interface TripViewController ()
@@ -405,11 +408,11 @@
     [self.clockView addConstraints:@[progressCenterXConstraint, progressCenterYConstraint, progressHeightConstraint, progressWidthConstraint]];
     [self.view addSubview:self.clockView];
     
-    self.trackedViewName = @"Trip Screen";
+    self.screenName = @"Trip Screen";
 }
 
 - (void) setStopViewController:(id)controller didFinishSelectingStop:(NSString *)stop which:(BOOL)isOrigin {
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    id tracker = [[GAI sharedInstance] defaultTracker];
     if(isOrigin) {
         self.trip.origin = stop;
         [self.originButton setTitle:[NSString stringWithFormat:@"%@", stop] forState:UIControlStateNormal];
@@ -418,10 +421,10 @@
         }
         [self.navigationController popToRootViewControllerAnimated:YES];
         
-        [tracker sendEventWithCategory:@"userAction"
-                            withAction:@"originChosen"
-                             withLabel:stop
-                             withValue:nil];
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"userAction"
+                                                              action:@"originChosen"
+                                                               label:stop
+                                                               value:nil] build]];
     } else { // is destination
         self.trip.destination = stop;
         [self.destinationButton setTitle:[NSString stringWithFormat:@"%@", stop] forState:UIControlStateNormal];
@@ -433,10 +436,10 @@
                 self.timer = nil;
             }
         }
-        [tracker sendEventWithCategory:@"userAction"
-                            withAction:@"destinationChosen"
-                             withLabel:stop
-                             withValue:nil];
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"userAction"
+                                                              action:@"destinationChosen"
+                                                               label:stop
+                                                               value:nil] build]];
     }
     if(self.stationsAreChosen) {
         [self calculateTime];
@@ -503,8 +506,8 @@
         self.trip.duration = self.timeRemaining;
         [self.tripProgress setProgress:1.0 animated:YES];
     }
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker setSessionTimeout:(self.timeRemaining + 30)];
+    //id tracker = [[GAI sharedInstance] defaultTracker];
+    //[tracker setSessionTimeout:(self.timeRemaining + 30)];
 }
 
 - (void) startClock {
@@ -660,10 +663,10 @@
         }];
     }];
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendEventWithCategory:@"transition"
-                        withAction:@"spinButton"
-                         withLabel:aSubtext
-                         withValue:nil];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"transition"
+                                                          action:@"spinButton"
+                                                           label:aSubtext
+                                                           value:nil] build]];
 }
 
 - (void) handleFlipFrom:(UIPanGestureRecognizer *)recognizer {
@@ -694,10 +697,10 @@
             else if ([actions[0] isEqual: @"endTrip"])
                 [self endTrip];
             id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-            [tracker sendEventWithCategory:@"uiAction"
-                                withAction:@"flipGesture"
-                                 withLabel:actions[0]
-                                 withValue:nil];
+            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction"
+                                                                  action:@"flipGesture"
+                                                                   label:actions[0]
+                                                                   value:nil] build]];
         } else {
             self.clockView.layer.transform = CATransform3DScale(CATransform3DMakeRotation(0, 0, 1, 0), 1.0, 1.0, 1.0);
         }
@@ -747,10 +750,10 @@
     }
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendEventWithCategory:@"uiAction"
-                        withAction:@"buttonPressed"
-                         withLabel:@"swap"
-                         withValue:nil];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction"
+                                                          action:@"buttonPressed"
+                                                           label:@"swap"
+                                                           value:nil] build]];
 }
 
 - (void) pause {
@@ -824,11 +827,11 @@
     [self.swapButton addTarget:self action:@selector(swap) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [self endTrip];
     
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendEventWithCategory:@"uiAction"
-                        withAction:@"buttonPressed"
-                         withLabel:@"cancel"
-                         withValue:nil];
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction"
+                                                          action:@"buttonPressed"
+                                                           label:@"cancel"
+                                                           value:nil] build]];
 }
 
 - (void) mail {
@@ -842,10 +845,10 @@
         
     }];
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendEventWithCategory:@"uiAction"
-                        withAction:@"buttonPressed"
-                         withLabel:@"mail"
-                         withValue:nil];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction"
+                                                          action:@"buttonPressed"
+                                                           label:@"mail"
+                                                           value:nil] build]];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller
@@ -856,10 +859,10 @@
         [self.mailButton setTitle:@"THANKS" forState:UIControlStateNormal];
         self.mailButton.titleLabel.font = [UIFont fontWithName:@"Quicksand-Regular" size:12];
         id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-        [tracker sendEventWithCategory:@"userAction"
-                            withAction:@"emailSent"
-                             withLabel:@""
-                             withValue:nil];
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"userAction"
+                                                              action:@"emailSent"
+                                                               label:@""
+                                                               value:nil] build]];
     }
     [self dismissViewControllerAnimated:YES completion:^{
         
