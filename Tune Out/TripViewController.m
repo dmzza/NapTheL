@@ -264,26 +264,14 @@
     
     
     // INIT
-    self.originButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, 320, 50)];
-    self.destinationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 114, 320, 50)];
-    self.swapButton = [[UIButton alloc] initWithFrame:CGRectMake(245, 89, 100, 50)];
     self.tripProgress = [[DACircularProgressView alloc] init];
     self.subtextLabel = [[UILabel alloc] init];
     
     // ORIGIN/DEST/SWAP
-    [self.originButton setTitle:[NSString stringWithFormat:@"FROM"] forState:UIControlStateNormal];
-    [self.destinationButton setTitle:[NSString stringWithFormat:@"TO"] forState:UIControlStateNormal];
-    self.originButton.titleEdgeInsets = self.destinationButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
-    self.originButton.contentHorizontalAlignment = self.destinationButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.originButton.titleLabel.textColor = self.destinationButton.titleLabel.textColor = [UIColor whiteColor];
-    //NSLog(@"font names: %@", [UIFont fontNamesForFamilyName:@"Quicksand"]);
-    self.originButton.titleLabel.font = self.destinationButton.titleLabel.font = [UIFont fontWithName:@"Quicksand-Regular" size:17.0];
     self.originButton.backgroundColor = [UIColor lightAlgaeColor];
     self.destinationButton.backgroundColor = [UIColor algaeColor];
     
-    self.swapButton.titleLabel.font = [UIFont fontWithName:@"Sosa-Regular" size:35.0];
-    self.swapButton.transform = CGAffineTransformMakeRotation(M_PI_2);
-    [self.swapButton setTitle:@"U" forState:UIControlStateNormal];
     self.swapButton.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
     
     [self.originButton addTarget:self action:@selector(pickOrigin) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
@@ -334,12 +322,6 @@
     
     
     // START
-    self.startButton.titleLabel.font = [UIFont fontWithName:@"Linecons" size:90.0]; //[UIFont fontWithName:@"Avenir" size:18];
-    [self.startButton setFrame:CGRectMake(10, 10, 208, 208)];
-    self.startButton.backgroundColor = [UIColor clearColor];
-    [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateNormal];
-    [self.startButton setBackgroundImage:[UIImage imageNamed:@"startClock"] forState:UIControlStateHighlighted];
-    [self.startButton setTitle:@"" forState:UIControlStateNormal];
     [self.startButton addTarget:self action:@selector(startClock) forControlEvents:(UIControlEvents)UIControlEventTouchUpInside];
     UIPanGestureRecognizer* panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleFlipFrom:)];
     [self.startButton addGestureRecognizer:panGestureRecognizer];
