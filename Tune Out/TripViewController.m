@@ -247,16 +247,16 @@
   self.stdDoorTime = 13.0;
   self.earlyAlarmTime = 30.0;
   
-    // NAV BAR
-    /*[[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0.95 green:0.37 blue:0.3 alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
-    
-    UIImage *backButtonBackground = [UIImage imageWithColor:[UIColor darkerBlueGrayColor]];
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStyleDone target:nil action:nil];
-    [backButton setBackButtonBackgroundImage:backButtonBackground forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Quicksand-Bold" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
-    [[self navigationItem] setBackBarButtonItem:backButton];
-    */
+  // NAV BAR
+  NSDictionary *titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       [UIFont fontWithName:@"Quicksand-Bold" size:20.0], NSFontAttributeName,
+                                       [UIColor whiteColor],                              NSForegroundColorAttributeName, nil];
+  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStylePlain target:nil action:nil];
   
+  [backButton setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
+  [backButton setBackButtonBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+  [[self navigationItem] setBackBarButtonItem:backButton];
+   
     // INIT
     self.trip = [[Trip alloc] init];
     self.tripProgress = [[DACircularProgressView alloc] init];

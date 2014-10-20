@@ -27,7 +27,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="CYN-fa-ISV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.47418034466656511" blue="0.43749042089233003" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -186,23 +185,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Hp-4C-v0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="844" y="184"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="KDF-m9-NET">
-            <objects>
-                <viewController id="iY1-rU-s64" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="l35-jV-bhy"/>
-                        <viewControllerLayoutGuide type="bottom" id="Uwf-2w-DAg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PyM-0D-4qP">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XLV-dB-yY2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>

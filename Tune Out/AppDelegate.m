@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "TripViewController.h"
 #import "UIColor+CustomColors.h"
+#import "UIImage+withColor.h"
 #import <AudioToolbox/AudioServices.h>
 #import "GAI.h"
 
@@ -20,6 +21,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  
+  NSDictionary *titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       [UIFont fontWithName:@"Quicksand-Bold" size:20.0], NSFontAttributeName,
+                                       [UIColor whiteColor],                              NSForegroundColorAttributeName, nil];
+
+  [[UINavigationBar appearance] setTitleTextAttributes:titleTextAttributes];
+  //[[UINavigationBar appearance] setShadowImage:[UIImage imageWithColor:[UIColor colorWithWhite:0 alpha:0.2]]];
+  [[UINavigationBar appearanceWhenContainedIn:[UIViewController class], nil] setBackgroundImage:[UIImage imageWithColor:[UIColor flatRedColor]] forBarMetrics:UIBarMetricsDefault];
+  [[UINavigationBar appearanceWhenContainedIn:[UITableViewController class], nil] setBackgroundImage:[UIImage imageWithColor:[UIColor darkBlueGrayColor]] forBarMetrics:UIBarMetricsDefault];
+  
     // Optional: automatically send uncaught exceptions to Google Analytics.
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     
