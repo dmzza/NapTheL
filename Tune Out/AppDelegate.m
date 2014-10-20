@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "TripViewController.h"
-#import "Trip.h"
 #import "UIColor+CustomColors.h"
 #import <AudioToolbox/AudioServices.h>
 #import "GAI.h"
@@ -21,29 +20,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    /*self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    Trip *trip = [[Trip alloc] init];
-    
-    TripViewController *tripViewController = [[TripViewController alloc] init];
-    tripViewController.trip = trip;
-    
-    UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:tripViewController];
-    alarmNavController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                            [UIColor whiteColor], UITextAttributeTextColor,
-                                                            [UIColor clearColor], UITextAttributeTextShadowColor,
-                                                            [UIFont fontWithName:@"Quicksand-Bold" size:20.0], UITextAttributeFont,
-                                                            [NSValue valueWithCGSize:CGSizeMake(0.0, 0.0)], UITextAttributeTextShadowOffset,
-                                                            nil];
-    
-    
-    
-    self.window.rootViewController = alarmNavController;
-    
-    
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];*/
-    
     // Optional: automatically send uncaught exceptions to Google Analytics.
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     

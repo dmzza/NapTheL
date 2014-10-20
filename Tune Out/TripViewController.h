@@ -12,9 +12,10 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MessageUI/MFMailComposeViewController.h>
 #import "StopTableViewController.h"
-#import "Trip.h"
 #import "DACircularProgressView.h"
 #import "GAITrackedViewController.h"
+
+@class Trip;
 
 @interface TripViewController : GAITrackedViewController <StopTableViewControllerDelegate, MFMailComposeViewControllerDelegate, CLLocationManagerDelegate>
 
