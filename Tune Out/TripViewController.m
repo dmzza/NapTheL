@@ -301,15 +301,15 @@
     NSLayoutConstraint *progressWidthConstraint = [NSLayoutConstraint constraintWithItem:self.tripProgress
                                                                                attribute:NSLayoutAttributeWidth
                                                                                relatedBy:NSLayoutRelationEqual
-                                                                                  toItem:self.clockView
+                                                                                  toItem:self.startButton
                                                                                attribute:NSLayoutAttributeWidth
-                                                                              multiplier:1.0
+                                                                              multiplier:1.1
                                                                                 constant:0.0];
     
     NSLayoutConstraint *progressHeightConstraint = [NSLayoutConstraint constraintWithItem:self.tripProgress
                                                                                 attribute:NSLayoutAttributeHeight
                                                                                 relatedBy:NSLayoutRelationEqual
-                                                                                   toItem:self.clockView
+                                                                                   toItem:self.tripProgress
                                                                                 attribute:NSLayoutAttributeWidth
                                                                                multiplier:1.0
                                                                                  constant:0.0];
