@@ -135,10 +135,18 @@
                                     <constraint firstAttribute="bottom" secondItem="0fn-B8-gVL" secondAttribute="bottom" constant="9" id="x11-Vd-zh4"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0B3-vP-U7a">
+                                <rect key="frame" x="492" y="64" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0B3-vP-U7a" secondAttribute="height" multiplier="1:1" id="umA-lh-y5X"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="0B3-vP-U7a" firstAttribute="top" secondItem="Mjd-pW-pQn" secondAttribute="top" id="21h-XR-BM1"/>
                             <constraint firstItem="Slg-MM-HH9" firstAttribute="top" secondItem="wj3-9V-gE3" secondAttribute="bottom" id="6P4-2S-kxt"/>
+                            <constraint firstItem="0B3-vP-U7a" firstAttribute="leading" secondItem="TEx-GH-Stc" secondAttribute="leading" constant="492" id="7yT-Fb-Zi4"/>
                             <constraint firstItem="Slg-MM-HH9" firstAttribute="leading" secondItem="TEx-GH-Stc" secondAttribute="leadingMargin" id="Ahs-US-nJr"/>
                             <constraint firstItem="Mjd-pW-pQn" firstAttribute="top" secondItem="cdc-Oz-e5m" secondAttribute="top" id="DgC-wS-Vcq"/>
                             <constraint firstItem="cdc-Oz-e5m" firstAttribute="leading" secondItem="J1R-fX-PpG" secondAttribute="leading" id="F6W-Cg-giB"/>
@@ -149,6 +157,7 @@
                             <constraint firstItem="cdc-Oz-e5m" firstAttribute="width" secondItem="TEx-GH-Stc" secondAttribute="width" id="aUi-AL-cJi"/>
                             <constraint firstItem="cdc-Oz-e5m" firstAttribute="leading" secondItem="wj3-9V-gE3" secondAttribute="leading" id="aaq-Zu-AUS"/>
                             <constraint firstItem="Slg-MM-HH9" firstAttribute="bottom" secondItem="bXO-Jp-C3W" secondAttribute="top" id="etv-oi-RoU"/>
+                            <constraint firstItem="0B3-vP-U7a" firstAttribute="bottom" secondItem="cdc-Oz-e5m" secondAttribute="bottom" id="gEM-Ee-rDE"/>
                             <constraint firstItem="bXO-Jp-C3W" firstAttribute="top" secondItem="wj3-9V-gE3" secondAttribute="bottom" constant="428" id="hK1-fL-dYy"/>
                             <constraint firstAttribute="centerX" secondItem="Slg-MM-HH9" secondAttribute="centerX" id="hzi-pc-oae"/>
                             <constraint firstItem="cdc-Oz-e5m" firstAttribute="trailing" secondItem="J1R-fX-PpG" secondAttribute="trailing" id="jLZ-Zs-rtd"/>
@@ -157,6 +166,7 @@
                             <constraint firstItem="Mjd-pW-pQn" firstAttribute="trailing" secondItem="J1R-fX-PpG" secondAttribute="trailing" id="pIb-SP-q2l"/>
                             <constraint firstItem="Slg-MM-HH9" firstAttribute="trailing" secondItem="bXO-Jp-C3W" secondAttribute="trailing" id="rBL-wD-dl1"/>
                             <constraint firstItem="cdc-Oz-e5m" firstAttribute="top" secondItem="J1R-fX-PpG" secondAttribute="bottom" id="sF4-oc-KaM"/>
+                            <constraint firstItem="Mjd-pW-pQn" firstAttribute="leading" secondItem="0B3-vP-U7a" secondAttribute="trailing" constant="8" symbolic="YES" id="yp1-9Q-Oy7"/>
                             <constraint firstItem="wj3-9V-gE3" firstAttribute="top" secondItem="cdc-Oz-e5m" secondAttribute="bottom" id="zqf-wh-6n4"/>
                         </constraints>
                         <variation key="default">
@@ -167,6 +177,7 @@
                                 <exclude reference="JVj-Q0-otm"/>
                                 <exclude reference="kS4-B5-buq"/>
                                 <exclude reference="rBL-wD-dl1"/>
+                                <exclude reference="7yT-Fb-Zi4"/>
                                 <exclude reference="XwX-8R-kEp"/>
                                 <exclude reference="hK1-fL-dYy"/>
                             </mask>
@@ -176,6 +187,7 @@
                     <connections>
                         <outlet property="clockView" destination="Slg-MM-HH9" id="0f6-1p-ZPu"/>
                         <outlet property="destinationButton" destination="wj3-9V-gE3" id="LgL-k8-VLa"/>
+                        <outlet property="locationView" destination="0B3-vP-U7a" id="zyj-kE-4b7"/>
                         <outlet property="mailButton" destination="0fn-B8-gVL" id="XVv-qI-EGY"/>
                         <outlet property="originButton" destination="cdc-Oz-e5m" id="duc-Rz-MiQ"/>
                         <outlet property="startButton" destination="Nd9-Rq-wxM" id="im3-ns-5I2"/>

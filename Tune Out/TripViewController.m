@@ -344,7 +344,6 @@
     
     
     // LOCATION
-    self.locationView = [[UIView alloc] initWithFrame:CGRectMake(220, 0, 50, 50)];
     self.locationButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.locationButton setFrame:CGRectMake(0, 0, 50, 50)];
     [self.locationButton setBackgroundImage:[UIImage imageNamed:@"location"] forState:UIControlStateNormal];
@@ -369,10 +368,11 @@
     // SUBVIEWS
     [self.locationView addSubview:self.locationSpinner];
     [self.locationView addSubview:self.locationButton];
-    [self.originButton addSubview:self.locationView];
+    
     [self.view addSubview:self.originButton];
     [self.view addSubview:self.destinationButton];
     [self.view addSubview:self.swapButton];
+    [self.view addSubview:self.locationView];
     [self.clockView addSubview:self.tripProgress];
     //[self.startButton addSubview:self.subtextLabel];
     [self.clockView addSubview:self.startButton];
