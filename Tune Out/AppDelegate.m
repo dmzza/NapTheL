@@ -12,6 +12,7 @@
 #import "UIImage+withColor.h"
 #import <AudioToolbox/AudioServices.h>
 #import "GAI.h"
+#import "GAITracker.h"
 
 @interface AppDelegate ()
 
@@ -39,6 +40,8 @@
     
     // Optional: set Logger to VERBOSE for debug information.
     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelWarning];
+    
+    [[[GAI sharedInstance] defaultTracker] setAllowIDFACollection:YES];
     
     // Initialize tracker. Replace with your tracking ID.
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-40632324-1"];

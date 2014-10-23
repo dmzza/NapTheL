@@ -24,20 +24,25 @@
 @end
 
 @implementation TripViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    ADBannerView *_bannerView;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
     if (self) {
-      
         
+        // iAd banner setup
+        _bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
     }
+    
     return self;
 }
 
-- (void)viewDidLoad
+- (void)awakeFromNib
 {
-    [super viewDidLoad];
+    
   
   self.durations = [NSArray arrayWithObjects:
                     [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -247,6 +252,13 @@
   self.stdDoorTime = 13.0;
   self.earlyAlarmTime = 30.0;
   
+    [super awakeFromNib];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
   // NAV BAR
   NSDictionary *titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                        [UIFont fontWithName:@"Quicksand-Bold" size:20.0], NSFontAttributeName,
@@ -386,6 +398,26 @@
     [self.view addSubview:self.clockView];
     
     self.screenName = @"Trip Screen";
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.view addSubview:_bannerView];
+    [self layoutAnimated:NO];
+}
+- (void)layoutAnimated:(BOOL)animated
+{
+    CGRect contentFrame = self.view.bounds;
+    CGRect bannerFrame = _bannerView.frame;
+    
+    // Position the banner on the y axis
+    bannerFrame.origin.y = contentFrame.size.height - bannerFrame.size.height;
+    
+    [UIView animateWithDuration:animated ? 0.25 : 0.0 animations:^{
+        _bannerView.frame = bannerFrame;
+    }];
 }
 
 - (void) setStopViewController:(id)controller didFinishSelectingStop:(NSString *)stop which:(BOOL)isOrigin {

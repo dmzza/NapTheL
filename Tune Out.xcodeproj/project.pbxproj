@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6A170935D1EE4320A2085851 /* libPods-Tune Out.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 707A5BE7249C4B828EE4C983 /* libPods-Tune Out.a */; };
+		AA06341519F9363E005D893E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA06341419F9363E005D893E /* iAd.framework */; };
+		AA06341619F93D1B005D893E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA06341219F7ECD2005D893E /* AdSupport.framework */; };
+		AA06341819F93D64005D893E /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA06341719F93D64005D893E /* libAdIdAccess.a */; };
 		AAAD259619ED0713001BF906 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAD259519ED0713001BF906 /* main.m */; };
 		AAAD259919ED0713001BF906 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAD259819ED0713001BF906 /* AppDelegate.m */; };
 		AAAD259F19ED0713001BF906 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAAD259D19ED0713001BF906 /* Main.storyboard */; };
@@ -41,6 +44,9 @@
 /* Begin PBXFileReference section */
 		46FF7C25A46199FDF3E5CA28 /* Pods-Tune Out.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tune Out.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tune Out/Pods-Tune Out.release.xcconfig"; sourceTree = "<group>"; };
 		707A5BE7249C4B828EE4C983 /* libPods-Tune Out.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tune Out.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA06341219F7ECD2005D893E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		AA06341419F9363E005D893E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		AA06341719F93D64005D893E /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
 		AAAD259019ED0713001BF906 /* Tune Out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tune Out.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAD259419ED0713001BF906 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAAD259519ED0713001BF906 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -79,6 +85,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA06341619F93D1B005D893E /* AdSupport.framework in Frameworks */,
+				AA06341819F93D64005D893E /* libAdIdAccess.a in Frameworks */,
+				AA06341519F9363E005D893E /* iAd.framework in Frameworks */,
 				6A170935D1EE4320A2085851 /* libPods-Tune Out.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +114,7 @@
 		AAAD258719ED0713001BF906 = {
 			isa = PBXGroup;
 			children = (
+				AA06341719F93D64005D893E /* libAdIdAccess.a */,
 				AAAD259219ED0713001BF906 /* Tune Out */,
 				AAAD25AC19ED0713001BF906 /* Tune OutTests */,
 				AAAD259119ED0713001BF906 /* Products */,
@@ -183,6 +193,8 @@
 		E3FA8B8E7C214D5FB2C75E45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA06341419F9363E005D893E /* iAd.framework */,
+				AA06341219F7ECD2005D893E /* AdSupport.framework */,
 				707A5BE7249C4B828EE4C983 /* libPods-Tune Out.a */,
 			);
 			name = Frameworks;
@@ -461,6 +473,30 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Tune Out/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"GoogleAnalyticsServices\"",
+					"-l\"Pods-Tune Out-DACircularProgress\"",
+					"-l\"Pods-Tune Out-GoogleAnalytics-iOS-SDK\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -472,6 +508,30 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Tune Out/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"GoogleAnalyticsServices\"",
+					"-l\"Pods-Tune Out-DACircularProgress\"",
+					"-l\"Pods-Tune Out-GoogleAnalytics-iOS-SDK\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

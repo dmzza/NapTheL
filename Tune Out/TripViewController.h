@@ -14,6 +14,7 @@
 #import "StopTableViewController.h"
 #import "DACircularProgressView.h"
 #import "GAITrackedViewController.h"
+#import <iAd/iAd.h>
 
 @class Trip;
 
