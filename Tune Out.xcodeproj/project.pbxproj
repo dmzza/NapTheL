@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63DC3BAB1A0739420031DD04 /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DC3BAA1A0739420031DD04 /* HistoryTableViewController.m */; };
 		6A170935D1EE4320A2085851 /* libPods-Tune Out.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 707A5BE7249C4B828EE4C983 /* libPods-Tune Out.a */; };
 		AA06341519F9363E005D893E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA06341419F9363E005D893E /* iAd.framework */; };
 		AA06341619F93D1B005D893E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA06341219F7ECD2005D893E /* AdSupport.framework */; };
@@ -43,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		46FF7C25A46199FDF3E5CA28 /* Pods-Tune Out.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tune Out.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tune Out/Pods-Tune Out.release.xcconfig"; sourceTree = "<group>"; };
+		63DC3BA91A0739420031DD04 /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
+		63DC3BAA1A0739420031DD04 /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
 		707A5BE7249C4B828EE4C983 /* libPods-Tune Out.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tune Out.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA06341219F7ECD2005D893E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		AA06341419F9363E005D893E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
@@ -160,6 +163,8 @@
 				AAAD25A019ED0713001BF906 /* Images.xcassets */,
 				AAAD25A219ED0713001BF906 /* LaunchScreen.xib */,
 				AAAD259319ED0713001BF906 /* Supporting Files */,
+				63DC3BA91A0739420031DD04 /* HistoryTableViewController.h */,
+				63DC3BAA1A0739420031DD04 /* HistoryTableViewController.m */,
 			);
 			path = "Tune Out";
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				TargetAttributes = {
 					AAAD258F19ED0713001BF906 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = DNPVU838JE;
 					};
 					AAAD25A819ED0713001BF906 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -344,6 +350,7 @@
 				AAAD25CA19ED07F4001BF906 /* StopTableViewController.m in Sources */,
 				AAAD25CB19ED07F4001BF906 /* Trip.m in Sources */,
 				AAAD25CE19ED07F4001BF906 /* UIColor+CustomColors.m in Sources */,
+				63DC3BAB1A0739420031DD04 /* HistoryTableViewController.m in Sources */,
 				AAAD259919ED0713001BF906 /* AppDelegate.m in Sources */,
 				AAAD25CC19ED07F4001BF906 /* TripViewController.m in Sources */,
 				AAAD259619ED0713001BF906 /* main.m in Sources */,
