@@ -232,6 +232,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="aMm-Op-YeH" kind="show" id="b90-Kh-15u"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -243,6 +246,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKZ-Qf-rus" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1555" y="184"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="gjX-Zz-7VQ">
+            <objects>
+                <tableViewController id="aMm-Op-YeH" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uPR-9Z-afy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fVE-1q-YfL">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fVE-1q-YfL" id="7lb-fh-Rt5">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="aMm-Op-YeH" id="dmb-Kp-W8Y"/>
+                            <outlet property="delegate" destination="aMm-Op-YeH" id="I8R-fc-KQv"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oJv-pM-z9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2251" y="184"/>
         </scene>
     </scenes>
     <resources>

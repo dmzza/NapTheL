@@ -96,14 +96,14 @@
   return _trips;
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
+    Trip *trip = [self.trips objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+    [(UITableViewController *)[segue destinationViewController] setTitle:[NSString stringWithFormat:@"%.2f mins", trip.duration/60.0]];
+    [[(UITableViewController *)[segue destinationViewController] navigationItem] setPrompt:[NSString stringWithFormat:@"%@ > %@", trip.origin, trip.destination]];
     // Pass the selected object to the new view controller.
 }
-*/
 
 @end
