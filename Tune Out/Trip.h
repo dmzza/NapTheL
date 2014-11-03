@@ -6,13 +6,14 @@
 //  Copyright (c) 2013 David Mazza. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "FCModel.h"
 
-@interface Trip : NSObject
+@interface Trip : FCModel
 
-@property (strong, nonatomic) NSString *origin;
-@property (strong, nonatomic) NSString *destination;
-@property (strong, nonatomic) NSDate *departureTime;
-@property int duration;
+@property (nonatomic, copy) NSString *uniqueID;
+@property (nonatomic, copy) NSDate *departureTime;
+@property (nonatomic) NSString *origin;
+@property (nonatomic) NSString *destination;
+@property (nonatomic) NSInteger duration;
 
 @end

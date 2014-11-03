@@ -21,6 +21,8 @@
 
 @interface TripViewController ()
 
+@property (nonatomic) BOOL tripSaved;
+
 @end
 
 @implementation TripViewController
@@ -255,6 +257,16 @@
     [super awakeFromNib];
 }
 
+#pragma mark - Callbacks
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if(self.hasStarted && !self.stationsAreChosen) {
+        [self.tripProgress setIndeterminate:1]; //I wonder if this ever causes the layout bug
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -270,6 +282,7 @@
   [[self navigationItem] setBackBarButtonItem:backButton];
    
     // INIT
+    self.tripSaved = NO;
     self.trip = [[Trip alloc] init];
     self.tripProgress = [[DACircularProgressView alloc] init];
     self.subtextLabel = [[UILabel alloc] init];
@@ -407,6 +420,28 @@
     [self.view addSubview:_bannerView];
     [self layoutAnimated:NO];
 }
+
+- (void)didFinishCreatingTrip {
+    // Only save trip if it is new, otherwise this will be called every time the alarm is set (like after a pause/resume)
+    if (self.tripSaved == NO && [self.trip save] < FCModelSaveSucceeded) {
+        NSLog(@"Save trip failed");
+    } else {
+        self.tripSaved = YES;
+    }
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - iAds
+
 - (void)layoutAnimated:(BOOL)animated
 {
     CGRect contentFrame = self.view.bounds;
@@ -420,8 +455,11 @@
     }];
 }
 
+#pragma mark - StopTableViewController Delegate
+
 - (void) setStopViewController:(id)controller didFinishSelectingStop:(NSString *)stop which:(BOOL)isOrigin {
     id tracker = [[GAI sharedInstance] defaultTracker];
+    self.tripSaved = NO;
     if(isOrigin) {
         self.trip.origin = stop;
         [self.originButton setTitle:[NSString stringWithFormat:@"%@", stop] forState:UIControlStateNormal];
@@ -454,6 +492,8 @@
         [self calculateTime];
     }
 }
+
+#pragma mark - Time
 
 - (void) calculateTime {
     int i;
@@ -582,6 +622,7 @@
 }
 
 - (void) setAlarm {
+    [self didFinishCreatingTrip];
     if(self.timer == nil) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
         [self.tripProgress setIndeterminate:0];
@@ -637,6 +678,8 @@
     }
     [self.timer invalidate];
 }
+
+# pragma mark - UI Actions/Transitions
 
 - (void) showMailButton {
     self.mailButton.layer.transform = CATransform3DMakeAffineTransform(CGAffineTransformMakeTranslation(0, 100));
@@ -801,8 +844,13 @@
     [self.startButton addTarget:self action:@selector(startClock) forControlEvents:UIControlEventTouchUpInside];
     [self.mailButton setHidden:YES];
     
-    self.trip.departureTime = nil;
-    self.trip.duration = 0;
+    Trip *newTrip = [[Trip alloc] init];
+    
+    newTrip.origin = self.trip.origin;
+    newTrip.destination = self.trip.destination;
+    self.trip = newTrip;
+    self.tripSaved = NO;
+    
     [self.tripProgress setProgress:0 animated:YES];
     
     self.hasStarted = NO;
@@ -879,6 +927,8 @@
     }];
 }
 
+#pragma mark - Motion Manager
+
 - (void)movementLoop
 {
     CMAcceleration vector = self.motionManager.deviceMotion.userAcceleration;
@@ -930,6 +980,8 @@
     self.movementSum = 0;
 }
 
+#pragma mark - Geolocation
+
 - (NSString *) findNearestStationToLocation:(CLLocation *)location {
     NSString *nearestStation;
     double nearestDistance = MAXFLOAT;
@@ -942,6 +994,8 @@
     }
     return nearestStation;
 }
+
+#pragma mark - CLLocationManager Delegate
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *currentLocation = locations.lastObject;
@@ -994,24 +1048,6 @@
     //NSLog(@"RESUME LOCATION");
 //    UIPasteboard *pb = [UIPasteboard generalPasteboard];
 //    [pb setString:@"location resumed"];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    if(self.hasStarted && !self.stationsAreChosen) {
-        [self.tripProgress setIndeterminate:1]; //I wonder if this ever causes the layout bug
-    }
-}
-
-- (void) viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
