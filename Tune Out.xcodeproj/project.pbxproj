@@ -478,6 +478,7 @@
 					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-l\"GoogleAnalyticsServices\"",
 					"-l\"Pods-Tune Out-DACircularProgress\"",
@@ -513,6 +514,7 @@
 					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-l\"GoogleAnalyticsServices\"",
 					"-l\"Pods-Tune Out-DACircularProgress\"",
