@@ -1,0 +1,13 @@
+PODS:
+  - DACircularProgress (2.2.0)
+  - GoogleAnalytics-iOS-SDK (3.0.9)
+
+DEPENDENCIES:
+  - DACircularProgress
+  - GoogleAnalytics-iOS-SDK
+
+SPEC CHECKSUMS:
+  DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
+  GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
+
+COCOAPODS: 0.34.4

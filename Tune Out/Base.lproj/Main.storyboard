@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kOa-kD-bgT">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Quicksand-Regular.ttf">
+            <string>Quicksand-Regular</string>
+            <string>Quicksand-Regular</string>
+        </mutableArray>
+        <mutableArray key="linecons.ttf">
+            <string>linecons</string>
+            <string>linecons</string>
+        </mutableArray>
+        <mutableArray key="sosa-regular-webfont.ttf">
+            <string>Sosa-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--TUNE OUT-->
+        <scene sceneID="bA1-PD-yFA">
+            <objects>
+                <navigationController title="TUNE OUT" id="kOa-kD-bgT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="CYN-fa-ISV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="utB-Az-QCK" kind="relationship" relationship="rootViewController" id="djH-6Y-Qbg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8hH-YH-8TE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86" y="185"/>
+        </scene>
+        <!--TUNE OUT-->
+        <scene sceneID="W8k-Fy-cpT">
+            <objects>
+                <viewController id="utB-Az-QCK" customClass="TripViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J1R-fX-PpG"/>
+                        <viewControllerLayoutGuide type="bottom" id="bXO-Jp-C3W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TEx-GH-Stc">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdc-Oz-e5m">
+                                <rect key="frame" x="0.0" y="64" width="600" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jj3-2p-sNA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="FROM">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wj3-9V-gE3">
+                                <rect key="frame" x="0.0" y="114" width="600" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="k3P-ez-RIE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="17"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="TO">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjd-pW-pQn">
+                                <rect key="frame" x="550" y="64" width="50" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="bin-pa-mZ5"/>
+                                    <constraint firstAttribute="width" constant="50" id="plU-iM-xsP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Sosa-Regular" family="Sosa" pointSize="35"/>
+                                <state key="normal" title="U">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Slg-MM-HH9">
+                                <rect key="frame" x="0.0" y="164" width="600" height="436"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nd9-Rq-wxM">
+                                        <rect key="frame" x="191" y="109" width="218" height="218"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="100" constant="500" id="14E-V0-GYQ"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="170" id="XYd-Ag-NWx"/>
+                                            <constraint firstAttribute="width" secondItem="Nd9-Rq-wxM" secondAttribute="height" multiplier="1:1" id="zWS-92-0qn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="linecons" family="linecons" pointSize="90"/>
+                                        <state key="normal" title="" backgroundImage="startClock">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="14E-V0-GYQ"/>
+                                            </mask>
+                                        </variation>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fn-B8-gVL">
+                                        <rect key="frame" x="264" y="396" width="71" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="bug-sq-IIK"/>
+                                            <constraint firstAttribute="width" constant="71" id="dOk-hh-2Ie"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="linecons" family="linecons" pointSize="29"/>
+                                        <state key="normal" title="">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Nd9-Rq-wxM" firstAttribute="height" relation="greaterThanOrEqual" secondItem="Slg-MM-HH9" secondAttribute="height" multiplier="0.5" priority="500" id="45h-FI-MC1"/>
+                                    <constraint firstAttribute="centerX" secondItem="Nd9-Rq-wxM" secondAttribute="centerX" id="frO-Au-3bd"/>
+                                    <constraint firstAttribute="centerX" secondItem="0fn-B8-gVL" secondAttribute="centerX" id="tBp-Yt-NOz"/>
+                                    <constraint firstAttribute="centerY" secondItem="Nd9-Rq-wxM" secondAttribute="centerY" id="ubx-Ws-AXB"/>
+                                    <constraint firstAttribute="bottom" secondItem="0fn-B8-gVL" secondAttribute="bottom" constant="9" id="x11-Vd-zh4"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0B3-vP-U7a">
+                                <rect key="frame" x="492" y="64" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0B3-vP-U7a" secondAttribute="height" multiplier="1:1" id="umA-lh-y5X"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0B3-vP-U7a" firstAttribute="top" secondItem="Mjd-pW-pQn" secondAttribute="top" id="21h-XR-BM1"/>
+                            <constraint firstItem="Slg-MM-HH9" firstAttribute="top" secondItem="wj3-9V-gE3" secondAttribute="bottom" id="6P4-2S-kxt"/>
+                            <constraint firstItem="0B3-vP-U7a" firstAttribute="leading" secondItem="TEx-GH-Stc" secondAttribute="leading" constant="492" id="7yT-Fb-Zi4"/>
+                            <constraint firstItem="Slg-MM-HH9" firstAttribute="leading" secondItem="TEx-GH-Stc" secondAttribute="leadingMargin" id="Ahs-US-nJr"/>
+                            <constraint firstItem="Mjd-pW-pQn" firstAttribute="top" secondItem="cdc-Oz-e5m" secondAttribute="top" id="DgC-wS-Vcq"/>
+                            <constraint firstItem="cdc-Oz-e5m" firstAttribute="leading" secondItem="J1R-fX-PpG" secondAttribute="leading" id="F6W-Cg-giB"/>
+                            <constraint firstItem="wj3-9V-gE3" firstAttribute="trailing" secondItem="J1R-fX-PpG" secondAttribute="trailing" id="GYH-Kq-pIH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Slg-MM-HH9" secondAttribute="trailing" id="JVj-Q0-otm"/>
+                            <constraint firstItem="bXO-Jp-C3W" firstAttribute="top" secondItem="Mjd-pW-pQn" secondAttribute="bottom" constant="436" id="XwX-8R-kEp"/>
+                            <constraint firstItem="Slg-MM-HH9" firstAttribute="width" secondItem="TEx-GH-Stc" secondAttribute="width" id="Y6T-I8-faM"/>
+                            <constraint firstItem="cdc-Oz-e5m" firstAttribute="width" secondItem="TEx-GH-Stc" secondAttribute="width" id="aUi-AL-cJi"/>
+                            <constraint firstItem="cdc-Oz-e5m" firstAttribute="leading" secondItem="wj3-9V-gE3" secondAttribute="leading" id="aaq-Zu-AUS"/>
+                            <constraint firstItem="Slg-MM-HH9" firstAttribute="bottom" secondItem="bXO-Jp-C3W" secondAttribute="top" id="etv-oi-RoU"/>
+                            <constraint firstItem="0B3-vP-U7a" firstAttribute="bottom" secondItem="cdc-Oz-e5m" secondAttribute="bottom" id="gEM-Ee-rDE"/>
+                            <constraint firstItem="bXO-Jp-C3W" firstAttribute="top" secondItem="wj3-9V-gE3" secondAttribute="bottom" constant="428" id="hK1-fL-dYy"/>
+                            <constraint firstAttribute="centerX" secondItem="Slg-MM-HH9" secondAttribute="centerX" id="hzi-pc-oae"/>
+                            <constraint firstItem="cdc-Oz-e5m" firstAttribute="trailing" secondItem="J1R-fX-PpG" secondAttribute="trailing" id="jLZ-Zs-rtd"/>
+                            <constraint firstItem="Slg-MM-HH9" firstAttribute="leading" secondItem="bXO-Jp-C3W" secondAttribute="leading" id="kS4-B5-buq"/>
+                            <constraint firstItem="wj3-9V-gE3" firstAttribute="width" secondItem="cdc-Oz-e5m" secondAttribute="width" id="nEb-8h-k5C"/>
+                            <constraint firstItem="Mjd-pW-pQn" firstAttribute="trailing" secondItem="J1R-fX-PpG" secondAttribute="trailing" id="pIb-SP-q2l"/>
+                            <constraint firstItem="Slg-MM-HH9" firstAttribute="trailing" secondItem="bXO-Jp-C3W" secondAttribute="trailing" id="rBL-wD-dl1"/>
+                            <constraint firstItem="cdc-Oz-e5m" firstAttribute="top" secondItem="J1R-fX-PpG" secondAttribute="bottom" id="sF4-oc-KaM"/>
+                            <constraint firstItem="Mjd-pW-pQn" firstAttribute="leading" secondItem="0B3-vP-U7a" secondAttribute="trailing" constant="8" symbolic="YES" id="yp1-9Q-Oy7"/>
+                            <constraint firstItem="wj3-9V-gE3" firstAttribute="top" secondItem="cdc-Oz-e5m" secondAttribute="bottom" id="zqf-wh-6n4"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="F6W-Cg-giB"/>
+                                <exclude reference="jLZ-Zs-rtd"/>
+                                <exclude reference="Ahs-US-nJr"/>
+                                <exclude reference="JVj-Q0-otm"/>
+                                <exclude reference="kS4-B5-buq"/>
+                                <exclude reference="rBL-wD-dl1"/>
+                                <exclude reference="7yT-Fb-Zi4"/>
+                                <exclude reference="XwX-8R-kEp"/>
+                                <exclude reference="hK1-fL-dYy"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="TUNE OUT" id="Obh-GI-pxb"/>
+                    <connections>
+                        <outlet property="clockView" destination="Slg-MM-HH9" id="0f6-1p-ZPu"/>
+                        <outlet property="destinationButton" destination="wj3-9V-gE3" id="LgL-k8-VLa"/>
+                        <outlet property="locationView" destination="0B3-vP-U7a" id="zyj-kE-4b7"/>
+                        <outlet property="mailButton" destination="0fn-B8-gVL" id="XVv-qI-EGY"/>
+                        <outlet property="originButton" destination="cdc-Oz-e5m" id="duc-Rz-MiQ"/>
+                        <outlet property="startButton" destination="Nd9-Rq-wxM" id="im3-ns-5I2"/>
+                        <outlet property="swapButton" destination="Mjd-pW-pQn" id="ZW4-PD-IsM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Hp-4C-v0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="844" y="184"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="startClock" width="218" height="218"/>
+    </resources>
+</document>
