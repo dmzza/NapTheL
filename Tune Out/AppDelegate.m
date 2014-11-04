@@ -109,15 +109,21 @@
              @");"
              ]) failedAt(1);
       
-      /*if (! [db executeUpdate:
-             @"CREATE TABLE SimplerModel ("
-             @"    id    INTEGER PRIMARY KEY,"
-             @"    title TEXT"
-             @");"
-             ]) failedAt(2);*/
-      
-      
       *schemaVersion = 1;
+    }
+    if (*schemaVersion < 2) {
+      if (! [db executeUpdate:
+             @"CREATE TABLE Acceleration ("
+             @"    uniqueID     TEXT PRIMARY KEY,"
+             @"    tripID             TEXT,"
+             @"    timestamp          DATETIME,"
+             @"    x                  DOUBLE NOT NULL,"
+             @"    y                  DOUBLE NOT NULL,"
+             @"    z                  DOUBLE NOT NULL"
+             @");"
+             ]) failedAt(1);
+        
+        *schemaVersion = 2;
     }
     [db commit];
   }];

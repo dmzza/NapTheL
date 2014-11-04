@@ -26,12 +26,8 @@
 @property double stoppedTime;
 @property double movingTime;
 @property double accumulatedPauseTime;
-@property double errorThreshold;
-@property double movementThreshold;
 @property double movementSum;
 @property double lastMovementSum;
-@property double stdDoorTime;
-@property double earlyAlarmTime;
 
 @property (strong, nonatomic) NSArray *durations;
 @property (strong, nonatomic) NSDate *arrivalTime;

@@ -11,6 +11,7 @@
 #import "OriginTableViewController.h"
 #import "DestinationTableViewController.h"
 #import "Trip.h"
+#import "Acceleration.h"
 #import "UIColor+CustomColors.h"
 #import "UIImage+withColor.h"
 #import "DACircularProgressView.h"
@@ -18,6 +19,10 @@
 #import "GAIFields.h"
 #import "GAIDictionaryBuilder.h"
 
+const double ERROR_THRESHOLD = 2.25;
+const double MOVEMENT_THRESHOLD = 0.100;
+const double EXPECTED_DOOR_TIME = 13.0;
+const double EARLY_WARNING_BUFFER = 30.0;
 
 @interface TripViewController ()
 
@@ -249,11 +254,7 @@
   self.stationsAreChosen = NO;
   
   self.stoppedTime = self.movingTime = self.accumulatedPauseTime = self.movementSum = self.lastMovementSum = 0.0;
-  self.errorThreshold = 2.25;
-  self.movementThreshold = 0.100;
-  self.stdDoorTime = 13.0;
-  self.earlyAlarmTime = 30.0;
-  
+
     [super awakeFromNib];
 }
 
@@ -579,10 +580,10 @@
     // MOVEMENT
     [self.locationManager startUpdatingLocation];
     [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
-        CMAcceleration vector = motion.userAcceleration;
+        Acceleration *acceleration = [[Acceleration alloc] initWithTrip:self.trip.uniqueID andVector:motion.userAcceleration];
         
-        double currentTotal = vector.x + vector.y + vector.z;
-        self.movementSum += currentTotal;
+        self.movementSum += acceleration.magnitude;
+        [acceleration save];
     }];
     if ([CMMotionActivityManager isActivityAvailable]) {
         [self.motionActivityManager startActivityUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMMotionActivity *activity) {
@@ -628,7 +629,7 @@
         [self.tripProgress setIndeterminate:0];
     }
     self.arrivalTime = [NSDate dateWithTimeIntervalSinceNow:self.timeRemaining];
-    NSDate *alarmTime = [NSDate dateWithTimeIntervalSinceNow:(self.timeRemaining - self.earlyAlarmTime)];
+    NSDate *alarmTime = [NSDate dateWithTimeIntervalSinceNow:(self.timeRemaining - EARLY_WARNING_BUFFER)];
     UILocalNotification *arrivalAlarm = [[UILocalNotification alloc] init];
     
     // ARRIVAL ALARM
@@ -941,13 +942,13 @@
 {
     double currentDiff = fabs(self.movementSum - self.lastMovementSum);
     
-    if(currentDiff < self.movementThreshold) {
+    if(currentDiff < MOVEMENT_THRESHOLD) {
         self.stoppedTime += 0.5;
-        if (self.stoppedTime > self.stdDoorTime)
+        if (self.stoppedTime > EXPECTED_DOOR_TIME)
             self.accumulatedPauseTime += 0.5;
-        if(self.movingTime <= self.errorThreshold) {
+        if(self.movingTime <= ERROR_THRESHOLD) {
             self.stoppedTime += self.movingTime;
-            if (self.stoppedTime > self.stdDoorTime)
+            if (self.stoppedTime > EXPECTED_DOOR_TIME)
                 self.accumulatedPauseTime += self.movingTime;
         }
         if(self.accumulatedPauseTime > 0 && self.hasStarted && self.stationsAreChosen) {
@@ -963,8 +964,8 @@
     }
     else {
         self.movingTime += 0.5;
-        if(self.movingTime > self.errorThreshold) {
-            if (self.stoppedTime > self.stdDoorTime) {
+        if(self.movingTime > ERROR_THRESHOLD) {
+            if (self.stoppedTime > EXPECTED_DOOR_TIME) {
 //                UIPasteboard *pb = [UIPasteboard generalPasteboard];
 //                [pb setString:[NSString stringWithFormat:@"%f", self.stoppedTime]];
             }
@@ -1013,7 +1014,7 @@
             [self calculateTime];
         }
     } else if ([nearestStation isEqualToString:self.trip.destination]) {
-        self.timeRemaining = self.earlyAlarmTime + 1.0;
+        self.timeRemaining = EARLY_WARNING_BUFFER + 1.0;
         [self.timer invalidate];
         self.timer = nil;
         [self.locationManager stopUpdatingLocation];
