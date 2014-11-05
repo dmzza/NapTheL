@@ -8,16 +8,19 @@ PODS:
   - FMDB/standard (2.4):
     - FMDB/common
   - GoogleAnalytics-iOS-SDK (3.0.9)
+  - JBChartView (2.8.10)
 
 DEPENDENCIES:
   - DACircularProgress
   - FCModel
   - GoogleAnalytics-iOS-SDK
+  - JBChartView
 
 SPEC CHECKSUMS:
   DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
   FCModel: 1f01fdcb5b469d3ab3c307ee90cb1b743cc3adfd
   FMDB: 0b2fa25e5264ef177973c0cb8c02c711107979aa
   GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
+  JBChartView: 50b221ef68d0934f5aea417a369a5b02167848a9
 
 COCOAPODS: 0.34.4

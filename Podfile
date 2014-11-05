@@ -8,6 +8,7 @@ target "Tune Out" do
   pod "GoogleAnalytics-iOS-SDK"
   pod "DACircularProgress"
   pod "FCModel"
+  pod 'JBChartView'
 end
 
 target "Tune OutTests" do
