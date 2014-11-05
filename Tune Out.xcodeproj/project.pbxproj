@@ -12,6 +12,7 @@
 		AA06341519F9363E005D893E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA06341419F9363E005D893E /* iAd.framework */; };
 		AA06341619F93D1B005D893E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA06341219F7ECD2005D893E /* AdSupport.framework */; };
 		AA06341819F93D64005D893E /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA06341719F93D64005D893E /* libAdIdAccess.a */; };
+		AA0E7F611A0A5D710010C7C9 /* AccelerationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0E7F601A0A5D710010C7C9 /* AccelerationTableViewController.m */; };
 		AA9C162C1A09225800D18477 /* Acceleration.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9C162B1A09225800D18477 /* Acceleration.m */; };
 		AAAD259619ED0713001BF906 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAD259519ED0713001BF906 /* main.m */; };
 		AAAD259919ED0713001BF906 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAD259819ED0713001BF906 /* AppDelegate.m */; };
@@ -51,6 +52,8 @@
 		AA06341219F7ECD2005D893E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		AA06341419F9363E005D893E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		AA06341719F93D64005D893E /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
+		AA0E7F5F1A0A5D710010C7C9 /* AccelerationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerationTableViewController.h; sourceTree = "<group>"; };
+		AA0E7F601A0A5D710010C7C9 /* AccelerationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccelerationTableViewController.m; sourceTree = "<group>"; };
 		AA9C162A1A09225800D18477 /* Acceleration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Acceleration.h; sourceTree = "<group>"; };
 		AA9C162B1A09225800D18477 /* Acceleration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Acceleration.m; sourceTree = "<group>"; };
 		AAAD259019ED0713001BF906 /* Tune Out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tune Out.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +173,8 @@
 				63DC3BAA1A0739420031DD04 /* HistoryTableViewController.m */,
 				AA9C162A1A09225800D18477 /* Acceleration.h */,
 				AA9C162B1A09225800D18477 /* Acceleration.m */,
+				AA0E7F5F1A0A5D710010C7C9 /* AccelerationTableViewController.h */,
+				AA0E7F601A0A5D710010C7C9 /* AccelerationTableViewController.m */,
 			);
 			path = "Tune Out";
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				63DC3BAB1A0739420031DD04 /* HistoryTableViewController.m in Sources */,
 				AAAD259919ED0713001BF906 /* AppDelegate.m in Sources */,
 				AAAD25CC19ED07F4001BF906 /* TripViewController.m in Sources */,
+				AA0E7F611A0A5D710010C7C9 /* AccelerationTableViewController.m in Sources */,
 				AAAD259619ED0713001BF906 /* main.m in Sources */,
 				AA9C162C1A09225800D18477 /* Acceleration.m in Sources */,
 				AAAD25C919ED07F4001BF906 /* OriginTableViewController.m in Sources */,

@@ -1,20 +1,19 @@
 //
-//  HistoryTableViewController.m
+//  AccelerationTableViewController.m
 //  Tune Out
 //
-//  Created by David Mazza on 11/2/14.
+//  Created by David Mazza on 11/5/14.
 //  Copyright (c) 2014 Peaking. All rights reserved.
 //
 
-#import "HistoryTableViewController.h"
-#import "Trip.h"
 #import "AccelerationTableViewController.h"
+#import "Acceleration.h"
 
-@interface HistoryTableViewController ()
+@interface AccelerationTableViewController ()
 
 @end
 
-@implementation HistoryTableViewController
+@implementation AccelerationTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,20 +37,18 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [Trip numberOfInstances];
+    return self.accelerations.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tripHistoryCell" forIndexPath:indexPath];
-  Trip *trip = (Trip *)[self.trips objectAtIndex:indexPath.row];
-  
-  cell.textLabel.text = [NSString stringWithFormat:@"%@ -> %@", trip.origin, trip.destination];
-  cell.detailTextLabel.text = [trip.departureTime description];
-  
-  return cell;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"accelerationCell" forIndexPath:indexPath];
+    Acceleration *acceleration = (Acceleration *)[self.accelerations objectAtIndex:indexPath.row];
+    
+    [cell.textLabel setText:[NSString stringWithFormat:@"%.2f", acceleration.magnitude]];
+    [cell.detailTextLabel setText:[NSString stringWithFormat:@"x: %.2f y: %.2f z: %.2f", acceleration.x, acceleration.y, acceleration.z]];
+    
+    return cell;
 }
-
 
 /*
 // Override to support conditional editing of the table view.
@@ -89,23 +86,22 @@
 
 #pragma mark - FCModel
 
-- (NSArray *)trips {
-  if (_trips == nil) {
-    _trips = [Trip instancesOrderedBy:@"departureTime DESC"];
-  }
-  
-  return _trips;
+- (NSArray *)accelerations {
+    if (_accelerations == nil) {
+        _accelerations = [Acceleration instancesWhere:@"tripID = ? ORDER BY timestamp ASC", self.tripID];
+    }
+    
+    return _accelerations;
 }
 
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    Trip *trip = [self.trips objectAtIndex:[self.tableView indexPathForSelectedRow].row];
-    [(UITableViewController *)[segue destinationViewController] setTitle:[NSString stringWithFormat:@"%.2f mins", trip.duration/60.0]];
-    [[(UITableViewController *)[segue destinationViewController] navigationItem] setPrompt:[NSString stringWithFormat:@"%@ > %@", trip.origin, trip.destination]];
+    // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    [(AccelerationTableViewController *)[segue destinationViewController] setTripID:trip.uniqueID];
 }
+*/
 
 @end
