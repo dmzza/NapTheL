@@ -1,13 +1,23 @@
 PODS:
   - DACircularProgress (2.2.0)
+  - FCModel (0.9.0):
+    - FMDB (~> 2.1)
+  - FMDB (2.4):
+    - FMDB/standard
+  - FMDB/common (2.4)
+  - FMDB/standard (2.4):
+    - FMDB/common
   - GoogleAnalytics-iOS-SDK (3.0.9)
 
 DEPENDENCIES:
   - DACircularProgress
+  - FCModel
   - GoogleAnalytics-iOS-SDK
 
 SPEC CHECKSUMS:
   DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
+  FCModel: 1f01fdcb5b469d3ab3c307ee90cb1b743cc3adfd
+  FMDB: 0b2fa25e5264ef177973c0cb8c02c711107979aa
   GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
 
 COCOAPODS: 0.34.4

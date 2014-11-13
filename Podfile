@@ -7,6 +7,7 @@ xcodeproj 'Tune Out.xcodeproj'
 target "Tune Out" do
   pod "GoogleAnalytics-iOS-SDK"
   pod "DACircularProgress"
+  pod "FCModel"
 end
 
 target "Tune OutTests" do

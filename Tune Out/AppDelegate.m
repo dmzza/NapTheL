@@ -13,6 +13,7 @@
 #import <AudioToolbox/AudioServices.h>
 #import "GAI.h"
 #import "GAITracker.h"
+#import "FCModel.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +23,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  //if (![NSFileManager.defaultManager fileExistsAtPath:[self dbPath]]) {
+    [self openDatabase];
+  //}
   
   NSDictionary *titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                        [UIFont fontWithName:@"Quicksand-Bold" size:20.0], NSFontAttributeName,
@@ -78,6 +82,50 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+  [FCModel closeDatabase];
+}
+
+- (void)openDatabase
+{
+  [FCModel openDatabaseAtPath:[self dbPath] withSchemaBuilder:^(FMDatabase *db, int *schemaVersion) {
+    [db setCrashOnErrors:YES];
+    [db beginTransaction];
+    
+    void (^failedAt)(int statement) = ^(int statement){
+      int lastErrorCode = db.lastErrorCode;
+      NSString *lastErrorMessage = db.lastErrorMessage;
+      [db rollback];
+      NSAssert3(0, @"Migration statement %d failed, code %d: %@", statement, lastErrorCode, lastErrorMessage);
+    };
+    
+    if (*schemaVersion < 1) {
+      if (! [db executeUpdate:
+             @"CREATE TABLE Trip ("
+             @"    uniqueID     TEXT PRIMARY KEY,"
+             @"    departureTime      DATETIME,"
+             @"    origin             TEXT,"
+             @"    destination        TEXT,"
+             @"    duration           INTEGER NOT NULL"
+             @");"
+             ]) failedAt(1);
+      
+      /*if (! [db executeUpdate:
+             @"CREATE TABLE SimplerModel ("
+             @"    id    INTEGER PRIMARY KEY,"
+             @"    title TEXT"
+             @");"
+             ]) failedAt(2);*/
+      
+      
+      *schemaVersion = 1;
+    }
+    [db commit];
+  }];
+}
+
+- (NSString *)dbPath
+{
+  return [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"tuneOut.sqlite3"];
 }
 
 @end
